@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="relative isolate flex min-h-screen items-center overflow-hidden px-6 py-16 sm:px-10">
@@ -7,17 +9,36 @@ export default function Home() {
       />
 
       <section className="mx-auto w-full max-w-5xl">
-        <header className="flex items-center gap-3">
-          <span
-            aria-hidden="true"
-            className="grid size-10 place-items-center rounded-xl bg-indigo-600 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20"
-          >
-            N
-          </span>
-          <div>
-            <p className="font-semibold tracking-tight text-slate-950">Nexora</p>
-            <p className="text-sm text-slate-500">AI Manager</p>
+        <header className="flex items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              className="grid size-10 place-items-center rounded-xl bg-indigo-600 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20"
+            >
+              N
+            </span>
+            <div>
+              <p className="font-semibold tracking-tight text-slate-950">
+                Nexora
+              </p>
+              <p className="text-sm text-slate-500">AI Manager</p>
+            </div>
           </div>
+
+          <nav aria-label="Authentication" className="flex items-center gap-3">
+            <Link
+              className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:text-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              href="/auth/sign-in"
+            >
+              Sign in
+            </Link>
+            <Link
+              className="hidden rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:inline-flex"
+              href="/auth/sign-up"
+            >
+              Get started
+            </Link>
+          </nav>
         </header>
 
         <div className="mt-20 max-w-3xl sm:mt-28">
