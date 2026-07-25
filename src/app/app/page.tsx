@@ -1,7 +1,10 @@
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 import { SignOutButton } from "@/components/auth/sign-out-button";
 import { signOutAction } from "@/features/auth/actions";
+import { OrganizationForm } from "@/features/organizations/components/organization-form";
+import { listOrganizationsForCurrentUser } from "@/features/organizations/queries/organizations";
 import { createClient } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -29,6 +32,7 @@ export default async function ApplicationPage({
   const params = await searchParams;
   const passwordUpdated = params.password === "updated";
   const signOutFailed = params.signout === "failed";
+  const organizations = await listOrganizationsForCurrentUser();
 
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-8 sm:px-10">
@@ -54,7 +58,7 @@ export default async function ApplicationPage({
           </form>
         </header>
 
-        <section className="mt-16 max-w-2xl rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
+        <section className="mt-12 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
           {passwordUpdated ? (
             <p
               className="mb-6 rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-800"
@@ -74,10 +78,10 @@ export default async function ApplicationPage({
           ) : null}
 
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-600">
-            Secure session active
+            Organizations
           </p>
           <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-950">
-            Authentication foundation is ready
+            Choose your organization
           </h1>
           <p className="mt-5 leading-7 text-slate-600">
             You are authenticated as{" "}
@@ -86,6 +90,44 @@ export default async function ApplicationPage({
             </span>
             .
           </p>
+
+          <div className="mt-8 grid gap-3">
+            {organizations.length ? (
+              organizations.map((organization) => (
+                <Link
+                  className="flex items-center justify-between rounded-2xl border border-slate-200 px-5 py-4 transition hover:border-indigo-300 hover:bg-indigo-50"
+                  href={`/app/organizations/${organization.id}`}
+                  key={organization.id}
+                >
+                  <span>
+                    <span className="block font-semibold text-slate-950">
+                      {organization.name}
+                    </span>
+                    <span className="mt-1 block text-sm text-slate-500">
+                      {organization.slug}
+                    </span>
+                  </span>
+                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
+                    {organization.role}
+                  </span>
+                </Link>
+              ))
+            ) : (
+              <p className="rounded-2xl bg-slate-50 px-5 py-4 text-sm text-slate-600">
+                You do not belong to an organization yet.
+              </p>
+            )}
+          </div>
+        </section>
+
+        <section className="mt-8 max-w-2xl rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
+          <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
+            Create an organization
+          </h2>
+          <p className="mt-3 text-sm leading-6 text-slate-600">
+            You will become its owner automatically.
+          </p>
+          <OrganizationForm mode="create" />
         </section>
       </div>
     </main>

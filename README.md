@@ -80,6 +80,26 @@ Never commit `.env.local`. The browser may use only the public project URL and
 publishable key. A secret or service-role key is not required or used by the
 Auth foundation.
 
+## Organizations foundation
+
+Apply the SQL migrations in `supabase/migrations` to the configured project
+before using organization routes.
+
+Organization creation is atomic: an `AFTER INSERT` database trigger adds the
+authenticated creator as the owner in the same transaction. Row Level Security
+allows owners and admins to read their organizations and memberships, while
+direct membership writes are denied.
+
+Administrator mutations are exposed only through narrowly scoped RPC
+functions. They accept no role value, verify `auth.uid()` against an existing
+owner membership, and can only add or remove the `admin` role. The privileged
+implementation remains in the non-exposed `private` schema with a fixed empty
+`search_path`.
+
+The application supports multiple organizations per user. Every organization
+route performs a server-side membership lookup and remains protected by RLS;
+an organization ID from the URL is never treated as authorization.
+
 ## Verification
 
 ```bash
