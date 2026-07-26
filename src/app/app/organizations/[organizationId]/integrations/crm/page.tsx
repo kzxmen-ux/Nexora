@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { CrmProviderCard } from "@/features/crm-connections/components/crm-provider-card";
 import { listCrmConnections } from "@/features/crm-connections/queries/crm-connections";
 import type { CrmConnectionStatus } from "@/features/crm-connections/types";
 import { OrganizationWorkspaceNavigation } from "@/features/organizations/components/organization-workspace-navigation";
@@ -81,29 +82,22 @@ export default async function CrmConnectionsPage({
         />
 
         <section className="mt-9">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <Link
-                className="text-sm font-semibold text-indigo-700 hover:text-indigo-900"
-                href={`/app/organizations/${organization.id}/integrations`}
-              >
-                {t("← Integrations")}
-              </Link>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950">
-                {t("CRM connections")}
-              </h2>
-              <p className="mt-3 max-w-2xl leading-7 text-slate-600">
-                {t(
-                  "These records are placeholders for future provider adapters. The external CRM remains the source of truth.",
-                )}
-              </p>
-            </div>
-            <Link
-              className="rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700"
-              href={`/app/organizations/${organization.id}/integrations/crm/new`}
-            >
-              {t("New CRM connection")}
-            </Link>
+          <Link
+            className="text-sm font-semibold text-indigo-700 hover:text-indigo-900"
+            href={`/app/organizations/${organization.id}/integrations`}
+          >
+            {t("← Integrations")}
+          </Link>
+
+          <div className="mt-5">
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-950">
+              {t("Your CRM connections")}
+            </h2>
+            <p className="mt-3 max-w-2xl leading-7 text-slate-600">
+              {t(
+                "Manage the CRM connections available to this organization. The external CRM remains the source of truth.",
+              )}
+            </p>
           </div>
 
           {query.deleted === "1" ? (
@@ -115,21 +109,20 @@ export default async function CrmConnectionsPage({
             </p>
           ) : null}
 
-          <div className="mt-7 space-y-4">
+          <div className="mt-7 grid gap-4">
             {connections.length ? (
               connections.map((connection) => (
-                <Link
-                  className="block rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-indigo-200 hover:shadow-md"
-                  href={`/app/organizations/${organization.id}/integrations/crm/${connection.id}`}
+                <article
+                  className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
                   key={connection.id}
                 >
-                  <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="flex flex-wrap items-start justify-between gap-5">
                     <div>
                       <h3 className="text-xl font-semibold text-slate-950">
                         {connection.displayName}
                       </h3>
                       <p className="mt-2 text-sm text-slate-600">
-                        {t("Provider: Custom placeholder")}
+                        {t("Provider:")} {t("Development connection")}
                       </p>
                       <p className="mt-1 text-sm text-slate-500">
                         {t("Last sync:")}{" "}
@@ -140,26 +133,76 @@ export default async function CrmConnectionsPage({
                         )}
                       </p>
                     </div>
-                    <span
-                      className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${statusClass(connection.status)}`}
-                    >
-                      {t(connection.status)}
-                    </span>
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${statusClass(connection.status)}`}
+                      >
+                        {t(connection.status)}
+                      </span>
+                      <Link
+                        className="rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700"
+                        href={`/app/organizations/${organization.id}/integrations/crm/${connection.id}`}
+                      >
+                        {t("Edit")}
+                      </Link>
+                    </div>
                   </div>
-                </Link>
+                </article>
               ))
             ) : (
               <div className="rounded-3xl border border-dashed border-slate-300 bg-white p-8 text-center">
                 <h3 className="text-lg font-semibold text-slate-950">
-                  {t("No CRM connections")}
+                  {t("No connections yet")}
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">
                   {t(
-                    "Create a placeholder record to prepare the integration boundary.",
+                    "Choose the development connection below to prepare the integration boundary.",
                   )}
                 </p>
               </div>
             )}
+          </div>
+        </section>
+
+        <section className="mt-12 border-t border-slate-200 pt-10">
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-950">
+            {t("Connect a new CRM")}
+          </h2>
+          <p className="mt-3 max-w-2xl leading-7 text-slate-600">
+            {t(
+              "Choose a provider. Production integrations will become available after their adapters are implemented and verified.",
+            )}
+          </p>
+
+          <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <CrmProviderCard
+              actionLabel={t("Coming soon")}
+              badge={t("Official integration")}
+              description={t(
+                "YCLIENTS integration is planned and cannot be connected yet.",
+              )}
+              monogram="YC"
+              name="YCLIENTS"
+            />
+            <CrmProviderCard
+              actionLabel={t("Coming soon")}
+              badge={t("Coming soon")}
+              description={t(
+                "Altegio integration is planned and cannot be connected yet.",
+              )}
+              monogram="A"
+              name="Altegio"
+            />
+            <CrmProviderCard
+              actionLabel={t("Configure")}
+              badge={t("Development only")}
+              description={t(
+                "Create a non-secret test connection for developing the integration foundation.",
+              )}
+              href={`/app/organizations/${organization.id}/integrations/crm/new`}
+              monogram="DEV"
+              name={t("Development connection")}
+            />
           </div>
         </section>
       </div>

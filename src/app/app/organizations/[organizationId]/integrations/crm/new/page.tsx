@@ -50,11 +50,11 @@ export default async function NewCrmConnectionPage({
             {t("← CRM connections")}
           </Link>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950">
-            {t("New CRM connection")}
+            {t("Development CRM connection")}
           </h2>
           <p className="mt-3 leading-7 text-slate-600">
             {t(
-              "Create a non-secret placeholder. This does not contact or connect to any real CRM provider.",
+              "Create a non-secret development connection. This does not contact or connect to any real CRM provider.",
             )}
           </p>
           <CrmConnectionForm

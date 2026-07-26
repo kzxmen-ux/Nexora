@@ -131,6 +131,34 @@ const translations: Record<Locale, Record<string, string>> = {
     "Create and manage provider-neutral CRM connection metadata. A real CRM adapter has not been selected or implemented.":
       "Создавайте и настраивайте независимые от провайдера подключения CRM. Реальный CRM-адаптер пока не выбран и не реализован.",
     "CRM connections": "Подключения CRM",
+    "Your CRM connections": "Ваши подключения CRM",
+    "Manage the CRM connections available to this organization. The external CRM remains the source of truth.":
+      "Управляйте подключениями CRM этой организации. Внешняя CRM остаётся источником достоверных данных.",
+    "Provider:": "Провайдер:",
+    "Edit": "Изменить",
+    "No connections yet": "Подключений пока нет",
+    "Choose the development connection below to prepare the integration boundary.":
+      "Выберите подключение для разработки ниже, чтобы подготовить интеграционный слой.",
+    "Connect a new CRM": "Подключить новую CRM",
+    "Choose a provider. Production integrations will become available after their adapters are implemented and verified.":
+      "Выберите провайдера. Рабочие интеграции станут доступны после реализации и проверки их адаптеров.",
+    "Official integration": "Официальная интеграция",
+    "Coming soon": "Скоро",
+    "YCLIENTS integration is planned and cannot be connected yet.":
+      "Интеграция YCLIENTS запланирована, но пока недоступна для подключения.",
+    "Altegio integration is planned and cannot be connected yet.":
+      "Интеграция Altegio запланирована, но пока недоступна для подключения.",
+    "Configure": "Настроить",
+    "Development only": "Только для разработки",
+    "Development connection": "Подключение для разработки",
+    "Create a non-secret test connection for developing the integration foundation.":
+      "Создайте тестовое подключение без секретов для разработки интеграционного слоя.",
+    "Development CRM connection": "CRM-подключение для разработки",
+    "Create a non-secret development connection. This does not contact or connect to any real CRM provider.":
+      "Создайте подключение для разработки без секретов. Оно не обращается к реальному провайдеру CRM и не подключается к нему.",
+    "Workspace reference (optional)":
+      "Идентификатор рабочего пространства (необязательно)",
+    "Create development connection": "Создать подключение для разработки",
     "Foundation": "Основа",
     "Open integration →": "Открыть интеграцию →",
     "← Integrations": "← Интеграции",
@@ -389,6 +417,34 @@ const translations: Record<Locale, Record<string, string>> = {
     "Create and manage provider-neutral CRM connection metadata. A real CRM adapter has not been selected or implemented.":
       "Провайдерге тәуелсіз CRM қосылымдарын жасаңыз және басқарыңыз. Нақты CRM адаптері әлі таңдалмаған және іске асырылмаған.",
     "CRM connections": "CRM қосылымдары",
+    "Your CRM connections": "CRM қосылымдарыңыз",
+    "Manage the CRM connections available to this organization. The external CRM remains the source of truth.":
+      "Осы ұйымның CRM қосылымдарын басқарыңыз. Сыртқы CRM негізгі дереккөз болып қалады.",
+    "Provider:": "Провайдер:",
+    "Edit": "Өзгерту",
+    "No connections yet": "Қосылымдар әлі жоқ",
+    "Choose the development connection below to prepare the integration boundary.":
+      "Интеграция қабатын дайындау үшін төмендегі әзірлеу қосылымын таңдаңыз.",
+    "Connect a new CRM": "Жаңа CRM қосу",
+    "Choose a provider. Production integrations will become available after their adapters are implemented and verified.":
+      "Провайдерді таңдаңыз. Жұмыс интеграциялары адаптерлері іске асырылып, тексерілгеннен кейін қолжетімді болады.",
+    "Official integration": "Ресми интеграция",
+    "Coming soon": "Жақында",
+    "YCLIENTS integration is planned and cannot be connected yet.":
+      "YCLIENTS интеграциясы жоспарланған, бірақ әзірге қосу мүмкін емес.",
+    "Altegio integration is planned and cannot be connected yet.":
+      "Altegio интеграциясы жоспарланған, бірақ әзірге қосу мүмкін емес.",
+    "Configure": "Баптау",
+    "Development only": "Тек әзірлеуге арналған",
+    "Development connection": "Әзірлеу қосылымы",
+    "Create a non-secret test connection for developing the integration foundation.":
+      "Интеграция негізін әзірлеу үшін құпия деректерсіз сынақ қосылымын жасаңыз.",
+    "Development CRM connection": "Әзірлеуге арналған CRM қосылымы",
+    "Create a non-secret development connection. This does not contact or connect to any real CRM provider.":
+      "Құпия деректерсіз әзірлеу қосылымын жасаңыз. Ол нақты CRM провайдеріне хабарласпайды және қосылмайды.",
+    "Workspace reference (optional)":
+      "Жұмыс кеңістігінің идентификаторы (міндетті емес)",
+    "Create development connection": "Әзірлеу қосылымын жасау",
     "Foundation": "Негіз",
     "Open integration →": "Интеграцияны ашу →",
     "← Integrations": "← Интеграциялар",

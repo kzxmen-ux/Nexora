@@ -44,8 +44,17 @@ export function CrmConnectionForm(props: CrmConnectionFormProps) {
         value={props.organizationId}
       />
       {connection ? (
-        <input name="connectionId" type="hidden" value={connection.id} />
-      ) : null}
+        <>
+          <input name="connectionId" type="hidden" value={connection.id} />
+          <input
+            name="region"
+            type="hidden"
+            value={connection.configuration.region ?? ""}
+          />
+        </>
+      ) : (
+        <input name="region" type="hidden" value="" />
+      )}
 
       <div>
         <label
@@ -76,7 +85,7 @@ export function CrmConnectionForm(props: CrmConnectionFormProps) {
           className="text-sm font-medium text-slate-800"
           htmlFor="workspaceReference"
         >
-          {t("External workspace reference")}
+          {t("Workspace reference (optional)")}
         </label>
         <input
           aria-describedby="workspace-reference-help workspace-reference-error"
@@ -102,29 +111,6 @@ export function CrmConnectionForm(props: CrmConnectionFormProps) {
         ) : null}
       </div>
 
-      <div>
-        <label className="text-sm font-medium text-slate-800" htmlFor="region">
-          {t("Provider region")}
-        </label>
-        <select
-          className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
-          defaultValue={connection?.configuration.region ?? ""}
-          id="region"
-          name="region"
-        >
-          <option value="">{t("Not specified")}</option>
-          <option value="global">{t("Global")}</option>
-          <option value="eu">{t("Europe")}</option>
-          <option value="us">{t("United States")}</option>
-          <option value="apac">{t("Asia Pacific")}</option>
-        </select>
-        {state.fieldErrors?.region ? (
-          <p className="mt-2 text-sm text-rose-700">
-            {t(state.fieldErrors.region[0])}
-          </p>
-        ) : null}
-      </div>
-
       {state.message ? (
         <p
           className={
@@ -146,7 +132,7 @@ export function CrmConnectionForm(props: CrmConnectionFormProps) {
         {pending
           ? t("Saving…")
           : props.mode === "create"
-            ? t("Create placeholder connection")
+            ? t("Create development connection")
             : t("Save connection settings")}
       </button>
     </form>

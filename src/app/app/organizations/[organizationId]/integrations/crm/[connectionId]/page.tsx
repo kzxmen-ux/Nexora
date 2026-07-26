@@ -85,7 +85,7 @@ export default async function CrmConnectionPage({
                 {connection.displayName}
               </h2>
               <p className="mt-3 text-sm text-slate-600">
-                {t("Custom placeholder")} · {t("Last sync:")}{" "}
+                {t("Development connection")} · {t("Last sync:")}{" "}
                 {formatTimestamp(connection.lastSyncAt, locale, t("Never"))}
               </p>
             </div>
