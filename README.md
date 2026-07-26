@@ -111,6 +111,18 @@ creates the `admin` membership. Pending invitations can be revoked, active
 admins can be removed, and the old direct-add RPC is no longer executable by
 authenticated clients.
 
+## CRM integration foundation
+
+Organization workspaces include an Integrations area for owner and admin
+members. The CRM section currently manages provider-neutral placeholder
+connections only; it does not contact a real CRM or copy CRM-owned operational
+data into Nexora.
+
+`crm_connections.configuration` accepts only a non-secret workspace reference
+and controlled region value. Credentials, access tokens, API keys, and
+arbitrary configuration keys are not supported. Placeholder connections cannot
+be marked `connected` without a future verified provider flow.
+
 ## Verification
 
 ```bash

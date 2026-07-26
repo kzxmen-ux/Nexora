@@ -1,21 +1,21 @@
 import { notFound } from "next/navigation";
 
-import { OrganizationForm } from "@/features/organizations/components/organization-form";
+import { IntegrationCard } from "@/features/integrations/components/integration-card";
 import { OrganizationWorkspaceNavigation } from "@/features/organizations/components/organization-workspace-navigation";
 import { getOrganizationForCurrentUser } from "@/features/organizations/queries/organizations";
 import { organizationIdSchema } from "@/features/organizations/validation/organization";
 
 export const dynamic = "force-dynamic";
 
-type OrganizationPageProps = {
+type IntegrationsPageProps = {
   params: Promise<{
     organizationId: string;
   }>;
 };
 
-export default async function OrganizationPage({
+export default async function IntegrationsPage({
   params,
-}: OrganizationPageProps) {
+}: IntegrationsPageProps) {
   const { organizationId } = await params;
   const parsedOrganizationId = organizationIdSchema.safeParse(organizationId);
 
@@ -35,28 +35,27 @@ export default async function OrganizationPage({
     <main className="min-h-screen bg-slate-50 px-6 py-8 sm:px-10">
       <div className="mx-auto w-full max-w-5xl">
         <OrganizationWorkspaceNavigation
-          activeSection="overview"
+          activeSection="integrations"
           organization={organization}
         />
 
-        <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
-            Workspace overview
+        <section className="mt-9">
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-950">
+            Integrations
           </h2>
           <p className="mt-3 max-w-2xl leading-7 text-slate-600">
-            This page is loaded only after Supabase RLS and a server-side
-            membership query authorize access.
+            Connect Nexora to external systems without copying their
+            operational data into this workspace.
           </p>
-        </section>
 
-        <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
-            Organization settings
-          </h2>
-          <p className="mt-3 text-sm leading-6 text-slate-600">
-            Owners and admins may update operational organization fields.
-          </p>
-          <OrganizationForm mode="update" organization={organization} />
+          <div className="mt-7">
+            <IntegrationCard
+              description="Create and manage provider-neutral CRM connection metadata. A real CRM adapter has not been selected or implemented."
+              href={`/app/organizations/${organization.id}/integrations/crm`}
+              name="CRM connections"
+              status="Foundation"
+            />
+          </div>
         </section>
       </div>
     </main>

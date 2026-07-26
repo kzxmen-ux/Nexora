@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { AdministratorActionButton } from "@/features/organizations/components/administrator-action-button";
 import { InvitationForm } from "@/features/organizations/components/invitation-form";
+import { OrganizationWorkspaceNavigation } from "@/features/organizations/components/organization-workspace-navigation";
 import { getAdministratorManagementData } from "@/features/organizations/queries/administrators";
 import { getOrganizationForCurrentUser } from "@/features/organizations/queries/organizations";
 import { organizationIdSchema } from "@/features/organizations/validation/organization";
@@ -45,12 +45,10 @@ export default async function AdministratorsPage({
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-8 sm:px-10">
       <div className="mx-auto w-full max-w-5xl">
-        <Link
-          className="text-sm font-semibold text-indigo-700 hover:text-indigo-900"
-          href={`/app/organizations/${organization.id}`}
-        >
-          ← {organization.name}
-        </Link>
+        <OrganizationWorkspaceNavigation
+          activeSection="administrators"
+          organization={organization}
+        />
 
         <header className="mt-8">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-600">
