@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { getTranslator } from "@/lib/i18n/server";
+
 type IntegrationCardProps = {
   description: string;
   href: string;
@@ -7,12 +9,14 @@ type IntegrationCardProps = {
   status: string;
 };
 
-export function IntegrationCard({
+export async function IntegrationCard({
   description,
   href,
   name,
   status,
 }: IntegrationCardProps) {
+  const t = await getTranslator();
+
   return (
     <Link
       className="block rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition hover:border-indigo-200 hover:shadow-md"
@@ -28,7 +32,7 @@ export function IntegrationCard({
         {description}
       </p>
       <span className="mt-6 inline-flex text-sm font-semibold text-indigo-700">
-        Open integration →
+        {t("Open integration →")}
       </span>
     </Link>
   );

@@ -1,7 +1,11 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-export default function AuthLayout({ children }: { children: ReactNode }) {
+import { getTranslator } from "@/lib/i18n/server";
+
+export default async function AuthLayout({ children }: { children: ReactNode }) {
+  const t = await getTranslator();
+
   return (
     <main className="relative isolate flex min-h-screen flex-col bg-slate-50 px-6 py-8 sm:px-10">
       <div
@@ -21,7 +25,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         </span>
         <div>
           <p className="font-semibold tracking-tight text-slate-950">Nexora</p>
-          <p className="text-sm text-slate-500">AI Manager</p>
+          <p className="text-sm text-slate-500">{t("AI Manager")}</p>
         </div>
       </Link>
 

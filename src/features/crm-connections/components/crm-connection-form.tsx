@@ -2,6 +2,8 @@
 
 import { useActionState } from "react";
 
+import { useLocale } from "@/components/i18n/locale-provider";
+
 import {
   createCrmConnectionAction,
   updateCrmConnectionAction,
@@ -26,6 +28,7 @@ type CrmConnectionFormProps =
     };
 
 export function CrmConnectionForm(props: CrmConnectionFormProps) {
+  const { t } = useLocale();
   const action =
     props.mode === "create"
       ? createCrmConnectionAction
@@ -49,7 +52,7 @@ export function CrmConnectionForm(props: CrmConnectionFormProps) {
           className="text-sm font-medium text-slate-800"
           htmlFor="displayName"
         >
-          Connection name
+          {t("Connection name")}
         </label>
         <input
           aria-describedby="display-name-error"
@@ -58,12 +61,12 @@ export function CrmConnectionForm(props: CrmConnectionFormProps) {
           id="displayName"
           maxLength={100}
           name="displayName"
-          placeholder="Primary CRM"
+          placeholder={t("Primary CRM")}
           required
         />
         {state.fieldErrors?.displayName ? (
           <p className="mt-2 text-sm text-rose-700" id="display-name-error">
-            {state.fieldErrors.displayName[0]}
+            {t(state.fieldErrors.displayName[0])}
           </p>
         ) : null}
       </div>
@@ -73,7 +76,7 @@ export function CrmConnectionForm(props: CrmConnectionFormProps) {
           className="text-sm font-medium text-slate-800"
           htmlFor="workspaceReference"
         >
-          External workspace reference
+          {t("External workspace reference")}
         </label>
         <input
           aria-describedby="workspace-reference-help workspace-reference-error"
@@ -88,19 +91,20 @@ export function CrmConnectionForm(props: CrmConnectionFormProps) {
           className="mt-2 text-xs leading-5 text-slate-500"
           id="workspace-reference-help"
         >
-          Optional non-secret identifier. Never enter API keys, tokens, or
-          passwords.
+          {t(
+            "Optional non-secret identifier. Never enter API keys, tokens, or passwords.",
+          )}
         </p>
         {state.fieldErrors?.workspaceReference ? (
           <p className="mt-2 text-sm text-rose-700" id="workspace-reference-error">
-            {state.fieldErrors.workspaceReference[0]}
+            {t(state.fieldErrors.workspaceReference[0])}
           </p>
         ) : null}
       </div>
 
       <div>
         <label className="text-sm font-medium text-slate-800" htmlFor="region">
-          Provider region
+          {t("Provider region")}
         </label>
         <select
           className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
@@ -108,15 +112,15 @@ export function CrmConnectionForm(props: CrmConnectionFormProps) {
           id="region"
           name="region"
         >
-          <option value="">Not specified</option>
-          <option value="global">Global</option>
-          <option value="eu">Europe</option>
-          <option value="us">United States</option>
-          <option value="apac">Asia Pacific</option>
+          <option value="">{t("Not specified")}</option>
+          <option value="global">{t("Global")}</option>
+          <option value="eu">{t("Europe")}</option>
+          <option value="us">{t("United States")}</option>
+          <option value="apac">{t("Asia Pacific")}</option>
         </select>
         {state.fieldErrors?.region ? (
           <p className="mt-2 text-sm text-rose-700">
-            {state.fieldErrors.region[0]}
+            {t(state.fieldErrors.region[0])}
           </p>
         ) : null}
       </div>
@@ -130,7 +134,7 @@ export function CrmConnectionForm(props: CrmConnectionFormProps) {
           }
           role={state.status === "success" ? "status" : "alert"}
         >
-          {state.message}
+          {t(state.message)}
         </p>
       ) : null}
 
@@ -140,10 +144,10 @@ export function CrmConnectionForm(props: CrmConnectionFormProps) {
         type="submit"
       >
         {pending
-          ? "Saving…"
+          ? t("Saving…")
           : props.mode === "create"
-            ? "Create placeholder connection"
-            : "Save connection settings"}
+            ? t("Create placeholder connection")
+            : t("Save connection settings")}
       </button>
     </form>
   );

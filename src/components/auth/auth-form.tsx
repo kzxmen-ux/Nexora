@@ -13,6 +13,7 @@ import {
   type AuthActionState,
   INITIAL_AUTH_ACTION_STATE,
 } from "@/lib/auth/validation";
+import { useLocale } from "@/components/i18n/locale-provider";
 
 type AuthFormVariant =
   | "forgot-password"
@@ -42,6 +43,7 @@ const SUBMIT_LABELS: Record<AuthFormVariant, string> = {
 
 function SubmitButton({ label }: { label: string }) {
   const { pending } = useFormStatus();
+  const { t } = useLocale();
 
   return (
     <button
@@ -49,7 +51,7 @@ function SubmitButton({ label }: { label: string }) {
       disabled={pending}
       type="submit"
     >
-      {pending ? "Please wait…" : label}
+      {pending ? t("Please wait…") : label}
     </button>
   );
 }
@@ -61,9 +63,11 @@ function FieldError({
   id: string;
   message: string | undefined;
 }) {
+  const { t } = useLocale();
+
   return message ? (
     <p className="mt-1.5 text-sm text-rose-600" id={id}>
-      {message}
+      {t(message)}
     </p>
   ) : null;
 }
@@ -73,6 +77,7 @@ export function AuthForm({
   nextPath,
   variant,
 }: AuthFormProps) {
+  const { t } = useLocale();
   const [state, formAction] = useActionState(
     ACTIONS[variant],
     initialMessage ?? INITIAL_AUTH_ACTION_STATE,
@@ -97,7 +102,7 @@ export function AuthForm({
             className="text-sm font-medium text-slate-800"
             htmlFor={`${variant}-email`}
           >
-            Email
+            {t("Email")}
           </label>
           <input
             aria-describedby={
@@ -126,7 +131,7 @@ export function AuthForm({
             className="text-sm font-medium text-slate-800"
             htmlFor={`${variant}-password`}
           >
-            {variant === "update-password" ? "New password" : "Password"}
+            {variant === "update-password" ? t("New password") : t("Password")}
           </label>
           <input
             aria-describedby={
@@ -157,7 +162,7 @@ export function AuthForm({
             className="text-sm font-medium text-slate-800"
             htmlFor={`${variant}-password-confirmation`}
           >
-            Confirm password
+            {t("Confirm password")}
           </label>
           <input
             aria-describedby={
@@ -191,11 +196,11 @@ export function AuthForm({
           }
           role={state.status === "error" ? "alert" : "status"}
         >
-          {state.message}
+          {t(state.message)}
         </p>
       ) : null}
 
-      <SubmitButton label={SUBMIT_LABELS[variant]} />
+      <SubmitButton label={t(SUBMIT_LABELS[variant])} />
     </form>
   );
 }

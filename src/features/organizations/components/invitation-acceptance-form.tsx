@@ -2,12 +2,15 @@
 
 import { useActionState } from "react";
 
+import { useLocale } from "@/components/i18n/locale-provider";
+
 import { acceptInvitationAction } from "../actions/invitations";
 import type { InvitationActionState } from "../invitations/types";
 
 const INITIAL_STATE: InvitationActionState = { status: "idle" };
 
 export function InvitationAcceptanceForm({ token }: { token: string }) {
+  const { t } = useLocale();
   const [state, formAction, pending] = useActionState(
     acceptInvitationAction,
     INITIAL_STATE,
@@ -21,7 +24,7 @@ export function InvitationAcceptanceForm({ token }: { token: string }) {
           className="mb-4 rounded-xl bg-rose-50 px-4 py-3 text-sm text-rose-700"
           role="alert"
         >
-          {state.message}
+          {t(state.message)}
         </p>
       ) : null}
       <button
@@ -29,7 +32,9 @@ export function InvitationAcceptanceForm({ token }: { token: string }) {
         disabled={pending}
         type="submit"
       >
-        {pending ? "Accepting…" : "Accept administrator invitation"}
+        {pending
+          ? t("Accepting…")
+          : t("Accept administrator invitation")}
       </button>
     </form>
   );

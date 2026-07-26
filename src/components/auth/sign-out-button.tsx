@@ -2,8 +2,11 @@
 
 import { useFormStatus } from "react-dom";
 
+import { useLocale } from "@/components/i18n/locale-provider";
+
 export function SignOutButton() {
   const { pending } = useFormStatus();
+  const { t } = useLocale();
 
   return (
     <button
@@ -11,7 +14,7 @@ export function SignOutButton() {
       disabled={pending}
       type="submit"
     >
-      {pending ? "Signing out…" : "Sign out"}
+      {pending ? t("Signing out…") : t("Sign out")}
     </button>
   );
 }

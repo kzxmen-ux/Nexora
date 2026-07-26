@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { getTranslator } from "@/lib/i18n/server";
+
 import type { Organization } from "../types";
 
 type WorkspaceSection = "administrators" | "integrations" | "overview";
@@ -9,23 +11,24 @@ type OrganizationWorkspaceNavigationProps = {
   organization: Organization;
 };
 
-export function OrganizationWorkspaceNavigation({
+export async function OrganizationWorkspaceNavigation({
   activeSection,
   organization,
 }: OrganizationWorkspaceNavigationProps) {
+  const t = await getTranslator();
   const basePath = `/app/organizations/${organization.id}`;
   const links = [
-    { href: basePath, label: "Overview", section: "overview" as const },
+    { href: basePath, label: t("Overview"), section: "overview" as const },
     {
       href: `${basePath}/integrations`,
-      label: "Integrations",
+      label: t("Integrations"),
       section: "integrations" as const,
     },
     ...(organization.role === "owner"
       ? [
           {
             href: `${basePath}/administrators`,
-            label: "Administrators",
+            label: t("Administrators"),
             section: "administrators" as const,
           },
         ]
@@ -38,25 +41,25 @@ export function OrganizationWorkspaceNavigation({
         className="text-sm font-semibold text-indigo-700 hover:text-indigo-900"
         href="/app"
       >
-        ← All organizations
+        {t("← All organizations")}
       </Link>
 
       <div className="mt-7 flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-600">
-            Organization workspace
+            {t("Organization workspace")}
           </p>
           <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">
             {organization.name}
           </h1>
         </div>
         <span className="rounded-full bg-indigo-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-700">
-          {organization.role}
+          {t(organization.role)}
         </span>
       </div>
 
       <nav
-        aria-label="Organization workspace"
+        aria-label={t("Organization workspace")}
         className="mt-7 flex flex-wrap gap-2 border-b border-slate-200 pb-3"
       >
         {links.map((link) => {

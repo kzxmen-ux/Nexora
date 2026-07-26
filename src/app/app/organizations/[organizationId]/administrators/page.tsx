@@ -6,6 +6,7 @@ import { OrganizationWorkspaceNavigation } from "@/features/organizations/compon
 import { getAdministratorManagementData } from "@/features/organizations/queries/administrators";
 import { getOrganizationForCurrentUser } from "@/features/organizations/queries/organizations";
 import { organizationIdSchema } from "@/features/organizations/validation/organization";
+import { getLocale, getTranslator } from "@/lib/i18n/server";
 
 export const dynamic = "force-dynamic";
 
@@ -15,8 +16,8 @@ type AdministratorsPageProps = {
   }>;
 };
 
-function formatDate(value: string): string {
-  return new Intl.DateTimeFormat("en", {
+function formatDate(value: string, locale: string): string {
+  return new Intl.DateTimeFormat(locale, {
     dateStyle: "medium",
     timeStyle: "short",
   }).format(new Date(value));
@@ -41,6 +42,7 @@ export default async function AdministratorsPage({
   }
 
   const management = await getAdministratorManagementData(organization.id);
+  const [locale, t] = await Promise.all([getLocale(), getTranslator()]);
 
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-8 sm:px-10">
@@ -52,14 +54,15 @@ export default async function AdministratorsPage({
 
         <header className="mt-8">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-600">
-            Owner settings
+            {t("Owner settings")}
           </p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-950">
-            Administrators
+            {t("Administrators")}
           </h1>
           <p className="mt-4 max-w-2xl leading-7 text-slate-600">
-            Invite administrators with a one-time link and remove active
-            administrators. Only organization owners can access this page.
+            {t(
+              "Invite administrators with a one-time link and remove active administrators. Only organization owners can access this page.",
+            )}
           </p>
         </header>
 
@@ -68,24 +71,27 @@ export default async function AdministratorsPage({
             className="mt-8 rounded-2xl bg-rose-50 px-5 py-4 text-sm text-rose-700"
             role="alert"
           >
-            Administrator settings could not be loaded. Try again later.
+            {t(
+              "Administrator settings could not be loaded. Try again later.",
+            )}
           </p>
         ) : (
           <>
             <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
               <h2 className="text-2xl font-semibold text-slate-950">
-                Invite an administrator
+                {t("Invite an administrator")}
               </h2>
               <p className="mt-3 text-sm leading-6 text-slate-600">
-                The link expires after seven days. Nexora stores only its
-                cryptographic hash, so copy it immediately.
+                {t(
+                  "The link expires after seven days. Nexora stores only its cryptographic hash, so copy it immediately.",
+                )}
               </p>
               <InvitationForm organizationId={organization.id} />
             </section>
 
             <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
               <h2 className="text-2xl font-semibold text-slate-950">
-                Active administrators
+                {t("Active administrators")}
               </h2>
               <div className="mt-6 space-y-3">
                 {management.administrators.length ? (
@@ -99,7 +105,8 @@ export default async function AdministratorsPage({
                           {administrator.email}
                         </p>
                         <p className="mt-1 text-xs text-slate-500">
-                          Added {formatDate(administrator.createdAt)}
+                          {t("Added")}{" "}
+                          {formatDate(administrator.createdAt, locale)}
                         </p>
                       </div>
                       <AdministratorActionButton
@@ -111,7 +118,7 @@ export default async function AdministratorsPage({
                   ))
                 ) : (
                   <p className="text-sm text-slate-600">
-                    No active administrators.
+                    {t("No active administrators.")}
                   </p>
                 )}
               </div>
@@ -119,7 +126,7 @@ export default async function AdministratorsPage({
 
             <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
               <h2 className="text-2xl font-semibold text-slate-950">
-                Invitation history
+                {t("Invitation history")}
               </h2>
               <div className="mt-6 space-y-3">
                 {management.invitations.length ? (
@@ -134,13 +141,13 @@ export default async function AdministratorsPage({
                         </p>
                         <p className="mt-1 text-xs text-slate-500">
                           {invitation.status === "pending"
-                            ? `Expires ${formatDate(invitation.expiresAt)}`
-                            : `Created ${formatDate(invitation.createdAt)}`}
+                            ? `${t("Expires")} ${formatDate(invitation.expiresAt, locale)}`
+                            : `${t("Created")} ${formatDate(invitation.createdAt, locale)}`}
                         </p>
                       </div>
                       <div className="flex items-start gap-3">
                         <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
-                          {invitation.status}
+                          {t(invitation.status)}
                         </span>
                         {invitation.status === "pending" ? (
                           <AdministratorActionButton
@@ -154,7 +161,7 @@ export default async function AdministratorsPage({
                   ))
                 ) : (
                   <p className="text-sm text-slate-600">
-                    No invitations have been created.
+                    {t("No invitations have been created.")}
                   </p>
                 )}
               </div>

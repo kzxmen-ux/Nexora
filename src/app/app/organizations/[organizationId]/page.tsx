@@ -4,6 +4,7 @@ import { OrganizationForm } from "@/features/organizations/components/organizati
 import { OrganizationWorkspaceNavigation } from "@/features/organizations/components/organization-workspace-navigation";
 import { getOrganizationForCurrentUser } from "@/features/organizations/queries/organizations";
 import { organizationIdSchema } from "@/features/organizations/validation/organization";
+import { getTranslator } from "@/lib/i18n/server";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +31,7 @@ export default async function OrganizationPage({
   if (!organization) {
     notFound();
   }
+  const t = await getTranslator();
 
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-8 sm:px-10">
@@ -41,20 +43,23 @@ export default async function OrganizationPage({
 
         <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
-            Workspace overview
+            {t("Workspace overview")}
           </h2>
           <p className="mt-3 max-w-2xl leading-7 text-slate-600">
-            This page is loaded only after Supabase RLS and a server-side
-            membership query authorize access.
+            {t(
+              "This page is loaded only after Supabase RLS and a server-side membership query authorize access.",
+            )}
           </p>
         </section>
 
         <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
-            Organization settings
+            {t("Organization settings")}
           </h2>
           <p className="mt-3 text-sm leading-6 text-slate-600">
-            Owners and admins may update operational organization fields.
+            {t(
+              "Owners and admins may update operational organization fields.",
+            )}
           </p>
           <OrganizationForm mode="update" organization={organization} />
         </section>

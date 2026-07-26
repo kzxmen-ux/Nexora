@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
-import Link from "next/link";
 
 import { SignOutButton } from "@/components/auth/sign-out-button";
 import { signOutAction } from "@/features/auth/actions";
 import { OrganizationForm } from "@/features/organizations/components/organization-form";
 import { listOrganizationsForCurrentUser } from "@/features/organizations/queries/organizations";
+import { getTranslator } from "@/lib/i18n/server";
 import { createClient } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -28,6 +28,7 @@ export default async function ApplicationPage({
   if (!user || error) {
     redirect("/auth/sign-in?next=/app");
   }
+  const t = await getTranslator();
 
   const params = await searchParams;
   const passwordUpdated = params.password === "updated";
@@ -49,7 +50,9 @@ export default async function ApplicationPage({
               <p className="font-semibold tracking-tight text-slate-950">
                 Nexora
               </p>
-              <p className="text-sm text-slate-500">Protected application</p>
+              <p className="text-sm text-slate-500">
+                {t("Protected application")}
+              </p>
             </div>
           </div>
 
@@ -64,7 +67,7 @@ export default async function ApplicationPage({
               className="mb-6 rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-800"
               role="status"
             >
-              Your password has been updated.
+              {t("Your password has been updated.")}
             </p>
           ) : null}
 
@@ -73,20 +76,20 @@ export default async function ApplicationPage({
               className="mb-6 rounded-xl bg-rose-50 px-4 py-3 text-sm text-rose-700"
               role="alert"
             >
-              Sign out could not be completed. Try again.
+              {t("Sign out could not be completed. Try again.")}
             </p>
           ) : null}
 
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-600">
-            Organizations
+            {t("Organizations")}
           </p>
           <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-950">
-            Choose your organization
+            {t("Choose your organization")}
           </h1>
           <p className="mt-5 leading-7 text-slate-600">
-            You are authenticated as{" "}
+            {t("You are authenticated as")}{" "}
             <span className="font-medium text-slate-900">
-              {user.email ?? "an authenticated user"}
+              {user.email ?? t("an authenticated user")}
             </span>
             .
           </p>
@@ -94,7 +97,7 @@ export default async function ApplicationPage({
           <div className="mt-8 grid gap-3">
             {organizations.length ? (
               organizations.map((organization) => (
-                <Link
+                <a
                   className="flex items-center justify-between rounded-2xl border border-slate-200 px-5 py-4 transition hover:border-indigo-300 hover:bg-indigo-50"
                   href={`/app/organizations/${organization.id}`}
                   key={organization.id}
@@ -108,13 +111,13 @@ export default async function ApplicationPage({
                     </span>
                   </span>
                   <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
-                    {organization.role}
+                    {t(organization.role)}
                   </span>
-                </Link>
+                </a>
               ))
             ) : (
               <p className="rounded-2xl bg-slate-50 px-5 py-4 text-sm text-slate-600">
-                You do not belong to an organization yet.
+                {t("You do not belong to an organization yet.")}
               </p>
             )}
           </div>
@@ -122,10 +125,10 @@ export default async function ApplicationPage({
 
         <section className="mt-8 max-w-2xl rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
-            Create an organization
+            {t("Create an organization")}
           </h2>
           <p className="mt-3 text-sm leading-6 text-slate-600">
-            You will become its owner automatically.
+            {t("You will become its owner automatically.")}
           </p>
           <OrganizationForm mode="create" />
         </section>

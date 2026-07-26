@@ -4,6 +4,7 @@ import { AuthCard } from "@/components/auth/auth-card";
 import { AuthForm } from "@/components/auth/auth-form";
 import { redirectAuthenticatedUser } from "@/lib/auth/guards";
 import { getSafeRedirectPath } from "@/lib/auth/redirects";
+import { getTranslator } from "@/lib/i18n/server";
 
 type SignUpPageProps = {
   searchParams: Promise<{
@@ -15,6 +16,7 @@ export default async function SignUpPage({
   searchParams,
 }: SignUpPageProps) {
   await redirectAuthenticatedUser();
+  const t = await getTranslator();
 
   const params = await searchParams;
   const nextPath = getSafeRedirectPath(params.next, "/app");
@@ -25,19 +27,19 @@ export default async function SignUpPage({
 
   return (
     <AuthCard
-      description="Create the account that will manage your Nexora access."
+      description={t("Create the account that will manage your Nexora access.")}
       footer={
         <>
-          Already have an account?{" "}
+          {t("Already have an account?")}{" "}
           <Link
             className="font-semibold text-indigo-600 hover:text-indigo-700"
             href={signInHref}
           >
-            Sign in
+            {t("Sign in")}
           </Link>
         </>
       }
-      title="Create your account"
+      title={t("Create your account")}
     >
       <AuthForm nextPath={nextPath} variant="sign-up" />
     </AuthCard>

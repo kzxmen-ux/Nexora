@@ -4,6 +4,7 @@ import { IntegrationCard } from "@/features/integrations/components/integration-
 import { OrganizationWorkspaceNavigation } from "@/features/organizations/components/organization-workspace-navigation";
 import { getOrganizationForCurrentUser } from "@/features/organizations/queries/organizations";
 import { organizationIdSchema } from "@/features/organizations/validation/organization";
+import { getTranslator } from "@/lib/i18n/server";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +31,7 @@ export default async function IntegrationsPage({
   if (!organization) {
     notFound();
   }
+  const t = await getTranslator();
 
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-8 sm:px-10">
@@ -41,19 +43,22 @@ export default async function IntegrationsPage({
 
         <section className="mt-9">
           <h2 className="text-3xl font-semibold tracking-tight text-slate-950">
-            Integrations
+            {t("Integrations")}
           </h2>
           <p className="mt-3 max-w-2xl leading-7 text-slate-600">
-            Connect Nexora to external systems without copying their
-            operational data into this workspace.
+            {t(
+              "Connect Nexora to external systems without copying their operational data into this workspace.",
+            )}
           </p>
 
           <div className="mt-7">
             <IntegrationCard
-              description="Create and manage provider-neutral CRM connection metadata. A real CRM adapter has not been selected or implemented."
+              description={t(
+                "Create and manage provider-neutral CRM connection metadata. A real CRM adapter has not been selected or implemented.",
+              )}
               href={`/app/organizations/${organization.id}/integrations/crm`}
-              name="CRM connections"
-              status="Foundation"
+              name={t("CRM connections")}
+              status={t("Foundation")}
             />
           </div>
         </section>

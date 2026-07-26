@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { InvitationAcceptanceForm } from "@/features/organizations/components/invitation-acceptance-form";
 import { invitationTokenSchema } from "@/features/organizations/validation/invitation";
+import { getTranslator } from "@/lib/i18n/server";
 import { createClient } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -15,6 +16,7 @@ type InvitationAcceptancePageProps = {
 export default async function InvitationAcceptancePage({
   searchParams,
 }: InvitationAcceptancePageProps) {
+  const t = await getTranslator();
   const params = await searchParams;
   const tokenValidation = invitationTokenSchema.safeParse(params.token);
 
@@ -22,11 +24,12 @@ export default async function InvitationAcceptancePage({
     return (
       <InvitationShell>
         <h1 className="text-3xl font-semibold text-slate-950">
-          Invitation unavailable
+          {t("Invitation unavailable")}
         </h1>
         <p className="mt-4 leading-7 text-slate-600">
-          This invitation link is invalid. Ask the organization owner for a new
-          link.
+          {t(
+            "This invitation link is invalid. Ask the organization owner for a new link.",
+          )}
         </p>
       </InvitationShell>
     );
@@ -45,40 +48,41 @@ export default async function InvitationAcceptancePage({
   return (
     <InvitationShell>
       <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-600">
-        Administrator invitation
+        {t("Administrator invitation")}
       </p>
       <h1 className="mt-3 text-3xl font-semibold text-slate-950">
-        Join an organization in Nexora
+        {t("Join an organization in Nexora")}
       </h1>
       {!user || error ? (
         <>
           <p className="mt-4 leading-7 text-slate-600">
-            Sign in or create an account with the exact email address that
-            received this invitation.
+            {t(
+              "Sign in or create an account with the exact email address that received this invitation.",
+            )}
           </p>
           <div className="mt-7 grid gap-3 sm:grid-cols-2">
             <Link
               className="rounded-xl bg-indigo-600 px-5 py-3 text-center font-semibold text-white hover:bg-indigo-700"
               href={signInHref}
             >
-              Sign in
+              {t("Sign in")}
             </Link>
             <Link
               className="rounded-xl border border-slate-300 px-5 py-3 text-center font-semibold text-slate-800 hover:bg-slate-50"
               href={signUpHref}
             >
-              Create account
+              {t("Create account")}
             </Link>
           </div>
         </>
       ) : (
         <>
           <p className="mt-4 leading-7 text-slate-600">
-            Signed in as{" "}
+            {t("Signed in as")}{" "}
             <span className="font-medium text-slate-900">
-              {user.email ?? "an authenticated user"}
+              {user.email ?? t("an authenticated user")}
             </span>
-            . The invitation can be accepted only if this email matches.
+            . {t("The invitation can be accepted only if this email matches.")}
           </p>
           <InvitationAcceptanceForm token={token} />
         </>

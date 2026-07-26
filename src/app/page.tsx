@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export default function Home() {
+import { getTranslator } from "@/lib/i18n/server";
+
+export default async function Home() {
+  const t = await getTranslator();
+
   return (
     <main className="relative isolate flex min-h-screen items-center overflow-hidden px-6 py-16 sm:px-10">
       <div
@@ -21,37 +25,37 @@ export default function Home() {
               <p className="font-semibold tracking-tight text-slate-950">
                 Nexora
               </p>
-              <p className="text-sm text-slate-500">AI Manager</p>
+              <p className="text-sm text-slate-500">{t("AI Manager")}</p>
             </div>
           </div>
 
-          <nav aria-label="Authentication" className="flex items-center gap-3">
+          <nav aria-label={t("Authentication")} className="flex items-center gap-3">
             <Link
               className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:text-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               href="/auth/sign-in"
             >
-              Sign in
+              {t("Sign in")}
             </Link>
             <Link
               className="hidden rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:inline-flex"
               href="/auth/sign-up"
             >
-              Get started
+              {t("Get started")}
             </Link>
           </nav>
         </header>
 
         <div className="mt-20 max-w-3xl sm:mt-28">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-600">
-            Built around your existing systems
+            {t("Built around your existing systems")}
           </p>
           <h1 className="mt-5 text-balance text-5xl font-semibold tracking-[-0.045em] text-slate-950 sm:text-7xl">
-            An AI manager, not another CRM.
+            {t("An AI manager, not another CRM.")}
           </h1>
           <p className="mt-7 max-w-2xl text-pretty text-lg leading-8 text-slate-600 sm:text-xl">
-            Nexora is designed to work on top of the CRM a business already
-            trusts, connecting customer conversations with operational data
-            without replacing the source of truth.
+            {t(
+              "Nexora is designed to work on top of the CRM a business already trusts, connecting customer conversations with operational data without replacing the source of truth.",
+            )}
           </p>
         </div>
 
@@ -60,7 +64,7 @@ export default function Home() {
             aria-hidden="true"
             className="size-2 rounded-full bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.12)]"
           />
-          Project foundation is ready
+          {t("Project foundation is ready")}
         </div>
 
         <footer className="mt-24 border-t border-slate-200 pt-6 text-sm text-slate-500 sm:mt-32">

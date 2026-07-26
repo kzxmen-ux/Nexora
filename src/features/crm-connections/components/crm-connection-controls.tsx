@@ -2,6 +2,8 @@
 
 import { useActionState } from "react";
 
+import { useLocale } from "@/components/i18n/locale-provider";
+
 import {
   deleteCrmConnectionAction,
   disconnectCrmConnectionAction,
@@ -21,6 +23,8 @@ type CrmConnectionControlsProps = {
 };
 
 function ActionMessage({ state }: { state: CrmConnectionActionState }) {
+  const { t } = useLocale();
+
   return state.message ? (
     <p
       className={
@@ -30,7 +34,7 @@ function ActionMessage({ state }: { state: CrmConnectionActionState }) {
       }
       role={state.status === "success" ? "status" : "alert"}
     >
-      {state.message}
+      {t(state.message)}
     </p>
   ) : null;
 }
@@ -40,6 +44,7 @@ export function CrmConnectionControls({
   organizationId,
   status,
 }: CrmConnectionControlsProps) {
+  const { t } = useLocale();
   const [disconnectState, disconnectAction, disconnectPending] =
     useActionState(disconnectCrmConnectionAction, INITIAL_STATE);
   const [draftState, draftAction, draftPending] = useActionState(
@@ -62,11 +67,12 @@ export function CrmConnectionControls({
     <div className="space-y-6">
       <section className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
         <h2 className="text-xl font-semibold text-slate-950">
-          Connection lifecycle
+          {t("Connection lifecycle")}
         </h2>
         <p className="mt-3 text-sm leading-6 text-slate-600">
-          No real CRM adapter exists yet. Nexora will not mark this placeholder
-          as connected without a verified provider response.
+          {t(
+            "No real CRM adapter exists yet. Nexora will not mark this placeholder as connected without a verified provider response.",
+          )}
         </p>
 
         <button
@@ -74,7 +80,7 @@ export function CrmConnectionControls({
           disabled
           type="button"
         >
-          Connect provider — not available yet
+          {t("Connect provider — not available yet")}
         </button>
 
         {status === "disconnected" || status === "error" ? (
@@ -85,7 +91,7 @@ export function CrmConnectionControls({
               disabled={draftPending}
               type="submit"
             >
-              {draftPending ? "Updating…" : "Return to draft"}
+              {draftPending ? t("Updating…") : t("Return to draft")}
             </button>
             <ActionMessage state={draftState} />
           </form>
@@ -97,7 +103,9 @@ export function CrmConnectionControls({
               disabled={disconnectPending}
               type="submit"
             >
-              {disconnectPending ? "Updating…" : "Mark as disconnected"}
+              {disconnectPending
+                ? t("Updating…")
+                : t("Mark as disconnected")}
             </button>
             <ActionMessage state={disconnectState} />
           </form>
@@ -106,11 +114,12 @@ export function CrmConnectionControls({
 
       <section className="rounded-3xl border border-rose-200 bg-rose-50 p-7">
         <h2 className="text-xl font-semibold text-rose-950">
-          Delete connection
+          {t("Delete connection")}
         </h2>
         <p className="mt-3 text-sm leading-6 text-rose-800">
-          This removes only this Nexora connection record. It does not modify
-          any external CRM.
+          {t(
+            "This removes only this Nexora connection record. It does not modify any external CRM.",
+          )}
         </p>
         <form action={deleteAction} className="mt-5">
           {hiddenFields}
@@ -119,7 +128,7 @@ export function CrmConnectionControls({
             disabled={deletePending}
             type="submit"
           >
-            {deletePending ? "Deleting…" : "Delete connection"}
+            {deletePending ? t("Deleting…") : t("Delete connection")}
           </button>
           <ActionMessage state={deleteState} />
         </form>

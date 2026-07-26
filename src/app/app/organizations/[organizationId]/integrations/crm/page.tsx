@@ -6,6 +6,7 @@ import type { CrmConnectionStatus } from "@/features/crm-connections/types";
 import { OrganizationWorkspaceNavigation } from "@/features/organizations/components/organization-workspace-navigation";
 import { getOrganizationForCurrentUser } from "@/features/organizations/queries/organizations";
 import { organizationIdSchema } from "@/features/organizations/validation/organization";
+import { getLocale, getTranslator } from "@/lib/i18n/server";
 
 export const dynamic = "force-dynamic";
 
@@ -18,12 +19,16 @@ type CrmConnectionsPageProps = {
   }>;
 };
 
-function formatLastSync(value: string | null): string {
+function formatLastSync(
+  value: string | null,
+  locale: string,
+  neverLabel: string,
+): string {
   if (!value) {
-    return "Never";
+    return neverLabel;
   }
 
-  return new Intl.DateTimeFormat("en", {
+  return new Intl.DateTimeFormat(locale, {
     dateStyle: "medium",
     timeStyle: "short",
   }).format(new Date(value));
@@ -65,6 +70,7 @@ export default async function CrmConnectionsPage({
   }
 
   const connections = await listCrmConnections(organization.id);
+  const [locale, t] = await Promise.all([getLocale(), getTranslator()]);
 
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-8 sm:px-10">
@@ -81,21 +87,22 @@ export default async function CrmConnectionsPage({
                 className="text-sm font-semibold text-indigo-700 hover:text-indigo-900"
                 href={`/app/organizations/${organization.id}/integrations`}
               >
-                ← Integrations
+                {t("← Integrations")}
               </Link>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950">
-                CRM connections
+                {t("CRM connections")}
               </h2>
               <p className="mt-3 max-w-2xl leading-7 text-slate-600">
-                These records are placeholders for future provider adapters.
-                The external CRM remains the source of truth.
+                {t(
+                  "These records are placeholders for future provider adapters. The external CRM remains the source of truth.",
+                )}
               </p>
             </div>
             <Link
               className="rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700"
               href={`/app/organizations/${organization.id}/integrations/crm/new`}
             >
-              New CRM connection
+              {t("New CRM connection")}
             </Link>
           </div>
 
@@ -104,7 +111,7 @@ export default async function CrmConnectionsPage({
               className="mt-6 rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-800"
               role="status"
             >
-              CRM connection deleted.
+              {t("CRM connection deleted.")}
             </p>
           ) : null}
 
@@ -122,16 +129,21 @@ export default async function CrmConnectionsPage({
                         {connection.displayName}
                       </h3>
                       <p className="mt-2 text-sm text-slate-600">
-                        Provider: Custom placeholder
+                        {t("Provider: Custom placeholder")}
                       </p>
                       <p className="mt-1 text-sm text-slate-500">
-                        Last sync: {formatLastSync(connection.lastSyncAt)}
+                        {t("Last sync:")}{" "}
+                        {formatLastSync(
+                          connection.lastSyncAt,
+                          locale,
+                          t("Never"),
+                        )}
                       </p>
                     </div>
                     <span
                       className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${statusClass(connection.status)}`}
                     >
-                      {connection.status}
+                      {t(connection.status)}
                     </span>
                   </div>
                 </Link>
@@ -139,11 +151,12 @@ export default async function CrmConnectionsPage({
             ) : (
               <div className="rounded-3xl border border-dashed border-slate-300 bg-white p-8 text-center">
                 <h3 className="text-lg font-semibold text-slate-950">
-                  No CRM connections
+                  {t("No CRM connections")}
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">
-                  Create a placeholder record to prepare the integration
-                  boundary.
+                  {t(
+                    "Create a placeholder record to prepare the integration boundary.",
+                  )}
                 </p>
               </div>
             )}

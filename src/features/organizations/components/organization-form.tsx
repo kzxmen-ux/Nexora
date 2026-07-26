@@ -2,6 +2,8 @@
 
 import { useActionState } from "react";
 
+import { useLocale } from "@/components/i18n/locale-provider";
+
 import {
   createOrganizationAction,
   updateOrganizationAction,
@@ -24,6 +26,7 @@ export function OrganizationForm({
   mode,
   organization,
 }: OrganizationFormProps) {
+  const { t } = useLocale();
   const action =
     mode === "create" ? createOrganizationAction : updateOrganizationAction;
   const [state, formAction, pending] = useActionState(action, INITIAL_STATE);
@@ -43,7 +46,7 @@ export function OrganizationForm({
           className="text-sm font-medium text-slate-800"
           htmlFor={`${mode}-organization-name`}
         >
-          Organization name
+          {t("Organization name")}
         </label>
         <input
           aria-describedby={`${mode}-organization-name-error`}
@@ -59,7 +62,7 @@ export function OrganizationForm({
             className="mt-2 text-sm text-rose-700"
             id={`${mode}-organization-name-error`}
           >
-            {state.fieldErrors.name[0]}
+            {t(state.fieldErrors.name[0])}
           </p>
         ) : null}
       </div>
@@ -69,7 +72,7 @@ export function OrganizationForm({
           className="text-sm font-medium text-slate-800"
           htmlFor={`${mode}-organization-slug`}
         >
-          Slug
+          {t("Slug")}
         </label>
         <input
           aria-describedby={`${mode}-organization-slug-error`}
@@ -88,7 +91,7 @@ export function OrganizationForm({
             className="mt-2 text-sm text-rose-700"
             id={`${mode}-organization-slug-error`}
           >
-            {state.fieldErrors.slug[0]}
+            {t(state.fieldErrors.slug[0])}
           </p>
         ) : null}
       </div>
@@ -102,7 +105,7 @@ export function OrganizationForm({
           }
           role={state.status === "success" ? "status" : "alert"}
         >
-          {state.message}
+          {t(state.message)}
         </p>
       ) : null}
 
@@ -112,10 +115,10 @@ export function OrganizationForm({
         type="submit"
       >
         {pending
-          ? "Saving…"
+          ? t("Saving…")
           : mode === "create"
-            ? "Create organization"
-            : "Save settings"}
+            ? t("Create organization")
+            : t("Save settings")}
       </button>
     </form>
   );

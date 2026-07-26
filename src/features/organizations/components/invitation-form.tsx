@@ -2,12 +2,15 @@
 
 import { useActionState, useState } from "react";
 
+import { useLocale } from "@/components/i18n/locale-provider";
+
 import { createInvitationAction } from "../actions/invitations";
 import type { InvitationActionState } from "../invitations/types";
 
 const INITIAL_STATE: InvitationActionState = { status: "idle" };
 
 function CopyInvitationLink({ link }: { link: string }) {
+  const { t } = useLocale();
   const [copied, setCopied] = useState(false);
 
   async function copyLink() {
@@ -25,7 +28,7 @@ function CopyInvitationLink({ link }: { link: string }) {
         className="text-sm font-medium text-emerald-950"
         htmlFor="invitation-link"
       >
-        One-time invitation link
+        {t("One-time invitation link")}
       </label>
       <div className="mt-2 flex flex-col gap-3 sm:flex-row">
         <input
@@ -39,7 +42,7 @@ function CopyInvitationLink({ link }: { link: string }) {
           onClick={copyLink}
           type="button"
         >
-          {copied ? "Copied" : "Copy link"}
+          {copied ? t("Copied") : t("Copy link")}
         </button>
       </div>
     </div>
@@ -51,6 +54,7 @@ export function InvitationForm({
 }: {
   organizationId: string;
 }) {
+  const { t } = useLocale();
   const [state, formAction, pending] = useActionState(
     createInvitationAction,
     INITIAL_STATE,
@@ -61,7 +65,7 @@ export function InvitationForm({
       <input name="organizationId" type="hidden" value={organizationId} />
 
       <label className="text-sm font-medium text-slate-800" htmlFor="admin-email">
-        Administrator email
+        {t("Administrator email")}
       </label>
       <input
         aria-describedby="admin-email-error"
@@ -77,7 +81,7 @@ export function InvitationForm({
 
       {state.fieldErrors?.email ? (
         <p className="mt-2 text-sm text-rose-700" id="admin-email-error">
-          {state.fieldErrors.email[0]}
+          {t(state.fieldErrors.email[0])}
         </p>
       ) : null}
 
@@ -90,7 +94,7 @@ export function InvitationForm({
           }
           role={state.status === "success" ? "status" : "alert"}
         >
-          {state.message}
+          {t(state.message)}
         </p>
       ) : null}
 
@@ -103,7 +107,7 @@ export function InvitationForm({
         disabled={pending}
         type="submit"
       >
-        {pending ? "Creating…" : "Create invitation"}
+        {pending ? t("Creating…") : t("Create invitation")}
       </button>
     </form>
   );

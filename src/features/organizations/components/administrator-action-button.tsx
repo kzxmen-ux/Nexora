@@ -2,6 +2,8 @@
 
 import { useActionState } from "react";
 
+import { useLocale } from "@/components/i18n/locale-provider";
+
 import {
   removeAdministratorAction,
   revokeInvitationAction,
@@ -27,6 +29,7 @@ type AdministratorActionButtonProps =
 export function AdministratorActionButton(
   props: AdministratorActionButtonProps,
 ) {
+  const { t } = useLocale();
   const action =
     props.mode === "revoke"
       ? revokeInvitationAction
@@ -51,10 +54,10 @@ export function AdministratorActionButton(
         type="submit"
       >
         {pending
-          ? "Working…"
+          ? t("Working…")
           : props.mode === "revoke"
-            ? "Revoke"
-            : "Remove"}
+            ? t("Revoke")
+            : t("Remove")}
       </button>
       {state.message ? (
         <p
@@ -65,7 +68,7 @@ export function AdministratorActionButton(
           }
           role={state.status === "error" ? "alert" : "status"}
         >
-          {state.message}
+          {t(state.message)}
         </p>
       ) : null}
     </form>

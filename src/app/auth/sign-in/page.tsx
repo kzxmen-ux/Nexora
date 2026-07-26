@@ -4,6 +4,7 @@ import { AuthCard } from "@/components/auth/auth-card";
 import { AuthForm } from "@/components/auth/auth-form";
 import { redirectAuthenticatedUser } from "@/lib/auth/guards";
 import { getSafeRedirectPath } from "@/lib/auth/redirects";
+import { getTranslator } from "@/lib/i18n/server";
 
 type SignInPageProps = {
   searchParams: Promise<{
@@ -16,6 +17,7 @@ export default async function SignInPage({
   searchParams,
 }: SignInPageProps) {
   await redirectAuthenticatedUser();
+  const t = await getTranslator();
 
   const params = await searchParams;
   const nextPath = getSafeRedirectPath(params.next, "/app");
@@ -27,26 +29,27 @@ export default async function SignInPage({
 
   return (
     <AuthCard
-      description="Use your email and password to continue to Nexora."
+      description={t("Use your email and password to continue to Nexora.")}
       footer={
         <>
-          New to Nexora?{" "}
+          {t("New to Nexora?")}{" "}
           <Link
             className="font-semibold text-indigo-600 hover:text-indigo-700"
             href={signUpHref}
           >
-            Create an account
+            {t("Create an account")}
           </Link>
         </>
       }
-      title="Welcome back"
+      title={t("Welcome back")}
     >
       <AuthForm
         initialMessage={
           hasCallbackError
             ? {
-                message:
+                message: t(
                   "The authentication link is invalid or expired. Try again.",
+                ),
                 status: "error",
               }
             : undefined
@@ -58,7 +61,7 @@ export default async function SignInPage({
         className="mt-5 block text-center text-sm font-medium text-indigo-600 hover:text-indigo-700"
         href="/auth/forgot-password"
       >
-        Forgot your password?
+        {t("Forgot your password?")}
       </Link>
     </AuthCard>
   );
