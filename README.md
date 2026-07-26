@@ -50,10 +50,13 @@ Open `http://localhost:3000`.
    ```text
    http://localhost:3000/auth/callback?next=%2Fapp
    http://localhost:3000/auth/callback?next=%2Fauth%2Fupdate-password
+   http://localhost:3000/auth/callback?next=%2Finvitations%2Faccept%3Ftoken%3D*
    ```
 
    The second callback establishes the recovery session before the application
-   redirects internally to `/auth/update-password`.
+   redirects internally to `/auth/update-password`. The third callback keeps
+   the one-time administrator invitation token through email confirmation.
+   Replace the localhost origin with the exact production origin in production.
 
 6. In **Authentication → Providers**, keep Email authentication enabled and
    choose whether email confirmation is required.
@@ -99,6 +102,14 @@ implementation remains in the non-exposed `private` schema with a fixed empty
 The application supports multiple organizations per user. Every organization
 route performs a server-side membership lookup and remains protected by RLS;
 an organization ID from the URL is never treated as authorization.
+
+Owners can create seven-day administrator invitations from the organization
+administrators page. The database stores only a SHA-256 token hash, and the
+raw one-time link is returned only when the invitation is created. Acceptance
+requires an authenticated account with the exact invited email and atomically
+creates the `admin` membership. Pending invitations can be revoked, active
+admins can be removed, and the old direct-add RPC is no longer executable by
+authenticated clients.
 
 ## Verification
 

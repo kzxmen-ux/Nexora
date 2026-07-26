@@ -3,9 +3,25 @@ import Link from "next/link";
 import { AuthCard } from "@/components/auth/auth-card";
 import { AuthForm } from "@/components/auth/auth-form";
 import { redirectAuthenticatedUser } from "@/lib/auth/guards";
+import { getSafeRedirectPath } from "@/lib/auth/redirects";
 
-export default async function SignUpPage() {
+type SignUpPageProps = {
+  searchParams: Promise<{
+    next?: string | string[];
+  }>;
+};
+
+export default async function SignUpPage({
+  searchParams,
+}: SignUpPageProps) {
   await redirectAuthenticatedUser();
+
+  const params = await searchParams;
+  const nextPath = getSafeRedirectPath(params.next, "/app");
+  const signInHref =
+    nextPath === "/app"
+      ? "/auth/sign-in"
+      : `/auth/sign-in?next=${encodeURIComponent(nextPath)}`;
 
   return (
     <AuthCard
@@ -15,7 +31,7 @@ export default async function SignUpPage() {
           Already have an account?{" "}
           <Link
             className="font-semibold text-indigo-600 hover:text-indigo-700"
-            href="/auth/sign-in"
+            href={signInHref}
           >
             Sign in
           </Link>
@@ -23,7 +39,7 @@ export default async function SignUpPage() {
       }
       title="Create your account"
     >
-      <AuthForm variant="sign-up" />
+      <AuthForm nextPath={nextPath} variant="sign-up" />
     </AuthCard>
   );
 }

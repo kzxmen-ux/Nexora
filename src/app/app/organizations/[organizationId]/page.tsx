@@ -78,10 +78,14 @@ export default async function OrganizationPage({
               Administrator management foundation
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
-              Secure owner-only database operations are ready. The invitation
-              interface is intentionally deferred until an email invitation
-              flow is implemented.
+              Invite administrators and remove active administrator access.
             </p>
+            <Link
+              className="mt-5 inline-flex rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700"
+              href={`/app/organizations/${organization.id}/administrators`}
+            >
+              Manage administrators
+            </Link>
           </section>
         ) : null}
       </div>

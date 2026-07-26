@@ -19,6 +19,10 @@ export default async function SignInPage({
 
   const params = await searchParams;
   const nextPath = getSafeRedirectPath(params.next, "/app");
+  const signUpHref =
+    nextPath === "/app"
+      ? "/auth/sign-up"
+      : `/auth/sign-up?next=${encodeURIComponent(nextPath)}`;
   const hasCallbackError = params.error === "invalid_callback";
 
   return (
@@ -29,7 +33,7 @@ export default async function SignInPage({
           New to Nexora?{" "}
           <Link
             className="font-semibold text-indigo-600 hover:text-indigo-700"
-            href="/auth/sign-up"
+            href={signUpHref}
           >
             Create an account
           </Link>

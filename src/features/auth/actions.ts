@@ -19,10 +19,13 @@ import { createClient } from "@/lib/supabase/server";
 const PASSWORD_RESET_REQUEST_MESSAGE =
   "If an account exists and email delivery is available, a password reset link is on its way. If you requested one recently, wait a few minutes before trying again.";
 
-function createCallbackUrl(nextPath: "/app" | "/auth/update-password"): string {
+function createCallbackUrl(nextPath: string): string {
   const { appUrl } = getPublicEnvironment();
   const callbackUrl = new URL("/auth/callback", appUrl);
-  callbackUrl.searchParams.set("next", nextPath);
+  callbackUrl.searchParams.set(
+    "next",
+    getSafeRedirectPath(nextPath, "/app"),
+  );
   return callbackUrl.toString();
 }
 
@@ -84,6 +87,7 @@ export async function signUpAction(
     };
   }
 
+  const nextPath = getSafeRedirectPath(formData.get("next"), "/app");
   const supabase = await createClient();
   let authResult: Awaited<ReturnType<typeof supabase.auth.signUp>>;
 
@@ -92,7 +96,7 @@ export async function signUpAction(
       email: credentials.data.email,
       password: credentials.data.password,
       options: {
-        emailRedirectTo: createCallbackUrl("/app"),
+        emailRedirectTo: createCallbackUrl(nextPath),
       },
     });
   } catch {
@@ -106,7 +110,7 @@ export async function signUpAction(
   }
 
   if (authResult.data.session) {
-    redirect("/app");
+    redirect(nextPath);
   }
 
   return {

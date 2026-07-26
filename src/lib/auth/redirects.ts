@@ -4,6 +4,32 @@ const ALLOWED_AUTH_REDIRECTS = new Set([
   "/auth/update-password",
 ]);
 
+const INVITATION_ACCEPTANCE_PATH = "/invitations/accept";
+const INVITATION_TOKEN_PATTERN = /^[A-Za-z0-9_-]{43}$/;
+const REDIRECT_VALIDATION_ORIGIN = "https://nexora.local";
+
+function getSafeInvitationRedirect(value: string): string | null {
+  try {
+    const url = new URL(value, REDIRECT_VALIDATION_ORIGIN);
+    const token = url.searchParams.get("token");
+
+    if (
+      url.origin !== REDIRECT_VALIDATION_ORIGIN ||
+      url.pathname !== INVITATION_ACCEPTANCE_PATH ||
+      url.hash ||
+      url.searchParams.size !== 1 ||
+      !token ||
+      !INVITATION_TOKEN_PATTERN.test(token)
+    ) {
+      return null;
+    }
+
+    return `${INVITATION_ACCEPTANCE_PATH}?token=${encodeURIComponent(token)}`;
+  } catch {
+    return null;
+  }
+}
+
 export function getSafeRedirectPath(
   value: unknown,
   fallback: string,
@@ -12,11 +38,14 @@ export function getSafeRedirectPath(
     typeof value !== "string" ||
     !value.startsWith("/") ||
     value.startsWith("//") ||
-    value.includes("\\") ||
-    !ALLOWED_AUTH_REDIRECTS.has(value)
+    value.includes("\\")
   ) {
     return fallback;
   }
 
-  return value;
+  if (ALLOWED_AUTH_REDIRECTS.has(value)) {
+    return value;
+  }
+
+  return getSafeInvitationRedirect(value) ?? fallback;
 }
