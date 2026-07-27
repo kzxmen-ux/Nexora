@@ -9,7 +9,7 @@ import {
   type EncryptedCredentialEnvelope,
 } from "@/lib/security/encryption";
 
-import { yclientsAdapter } from "../providers/yclients/adapter";
+import { getBookingProvider } from "../providers/booking-provider-registry";
 import type { CrmConnectionActionState } from "../types";
 import {
   buildCrmConfiguration,
@@ -258,7 +258,8 @@ export async function saveYclientsCredentialsAction(
     connectionId: formValue(formData, "connectionId"),
     organizationId: formValue(formData, "organizationId"),
   });
-  const credentials = yclientsAdapter.validateCredentials({
+  const provider = getBookingProvider("yclients");
+  const credentials = provider.validateCredentials({
     partnerToken: formValue(formData, "partnerToken"),
     userToken: formValue(formData, "userToken"),
   });
@@ -267,7 +268,10 @@ export async function saveYclientsCredentialsAction(
     return validationError(
       credentials.success
         ? {}
-        : credentials.error.flatten().fieldErrors,
+        : {
+            partnerToken: credentials.fieldErrors.partnerToken,
+            userToken: credentials.fieldErrors.userToken,
+          },
     );
   }
 
@@ -343,7 +347,7 @@ export async function testYclientsConnectionAction(
     );
   }
 
-  const result = yclientsAdapter.testConnection({
+  const result = getBookingProvider("yclients").testConnection({
     credentialsSaved: data[0]?.credentials_saved === true,
   });
 
@@ -384,7 +388,7 @@ export async function disconnectYclientsConnectionAction(
     );
   }
 
-  yclientsAdapter.disconnect();
+  getBookingProvider("yclients").disconnect();
   revalidateCrmConnection(
     target.data.organizationId,
     target.data.connectionId,

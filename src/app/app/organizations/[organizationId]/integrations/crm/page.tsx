@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { CrmProviderCard } from "@/features/crm-connections/components/crm-provider-card";
+import { getBookingProvider } from "@/features/crm-connections/providers/booking-provider-registry";
 import { listCrmConnections } from "@/features/crm-connections/queries/crm-connections";
 import type { CrmConnectionStatus } from "@/features/crm-connections/types";
 import { OrganizationWorkspaceNavigation } from "@/features/organizations/components/organization-workspace-navigation";
@@ -71,6 +72,14 @@ export default async function CrmConnectionsPage({
   }
 
   const connections = await listCrmConnections(organization.id);
+  const connectionCards = await Promise.all(
+    connections.map(async (connection) => ({
+      connection,
+      metadata: await getBookingProvider(
+        connection.provider,
+      ).getConnectionMetadata(connection),
+    })),
+  );
   const [locale, t] = await Promise.all([getLocale(), getTranslator()]);
 
   return (
@@ -110,8 +119,8 @@ export default async function CrmConnectionsPage({
           ) : null}
 
           <div className="mt-7 grid gap-4">
-            {connections.length ? (
-              connections.map((connection) => (
+            {connectionCards.length ? (
+              connectionCards.map(({ connection, metadata }) => (
                 <article
                   className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
                   key={connection.id}
@@ -123,9 +132,7 @@ export default async function CrmConnectionsPage({
                       </h3>
                       <p className="mt-2 text-sm text-slate-600">
                         {t("Provider:")}{" "}
-                        {connection.provider === "yclients"
-                          ? "YCLIENTS"
-                          : t("Development connection")}
+                        {t(metadata?.providerLabel ?? "CRM")}
                       </p>
                       <p className="mt-1 text-sm text-slate-500">
                         {t("Last sync:")}{" "}

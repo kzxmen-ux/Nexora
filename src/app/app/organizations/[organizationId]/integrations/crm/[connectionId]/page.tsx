@@ -1,15 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { CrmConnectionControls } from "@/features/crm-connections/components/crm-connection-controls";
-import { CrmConnectionForm } from "@/features/crm-connections/components/crm-connection-form";
-import { YclientsConnectionForm } from "@/features/crm-connections/components/yclients-connection-form";
-import { YclientsCredentialsControls } from "@/features/crm-connections/components/yclients-credentials-controls";
-import { yclientsAdapter } from "@/features/crm-connections/providers/yclients/adapter";
-import {
-  getCrmConnection,
-  getCrmConnectionCredentialStatus,
-} from "@/features/crm-connections/queries/crm-connections";
+import { getBookingProvider } from "@/features/crm-connections/providers/booking-provider-registry";
+import { BookingProviderConnectionPanel } from "@/features/crm-connections/providers/components/booking-provider-connection-panel";
+import { getCrmConnection } from "@/features/crm-connections/queries/crm-connections";
 import { crmConnectionIdSchema } from "@/features/crm-connections/validation/crm-connection";
 import { OrganizationWorkspaceNavigation } from "@/features/organizations/components/organization-workspace-navigation";
 import { getOrganizationForCurrentUser } from "@/features/organizations/queries/organizations";
@@ -68,25 +62,14 @@ export default async function CrmConnectionPage({
     notFound();
   }
 
-  const credentialStatus =
-    connection.provider === "yclients"
-      ? await getCrmConnectionCredentialStatus(
-          organization.id,
-          connection.id,
-        )
-      : null;
+  const provider = getBookingProvider(connection.provider);
+  const providerMetadata = await provider.getConnectionMetadata(connection, {
+    includeCredentialStatus: true,
+  });
 
-  if (connection.provider === "yclients" && !credentialStatus) {
+  if (!providerMetadata) {
     notFound();
   }
-
-  const yclientsMetadata =
-    connection.provider === "yclients" && credentialStatus
-      ? yclientsAdapter.getConnectionMetadata(
-          connection,
-          credentialStatus,
-        )
-      : null;
   const [locale, t] = await Promise.all([getLocale(), getTranslator()]);
 
   return (
@@ -111,10 +94,7 @@ export default async function CrmConnectionPage({
                 {connection.displayName}
               </h2>
               <p className="mt-3 text-sm text-slate-600">
-                {connection.provider === "yclients"
-                  ? "YCLIENTS"
-                  : t("Development connection")}{" "}
-                · {t("Last sync:")}{" "}
+                {t(providerMetadata.providerLabel)} · {t("Last sync:")}{" "}
                 {formatTimestamp(connection.lastSyncAt, locale, t("Never"))}
               </p>
             </div>
@@ -125,47 +105,11 @@ export default async function CrmConnectionPage({
         </section>
 
         <div className="mt-8 grid gap-7 lg:grid-cols-[minmax(0,1fr)_360px]">
-          <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-            <h2 className="text-2xl font-semibold text-slate-950">
-              {t("Connection settings")}
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-slate-600">
-              {connection.provider === "yclients"
-                ? t(
-                    "Only the non-secret company ID is stored with the connection. Tokens are stored separately in encrypted form.",
-                  )
-                : t(
-                    "Only controlled, non-secret placeholder configuration is stored.",
-                  )}
-            </p>
-            {connection.provider === "yclients" ? (
-              <YclientsConnectionForm
-                connection={connection}
-                mode="update"
-                organizationId={organization.id}
-              />
-            ) : (
-              <CrmConnectionForm
-                connection={connection}
-                mode="update"
-                organizationId={organization.id}
-              />
-            )}
-          </section>
-
-          {yclientsMetadata ? (
-            <YclientsCredentialsControls
-              connectionId={connection.id}
-              credentialsSaved={yclientsMetadata.credentialsSaved}
-              organizationId={organization.id}
-            />
-          ) : (
-            <CrmConnectionControls
-              connectionId={connection.id}
-              organizationId={organization.id}
-              status={connection.status}
-            />
-          )}
+          <BookingProviderConnectionPanel
+            connection={connection}
+            metadata={providerMetadata}
+            organizationId={organization.id}
+          />
         </div>
       </div>
     </main>
