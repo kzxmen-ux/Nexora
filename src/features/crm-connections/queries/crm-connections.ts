@@ -11,6 +11,7 @@ import type {
 
 const databaseConfigurationSchema = z
   .object({
+    company_id: z.string().optional(),
     region: z.enum(["global", "eu", "us", "apac"]).optional(),
     workspace_reference: z.string().optional(),
   })
@@ -23,17 +24,26 @@ const crmConnectionRowSchema = z.object({
   id: z.uuid(),
   last_sync_at: z.string().nullable(),
   organization_id: z.uuid(),
-  provider: z.literal("custom"),
+  provider: z.enum(["custom", "yclients"]),
   status: z.enum(["draft", "connected", "disconnected", "error"]),
   updated_at: z.string(),
 });
 
 const crmConnectionRowsSchema = z.array(crmConnectionRowSchema);
+const credentialStatusRowsSchema = z.array(
+  z.object({
+    credentials_saved: z.boolean(),
+    credentials_updated_at: z.string().nullable(),
+  }),
+);
 
 function mapConfiguration(
   configuration: z.infer<typeof databaseConfigurationSchema>,
 ): CrmConnectionConfiguration {
   return {
+    ...(configuration.company_id
+      ? { companyId: configuration.company_id }
+      : {}),
     ...(configuration.region ? { region: configuration.region } : {}),
     ...(configuration.workspace_reference
       ? { workspaceReference: configuration.workspace_reference }
@@ -126,4 +136,42 @@ export async function getCrmConnection(
 
   const parsedRow = crmConnectionRowSchema.safeParse(data);
   return parsedRow.success ? mapCrmConnection(parsedRow.data) : null;
+}
+
+export async function getCrmConnectionCredentialStatus(
+  organizationId: string,
+  connectionId: string,
+): Promise<{
+  credentialsSaved: boolean;
+  credentialsUpdatedAt: string | null;
+} | null> {
+  const supabase = await getAuthenticatedClient();
+
+  if (!supabase) {
+    return null;
+  }
+
+  const { data, error } = await supabase.rpc(
+    "get_crm_connection_credential_status",
+    {
+      p_connection_id: connectionId,
+      p_organization_id: organizationId,
+    },
+  );
+
+  if (error) {
+    return null;
+  }
+
+  const parsedRows = credentialStatusRowsSchema.safeParse(data);
+
+  if (!parsedRows.success || parsedRows.data.length !== 1) {
+    return null;
+  }
+
+  return {
+    credentialsSaved: parsedRows.data[0].credentials_saved,
+    credentialsUpdatedAt:
+      parsedRows.data[0].credentials_updated_at,
+  };
 }

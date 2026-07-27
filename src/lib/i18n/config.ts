@@ -295,6 +295,59 @@ const translations: Record<Locale, Record<string, string>> = {
     "Connection returned to draft.": "Подключение возвращено в черновик.",
     "The CRM connection could not be deleted. Access may have been denied.":
       "Не удалось удалить подключение CRM. Возможно, доступ запрещён.",
+    "Connect": "Подключить",
+    "Securely prepare a YCLIENTS connection. Official API access is required for verification.":
+      "Безопасно подготовьте подключение YCLIENTS. Для проверки нужен официальный доступ к API.",
+    "Set up YCLIENTS": "Настройка YCLIENTS",
+    "Official YCLIENTS API credentials are required. This foundation stores credentials securely but cannot verify API access yet.":
+      "Требуются официальные учётные данные API YCLIENTS. Эта основа безопасно хранит их, но пока не может проверить доступ к API.",
+    "YCLIENTS company ID": "ID компании YCLIENTS",
+    "This is the non-secret branch identifier from your YCLIENTS account.":
+      "Это несекретный идентификатор филиала из аккаунта YCLIENTS.",
+    "Create YCLIENTS connection": "Создать подключение YCLIENTS",
+    "Enter the YCLIENTS company ID.": "Введите ID компании YCLIENTS.",
+    "Company ID must be 32 digits or fewer.":
+      "ID компании должен содержать не более 32 цифр.",
+    "Company ID must contain digits only.":
+      "ID компании должен содержать только цифры.",
+    "The YCLIENTS connection could not be created. Check organization access and try again.":
+      "Не удалось создать подключение YCLIENTS. Проверьте доступ к организации и повторите попытку.",
+    "The YCLIENTS connection could not be updated. Access may have been denied.":
+      "Не удалось обновить подключение YCLIENTS. Возможно, доступ запрещён.",
+    "Only the non-secret company ID is stored with the connection. Tokens are stored separately in encrypted form.":
+      "В подключении хранится только несекретный ID компании. Токены хранятся отдельно в зашифрованном виде.",
+    "YCLIENTS credentials": "Учётные данные YCLIENTS",
+    "Credentials saved": "Учётные данные сохранены",
+    "Credentials saved.": "Учётные данные сохранены.",
+    "Credentials required": "Нужны учётные данные",
+    "Secrets are encrypted before storage and are never shown again. Saving new values replaces the previous credentials.":
+      "Секреты шифруются перед сохранением и больше не отображаются. Новые значения заменяют прежние.",
+    "Partner API token": "Партнёрский API-токен",
+    "User token": "Токен пользователя",
+    "Enter the complete token.": "Введите токен полностью.",
+    "The token is too long.": "Токен слишком длинный.",
+    "Save credentials": "Сохранить учётные данные",
+    "Replace credentials": "Заменить учётные данные",
+    "Credential encryption is not configured. Contact the administrator.":
+      "Шифрование учётных данных не настроено. Обратитесь к администратору.",
+    "Credentials could not be saved. Check organization access and try again.":
+      "Не удалось сохранить учётные данные. Проверьте доступ к организации и повторите попытку.",
+    "Test connection": "Проверить подключение",
+    "Testing…": "Проверяем…",
+    "Save YCLIENTS credentials before testing.":
+      "Перед проверкой сохраните учётные данные YCLIENTS.",
+    "Official YCLIENTS API access is required to test this connection.":
+      "Для проверки подключения требуется официальный доступ к API YCLIENTS.",
+    "The connection could not be tested. Access may have been denied.":
+      "Не удалось проверить подключение. Возможно, доступ запрещён.",
+    "Disconnect": "Отключить",
+    "Disconnecting…": "Отключаем…",
+    "The connection could not be disconnected. Access may have been denied.":
+      "Не удалось отключить подключение. Возможно, доступ запрещён.",
+    "Credentials deleted and connection disconnected.":
+      "Учётные данные удалены, подключение отключено.",
+    "Deleting this connection also permanently deletes its encrypted credentials.":
+      "Удаление подключения также безвозвратно удалит зашифрованные учётные данные.",
     "Language": "Язык",
     "Русский": "Русский",
     "Қазақша": "Қазақша",
@@ -581,6 +634,59 @@ const translations: Record<Locale, Record<string, string>> = {
     "Connection returned to draft.": "Қосылым жоба күйіне қайтарылды.",
     "The CRM connection could not be deleted. Access may have been denied.":
       "CRM қосылымын жою мүмкін болмады. Кіруге тыйым салынуы мүмкін.",
+    "Connect": "Қосу",
+    "Securely prepare a YCLIENTS connection. Official API access is required for verification.":
+      "YCLIENTS қосылымын қауіпсіз дайындаңыз. Тексеру үшін ресми API рұқсаты қажет.",
+    "Set up YCLIENTS": "YCLIENTS баптау",
+    "Official YCLIENTS API credentials are required. This foundation stores credentials securely but cannot verify API access yet.":
+      "YCLIENTS ресми API тіркелгі деректері қажет. Бұл негіз оларды қауіпсіз сақтайды, бірақ API рұқсатын әзірге тексере алмайды.",
+    "YCLIENTS company ID": "YCLIENTS компания ID-і",
+    "This is the non-secret branch identifier from your YCLIENTS account.":
+      "Бұл YCLIENTS аккаунтындағы құпия емес филиал идентификаторы.",
+    "Create YCLIENTS connection": "YCLIENTS қосылымын жасау",
+    "Enter the YCLIENTS company ID.": "YCLIENTS компания ID-ін енгізіңіз.",
+    "Company ID must be 32 digits or fewer.":
+      "Компания ID-і 32 цифрдан аспауы керек.",
+    "Company ID must contain digits only.":
+      "Компания ID-інде тек цифрлар болуы керек.",
+    "The YCLIENTS connection could not be created. Check organization access and try again.":
+      "YCLIENTS қосылымын жасау мүмкін болмады. Ұйымға кіру құқығын тексеріп, қайталап көріңіз.",
+    "The YCLIENTS connection could not be updated. Access may have been denied.":
+      "YCLIENTS қосылымын жаңарту мүмкін болмады. Кіруге тыйым салынуы мүмкін.",
+    "Only the non-secret company ID is stored with the connection. Tokens are stored separately in encrypted form.":
+      "Қосылымда тек құпия емес компания ID-і сақталады. Токендер бөлек шифрланған түрде сақталады.",
+    "YCLIENTS credentials": "YCLIENTS тіркелгі деректері",
+    "Credentials saved": "Тіркелгі деректері сақталды",
+    "Credentials saved.": "Тіркелгі деректері сақталды.",
+    "Credentials required": "Тіркелгі деректері қажет",
+    "Secrets are encrypted before storage and are never shown again. Saving new values replaces the previous credentials.":
+      "Құпиялар сақтау алдында шифрланады және қайта көрсетілмейді. Жаңа мәндер бұрынғыларын ауыстырады.",
+    "Partner API token": "Серіктестік API токені",
+    "User token": "Пайдаланушы токені",
+    "Enter the complete token.": "Токенді толығымен енгізіңіз.",
+    "The token is too long.": "Токен тым ұзын.",
+    "Save credentials": "Тіркелгі деректерін сақтау",
+    "Replace credentials": "Тіркелгі деректерін ауыстыру",
+    "Credential encryption is not configured. Contact the administrator.":
+      "Тіркелгі деректерін шифрлау бапталмаған. Әкімшіге хабарласыңыз.",
+    "Credentials could not be saved. Check organization access and try again.":
+      "Тіркелгі деректерін сақтау мүмкін болмады. Ұйымға кіру құқығын тексеріп, қайталап көріңіз.",
+    "Test connection": "Қосылымды тексеру",
+    "Testing…": "Тексерілуде…",
+    "Save YCLIENTS credentials before testing.":
+      "Тексеру алдында YCLIENTS тіркелгі деректерін сақтаңыз.",
+    "Official YCLIENTS API access is required to test this connection.":
+      "Қосылымды тексеру үшін YCLIENTS ресми API рұқсаты қажет.",
+    "The connection could not be tested. Access may have been denied.":
+      "Қосылымды тексеру мүмкін болмады. Кіруге тыйым салынуы мүмкін.",
+    "Disconnect": "Ажырату",
+    "Disconnecting…": "Ажыратылуда…",
+    "The connection could not be disconnected. Access may have been denied.":
+      "Қосылымды ажырату мүмкін болмады. Кіруге тыйым салынуы мүмкін.",
+    "Credentials deleted and connection disconnected.":
+      "Тіркелгі деректері жойылып, қосылым ажыратылды.",
+    "Deleting this connection also permanently deletes its encrypted credentials.":
+      "Бұл қосылымды жою оның шифрланған тіркелгі деректерін де біржола жояды.",
     "Language": "Тіл",
     "Русский": "Орысша",
     "Қазақша": "Қазақша",

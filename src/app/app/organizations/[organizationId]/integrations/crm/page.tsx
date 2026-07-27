@@ -122,7 +122,10 @@ export default async function CrmConnectionsPage({
                         {connection.displayName}
                       </h3>
                       <p className="mt-2 text-sm text-slate-600">
-                        {t("Provider:")} {t("Development connection")}
+                        {t("Provider:")}{" "}
+                        {connection.provider === "yclients"
+                          ? "YCLIENTS"
+                          : t("Development connection")}
                       </p>
                       <p className="mt-1 text-sm text-slate-500">
                         {t("Last sync:")}{" "}
@@ -176,11 +179,12 @@ export default async function CrmConnectionsPage({
 
           <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             <CrmProviderCard
-              actionLabel={t("Coming soon")}
+              actionLabel={t("Connect")}
               badge={t("Official integration")}
               description={t(
-                "YCLIENTS integration is planned and cannot be connected yet.",
+                "Securely prepare a YCLIENTS connection. Official API access is required for verification.",
               )}
+              href={`/app/organizations/${organization.id}/integrations/crm/yclients/new`}
               monogram="YC"
               name="YCLIENTS"
             />

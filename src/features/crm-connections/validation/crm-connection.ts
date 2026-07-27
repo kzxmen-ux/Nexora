@@ -18,6 +18,12 @@ const workspaceReferenceSchema = z
   );
 
 const regionSchema = z.enum(["", "global", "eu", "us", "apac"]);
+const companyIdSchema = z
+  .string()
+  .trim()
+  .min(1, "Enter the YCLIENTS company ID.")
+  .max(32, "Company ID must be 32 digits or fewer.")
+  .regex(/^[0-9]+$/, "Company ID must contain digits only.");
 
 export const crmConnectionIdSchema = z.uuid();
 
@@ -36,6 +42,17 @@ export const crmConnectionTargetSchema = z.object({
   connectionId: crmConnectionIdSchema,
   organizationId: organizationIdSchema,
 });
+
+export const createYclientsConnectionSchema = z.object({
+  companyId: companyIdSchema,
+  displayName: displayNameSchema,
+  organizationId: organizationIdSchema,
+});
+
+export const updateYclientsConnectionSchema =
+  createYclientsConnectionSchema.extend({
+    connectionId: crmConnectionIdSchema,
+  });
 
 export function buildCrmConfiguration(input: {
   region: "" | "apac" | "eu" | "global" | "us";
