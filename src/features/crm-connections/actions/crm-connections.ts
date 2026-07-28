@@ -56,6 +56,7 @@ function connectionValues(formData: FormData) {
 
 function yclientsConnectionValues(formData: FormData) {
   return {
+    applicationId: formValue(formData, "applicationId"),
     companyId: formValue(formData, "companyId"),
     displayName: formValue(formData, "displayName"),
     organizationId: formValue(formData, "organizationId"),
@@ -139,7 +140,10 @@ export async function createYclientsConnectionAction(
   const { data, error } = await supabase
     .from("crm_connections")
     .insert({
-      configuration: { company_id: validation.data.companyId },
+      configuration: {
+        application_id: validation.data.applicationId,
+        company_id: validation.data.companyId,
+      },
       created_by: user.id,
       display_name: validation.data.displayName,
       id: connectionId,
@@ -227,7 +231,10 @@ export async function updateYclientsConnectionAction(
   const { data, error } = await supabase
     .from("crm_connections")
     .update({
-      configuration: { company_id: validation.data.companyId },
+      configuration: {
+        application_id: validation.data.applicationId,
+        company_id: validation.data.companyId,
+      },
       display_name: validation.data.displayName,
     })
     .eq("organization_id", validation.data.organizationId)
@@ -260,7 +267,6 @@ export async function saveYclientsCredentialsAction(
   });
   const provider = getBookingProvider("yclients");
   const credentials = provider.validateCredentials({
-    partnerToken: formValue(formData, "partnerToken"),
     userToken: formValue(formData, "userToken"),
   });
 
@@ -269,7 +275,6 @@ export async function saveYclientsCredentialsAction(
       credentials.success
         ? {}
         : {
-            partnerToken: credentials.fieldErrors.partnerToken,
             userToken: credentials.fieldErrors.userToken,
           },
     );

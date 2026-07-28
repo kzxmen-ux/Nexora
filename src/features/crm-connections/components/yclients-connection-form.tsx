@@ -75,6 +75,38 @@ export function YclientsConnectionForm(
       <div>
         <label
           className="text-sm font-medium text-slate-800"
+          htmlFor="applicationId"
+        >
+          {t("YCLIENTS Application ID")}
+        </label>
+        <input
+          aria-describedby="application-id-help application-id-error"
+          className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+          defaultValue={connection?.configuration.applicationId}
+          id="applicationId"
+          maxLength={100}
+          name="applicationId"
+          pattern="[A-Za-z0-9][A-Za-z0-9._-]{0,99}"
+          required
+        />
+        <p
+          className="mt-2 text-xs leading-5 text-slate-500"
+          id="application-id-help"
+        >
+          {t(
+            "This is the non-secret Application ID from the YCLIENTS developer dashboard.",
+          )}
+        </p>
+        {state.fieldErrors?.applicationId ? (
+          <p className="mt-2 text-sm text-rose-700" id="application-id-error">
+            {t(state.fieldErrors.applicationId[0])}
+          </p>
+        ) : null}
+      </div>
+
+      <div>
+        <label
+          className="text-sm font-medium text-slate-800"
           htmlFor="companyId"
         >
           {t("YCLIENTS company ID")}

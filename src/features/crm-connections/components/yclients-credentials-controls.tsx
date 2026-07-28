@@ -85,34 +85,12 @@ export function YclientsCredentialsControls({
         </div>
         <p className="mt-3 text-sm leading-6 text-slate-600">
           {t(
-            "Secrets are encrypted before storage and are never shown again. Saving new values replaces the previous credentials.",
+            "The User Token is encrypted before storage and is never shown again. Saving a new value replaces the previous token.",
           )}
         </p>
 
         <form action={saveAction} className="mt-5 space-y-4">
           {hiddenFields}
-          <div>
-            <label
-              className="text-sm font-medium text-slate-800"
-              htmlFor="partnerToken"
-            >
-              {t("Partner API token")}
-            </label>
-            <input
-              autoComplete="new-password"
-              className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
-              id="partnerToken"
-              maxLength={4096}
-              name="partnerToken"
-              required
-              type="password"
-            />
-            {saveState.fieldErrors?.partnerToken ? (
-              <p className="mt-2 text-sm text-rose-700">
-                {t(saveState.fieldErrors.partnerToken[0])}
-              </p>
-            ) : null}
-          </div>
           <div>
             <label
               className="text-sm font-medium text-slate-800"

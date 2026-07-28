@@ -58,7 +58,7 @@ export default async function NewYclientsConnectionPage({
           </h2>
           <p className="mt-3 leading-7 text-slate-600">
             {t(
-              "Official YCLIENTS API credentials are required. This foundation stores credentials securely but cannot verify API access yet.",
+              "Enter the non-secret Application ID and Company ID from the developer dashboard. After creating the connection, save the User Token securely.",
             )}
           </p>
           <YclientsConnectionForm

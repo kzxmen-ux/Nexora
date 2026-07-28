@@ -299,8 +299,17 @@ const translations: Record<Locale, Record<string, string>> = {
     "Securely prepare a YCLIENTS connection. Official API access is required for verification.":
       "Безопасно подготовьте подключение YCLIENTS. Для проверки нужен официальный доступ к API.",
     "Set up YCLIENTS": "Настройка YCLIENTS",
-    "Official YCLIENTS API credentials are required. This foundation stores credentials securely but cannot verify API access yet.":
-      "Требуются официальные учётные данные API YCLIENTS. Эта основа безопасно хранит их, но пока не может проверить доступ к API.",
+    "Enter the non-secret Application ID and Company ID from the developer dashboard. After creating the connection, save the User Token securely.":
+      "Введите несекретные ID приложения и компании из кабинета разработчика. После создания подключения безопасно сохраните токен пользователя.",
+    "YCLIENTS Application ID": "ID приложения YCLIENTS",
+    "This is the non-secret Application ID from the YCLIENTS developer dashboard.":
+      "Это несекретный ID приложения из кабинета разработчика YCLIENTS.",
+    "Enter the YCLIENTS Application ID.":
+      "Введите ID приложения YCLIENTS.",
+    "Application ID must be 100 characters or fewer.":
+      "ID приложения должен содержать не более 100 символов.",
+    "Application ID contains unsupported characters.":
+      "ID приложения содержит недопустимые символы.",
     "YCLIENTS company ID": "ID компании YCLIENTS",
     "This is the non-secret branch identifier from your YCLIENTS account.":
       "Это несекретный идентификатор филиала из аккаунта YCLIENTS.",
@@ -314,15 +323,14 @@ const translations: Record<Locale, Record<string, string>> = {
       "Не удалось создать подключение YCLIENTS. Проверьте доступ к организации и повторите попытку.",
     "The YCLIENTS connection could not be updated. Access may have been denied.":
       "Не удалось обновить подключение YCLIENTS. Возможно, доступ запрещён.",
-    "Only the non-secret company ID is stored with the connection. Tokens are stored separately in encrypted form.":
-      "В подключении хранится только несекретный ID компании. Токены хранятся отдельно в зашифрованном виде.",
+    "Application ID and Company ID are stored as non-secret connection settings. The User Token is stored separately in encrypted form.":
+      "ID приложения и ID компании хранятся как несекретные настройки подключения. Токен пользователя хранится отдельно в зашифрованном виде.",
     "YCLIENTS credentials": "Учётные данные YCLIENTS",
     "Credentials saved": "Учётные данные сохранены",
     "Credentials saved.": "Учётные данные сохранены.",
     "Credentials required": "Нужны учётные данные",
-    "Secrets are encrypted before storage and are never shown again. Saving new values replaces the previous credentials.":
-      "Секреты шифруются перед сохранением и больше не отображаются. Новые значения заменяют прежние.",
-    "Partner API token": "Партнёрский API-токен",
+    "The User Token is encrypted before storage and is never shown again. Saving a new value replaces the previous token.":
+      "Токен пользователя шифруется перед сохранением и больше не отображается. Новое значение заменяет предыдущий токен.",
     "User token": "Токен пользователя",
     "Enter the complete token.": "Введите токен полностью.",
     "The token is too long.": "Токен слишком длинный.",
@@ -638,8 +646,17 @@ const translations: Record<Locale, Record<string, string>> = {
     "Securely prepare a YCLIENTS connection. Official API access is required for verification.":
       "YCLIENTS қосылымын қауіпсіз дайындаңыз. Тексеру үшін ресми API рұқсаты қажет.",
     "Set up YCLIENTS": "YCLIENTS баптау",
-    "Official YCLIENTS API credentials are required. This foundation stores credentials securely but cannot verify API access yet.":
-      "YCLIENTS ресми API тіркелгі деректері қажет. Бұл негіз оларды қауіпсіз сақтайды, бірақ API рұқсатын әзірге тексере алмайды.",
+    "Enter the non-secret Application ID and Company ID from the developer dashboard. After creating the connection, save the User Token securely.":
+      "Әзірлеуші кабинетіндегі құпия емес қолданба ID-і мен компания ID-ін енгізіңіз. Қосылымды жасағаннан кейін пайдаланушы токенін қауіпсіз сақтаңыз.",
+    "YCLIENTS Application ID": "YCLIENTS қолданба ID-і",
+    "This is the non-secret Application ID from the YCLIENTS developer dashboard.":
+      "Бұл YCLIENTS әзірлеуші кабинетіндегі құпия емес қолданба ID-і.",
+    "Enter the YCLIENTS Application ID.":
+      "YCLIENTS қолданба ID-ін енгізіңіз.",
+    "Application ID must be 100 characters or fewer.":
+      "Қолданба ID-і 100 таңбадан аспауы керек.",
+    "Application ID contains unsupported characters.":
+      "Қолданба ID-інде қолдау көрсетілмейтін таңбалар бар.",
     "YCLIENTS company ID": "YCLIENTS компания ID-і",
     "This is the non-secret branch identifier from your YCLIENTS account.":
       "Бұл YCLIENTS аккаунтындағы құпия емес филиал идентификаторы.",
@@ -653,15 +670,14 @@ const translations: Record<Locale, Record<string, string>> = {
       "YCLIENTS қосылымын жасау мүмкін болмады. Ұйымға кіру құқығын тексеріп, қайталап көріңіз.",
     "The YCLIENTS connection could not be updated. Access may have been denied.":
       "YCLIENTS қосылымын жаңарту мүмкін болмады. Кіруге тыйым салынуы мүмкін.",
-    "Only the non-secret company ID is stored with the connection. Tokens are stored separately in encrypted form.":
-      "Қосылымда тек құпия емес компания ID-і сақталады. Токендер бөлек шифрланған түрде сақталады.",
+    "Application ID and Company ID are stored as non-secret connection settings. The User Token is stored separately in encrypted form.":
+      "Қолданба ID-і мен компания ID-і құпия емес қосылым баптаулары ретінде сақталады. Пайдаланушы токені бөлек шифрланған түрде сақталады.",
     "YCLIENTS credentials": "YCLIENTS тіркелгі деректері",
     "Credentials saved": "Тіркелгі деректері сақталды",
     "Credentials saved.": "Тіркелгі деректері сақталды.",
     "Credentials required": "Тіркелгі деректері қажет",
-    "Secrets are encrypted before storage and are never shown again. Saving new values replaces the previous credentials.":
-      "Құпиялар сақтау алдында шифрланады және қайта көрсетілмейді. Жаңа мәндер бұрынғыларын ауыстырады.",
-    "Partner API token": "Серіктестік API токені",
+    "The User Token is encrypted before storage and is never shown again. Saving a new value replaces the previous token.":
+      "Пайдаланушы токені сақтау алдында шифрланады және қайта көрсетілмейді. Жаңа мән алдыңғы токенді ауыстырады.",
     "User token": "Пайдаланушы токені",
     "Enter the complete token.": "Токенді толығымен енгізіңіз.",
     "The token is too long.": "Токен тым ұзын.",

@@ -9,6 +9,7 @@ export type CrmConnectionStatus =
 export type CrmConfigurationRegion = "apac" | "eu" | "global" | "us";
 
 export type CrmConnectionConfiguration = {
+  applicationId?: string;
   companyId?: string;
   region?: CrmConfigurationRegion;
   workspaceReference?: string;
@@ -28,9 +29,9 @@ export type CrmConnection = {
 
 export type CrmConnectionActionState = {
   fieldErrors?: {
+    applicationId?: string[];
     companyId?: string[];
     displayName?: string[];
-    partnerToken?: string[];
     region?: string[];
     userToken?: string[];
     workspaceReference?: string[];

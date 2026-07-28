@@ -17,9 +17,12 @@ const secretTokenSchema = z
   .max(4096, "The token is too long.");
 
 const yclientsCredentialsSchema = z.object({
-  partnerToken: secretTokenSchema,
   userToken: secretTokenSchema,
 });
+
+type YClientsConnectionMetadata = BookingProviderConnectionMetadata & {
+  applicationId: string | null;
+};
 
 export class YClientsProvider implements BookingProvider {
   disconnect(): { status: "disconnected" } {
@@ -29,7 +32,7 @@ export class YClientsProvider implements BookingProvider {
   async getConnectionMetadata(
     connection: CrmConnection,
     options: BookingProviderMetadataOptions = {},
-  ): Promise<BookingProviderConnectionMetadata | null> {
+  ): Promise<YClientsConnectionMetadata | null> {
     const credentialStatus = options.includeCredentialStatus
       ? await getCrmConnectionCredentialStatus(
           connection.organizationId,
@@ -45,6 +48,7 @@ export class YClientsProvider implements BookingProvider {
     }
 
     return {
+      applicationId: connection.configuration.applicationId ?? null,
       companyId: connection.configuration.companyId ?? null,
       configurationMode: "encrypted_credentials",
       credentialsSaved: credentialStatus.credentialsSaved,
@@ -52,7 +56,7 @@ export class YClientsProvider implements BookingProvider {
       provider: "yclients",
       providerLabel: "YCLIENTS",
       settingsDescription:
-        "Only the non-secret company ID is stored with the connection. Tokens are stored separately in encrypted form.",
+        "Application ID and Company ID are stored as non-secret connection settings. The User Token is stored separately in encrypted form.",
     };
   }
 

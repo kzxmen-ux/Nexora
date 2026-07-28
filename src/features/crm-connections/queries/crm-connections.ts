@@ -11,6 +11,7 @@ import type {
 
 const databaseConfigurationSchema = z
   .object({
+    application_id: z.string().optional(),
     company_id: z.string().optional(),
     region: z.enum(["global", "eu", "us", "apac"]).optional(),
     workspace_reference: z.string().optional(),
@@ -41,6 +42,9 @@ function mapConfiguration(
   configuration: z.infer<typeof databaseConfigurationSchema>,
 ): CrmConnectionConfiguration {
   return {
+    ...(configuration.application_id
+      ? { applicationId: configuration.application_id }
+      : {}),
     ...(configuration.company_id
       ? { companyId: configuration.company_id }
       : {}),
