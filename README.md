@@ -141,11 +141,39 @@ future verified provider flow. The existing encrypted credential table remains
 available for future provider requirements but is not used by this marketplace
 step.
 
+### YCLIENTS webhook inbox
+
+Configure YCLIENTS to send JSON webhooks to:
+
+```text
+https://nexora-blush-nine.vercel.app/api/webhooks/yclients
+```
+
+The endpoint accepts at most 256 KiB and validates only the documented
+top-level `company_id`, `resource`, `resource_id`, `status`, and `data` fields.
+Accepted events are appended to a private, RLS-protected inbox with a canonical
+SHA-256 payload hash and remain `pending`. No synchronization or business logic
+runs from this endpoint.
+
+Set `SUPABASE_SECRET_KEY` only in the server deployment environment. It is used
+by a narrowly granted webhook writer and must never use the `NEXT_PUBLIC_`
+prefix or be committed. Browser roles have neither table privileges nor
+permission to execute the writer. Supabase secret keys are elevated credentials
+that bypass RLS, so this key must be treated as production infrastructure
+secret and rotated immediately if exposed.
+
+The current official YCLIENTS webhook documentation describes the JSON payload
+but does not document a request signature or verification header. Nexora
+therefore does not claim sender authentication at this stage. Unknown and
+disconnected salon IDs are rejected, but company ID matching is not a
+cryptographic authenticity check.
+
 ## Verification
 
 ```bash
 npm run typecheck
 npm run lint
+npm test
 npm run build
 ```
 
