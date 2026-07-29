@@ -17,6 +17,9 @@ type CrmConnectionPageProps = {
     connectionId: string;
     organizationId: string;
   }>;
+  searchParams: Promise<{
+    yclients?: string;
+  }>;
 };
 
 function formatTimestamp(
@@ -36,8 +39,12 @@ function formatTimestamp(
 
 export default async function CrmConnectionPage({
   params,
+  searchParams,
 }: CrmConnectionPageProps) {
-  const { connectionId, organizationId } = await params;
+  const [{ connectionId, organizationId }, query] = await Promise.all([
+    params,
+    searchParams,
+  ]);
   const parsedOrganizationId = organizationIdSchema.safeParse(organizationId);
   const parsedConnectionId = crmConnectionIdSchema.safeParse(connectionId);
 
@@ -106,6 +113,7 @@ export default async function CrmConnectionPage({
 
         <div className="mt-8 grid gap-7 lg:grid-cols-[minmax(0,1fr)_360px]">
           <BookingProviderConnectionPanel
+            callbackFailed={query.yclients === "failed"}
             connection={connection}
             metadata={providerMetadata}
             organizationId={organization.id}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { YclientsConnectionForm } from "@/features/crm-connections/components/yclients-connection-form";
+import { YclientsMarketplaceConnectButton } from "@/features/crm-connections/components/yclients-marketplace-connect-button";
 import { OrganizationWorkspaceNavigation } from "@/features/organizations/components/organization-workspace-navigation";
 import { getOrganizationForCurrentUser } from "@/features/organizations/queries/organizations";
 import { organizationIdSchema } from "@/features/organizations/validation/organization";
@@ -54,17 +54,14 @@ export default async function NewYclientsConnectionPage({
             {t("Official integration")}
           </span>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950">
-            {t("Set up YCLIENTS")}
+            {t("Connect YCLIENTS")}
           </h2>
           <p className="mt-3 leading-7 text-slate-600">
             {t(
-              "Enter the non-secret Application ID and Company ID from the developer dashboard. After creating the connection, save the User Token securely.",
+              "You will be redirected to the official YCLIENTS marketplace. No API token is requested on this page.",
             )}
           </p>
-          <YclientsConnectionForm
-            mode="create"
-            organizationId={organization.id}
-          />
+          <YclientsMarketplaceConnectButton organizationId={organization.id} />
         </section>
       </div>
     </main>

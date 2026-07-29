@@ -11,9 +11,8 @@ import type {
 
 const databaseConfigurationSchema = z
   .object({
-    application_id: z.string().optional(),
-    company_id: z.string().optional(),
     region: z.enum(["global", "eu", "us", "apac"]).optional(),
+    salon_id: z.string().regex(/^[1-9][0-9]{0,18}$/).optional(),
     workspace_reference: z.string().optional(),
   })
   .strict();
@@ -37,23 +36,39 @@ const credentialStatusRowsSchema = z.array(
     credentials_updated_at: z.string().nullable(),
   }),
 );
+const marketplaceStateRowsSchema = z.array(
+  z.object({
+    marketplace_status: z.enum([
+      "activation_required",
+      "failed",
+      "not_connected",
+      "waiting",
+    ]),
+    salon_id: z.string().nullable(),
+  }),
+);
 
 function mapConfiguration(
   configuration: z.infer<typeof databaseConfigurationSchema>,
 ): CrmConnectionConfiguration {
   return {
-    ...(configuration.application_id
-      ? { applicationId: configuration.application_id }
-      : {}),
-    ...(configuration.company_id
-      ? { companyId: configuration.company_id }
-      : {}),
     ...(configuration.region ? { region: configuration.region } : {}),
+    ...(configuration.salon_id ? { salonId: configuration.salon_id } : {}),
     ...(configuration.workspace_reference
       ? { workspaceReference: configuration.workspace_reference }
       : {}),
   };
 }
+
+export type YclientsMarketplaceState =
+  | {
+      salonId: string;
+      status: "activation_required";
+    }
+  | {
+      salonId: null;
+      status: "failed" | "not_connected" | "waiting";
+    };
 
 function mapCrmConnection(
   row: z.infer<typeof crmConnectionRowSchema>,
@@ -178,4 +193,43 @@ export async function getCrmConnectionCredentialStatus(
     credentialsUpdatedAt:
       parsedRows.data[0].credentials_updated_at,
   };
+}
+
+export async function getYclientsMarketplaceState(
+  organizationId: string,
+  connectionId: string,
+): Promise<YclientsMarketplaceState | null> {
+  const supabase = await getAuthenticatedClient();
+
+  if (!supabase) {
+    return null;
+  }
+
+  const { data, error } = await supabase.rpc(
+    "get_yclients_marketplace_state",
+    {
+      p_connection_id: connectionId,
+      p_organization_id: organizationId,
+    },
+  );
+
+  if (error) {
+    return null;
+  }
+
+  const parsedRows = marketplaceStateRowsSchema.safeParse(data);
+
+  if (!parsedRows.success || parsedRows.data.length !== 1) {
+    return null;
+  }
+
+  const row = parsedRows.data[0];
+
+  if (row.marketplace_status === "activation_required") {
+    return row.salon_id
+      ? { salonId: row.salon_id, status: "activation_required" }
+      : null;
+  }
+
+  return { salonId: null, status: row.marketplace_status };
 }

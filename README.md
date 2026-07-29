@@ -114,14 +114,32 @@ authenticated clients.
 ## CRM integration foundation
 
 Organization workspaces include an Integrations area for owner and admin
-members. The CRM section currently manages provider-neutral placeholder
-connections only; it does not contact a real CRM or copy CRM-owned operational
-data into Nexora.
+members. The CRM section supports provider-neutral development connections and
+the first YCLIENTS marketplace redirect step. It does not activate API access,
+contact a CRM API, or copy CRM-owned operational data into Nexora.
 
-`crm_connections.configuration` accepts only a non-secret workspace reference
-and controlled region value. Credentials, access tokens, API keys, and
-arbitrary configuration keys are not supported. Placeholder connections cannot
-be marked `connected` without a future verified provider flow.
+For YCLIENTS, set the developer dashboard's **Registration Redirect URL** to:
+
+```text
+${NEXT_PUBLIC_APP_URL}/integrations/yclients/callback
+```
+
+Use the exact deployed HTTPS origin in place of the environment-variable
+notation. Locally this resolves to
+`http://localhost:3000/integrations/yclients/callback`.
+
+The application creates a ten-minute, caller-bound marketplace attempt and
+stores only its SHA-256 state hash in the private schema. The callback accepts
+one positive integer `salon_id`, consumes the attempt atomically, and stores
+that non-secret identifier in `crm_connections.configuration`. The connection
+remains `draft`; API activation is not implemented.
+
+`crm_connections.configuration` accepts only controlled non-secret provider
+settings. Credentials, access tokens, API keys, and arbitrary configuration
+keys are not supported. Connections cannot be marked `connected` without a
+future verified provider flow. The existing encrypted credential table remains
+available for future provider requirements but is not used by this marketplace
+step.
 
 ## Verification
 

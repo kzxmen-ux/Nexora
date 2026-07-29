@@ -189,7 +189,7 @@ export default async function CrmConnectionsPage({
               actionLabel={t("Connect")}
               badge={t("Official integration")}
               description={t(
-                "Securely prepare a YCLIENTS connection. Official API access is required for verification.",
+                "Connect through the official YCLIENTS marketplace. API activation follows in a later step.",
               )}
               href={`/app/organizations/${organization.id}/integrations/crm/yclients/new`}
               monogram="YC"

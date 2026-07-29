@@ -296,66 +296,32 @@ const translations: Record<Locale, Record<string, string>> = {
     "The CRM connection could not be deleted. Access may have been denied.":
       "Не удалось удалить подключение CRM. Возможно, доступ запрещён.",
     "Connect": "Подключить",
-    "Securely prepare a YCLIENTS connection. Official API access is required for verification.":
-      "Безопасно подготовьте подключение YCLIENTS. Для проверки нужен официальный доступ к API.",
-    "Set up YCLIENTS": "Настройка YCLIENTS",
-    "Enter the non-secret Application ID and Company ID from the developer dashboard. After creating the connection, save the User Token securely.":
-      "Введите несекретные ID приложения и компании из кабинета разработчика. После создания подключения безопасно сохраните токен пользователя.",
-    "YCLIENTS Application ID": "ID приложения YCLIENTS",
-    "This is the non-secret Application ID from the YCLIENTS developer dashboard.":
-      "Это несекретный ID приложения из кабинета разработчика YCLIENTS.",
-    "Enter the YCLIENTS Application ID.":
-      "Введите ID приложения YCLIENTS.",
-    "Application ID must be 100 characters or fewer.":
-      "ID приложения должен содержать не более 100 символов.",
-    "Application ID contains unsupported characters.":
-      "ID приложения содержит недопустимые символы.",
-    "YCLIENTS company ID": "ID компании YCLIENTS",
-    "This is the non-secret branch identifier from your YCLIENTS account.":
-      "Это несекретный идентификатор филиала из аккаунта YCLIENTS.",
-    "Create YCLIENTS connection": "Создать подключение YCLIENTS",
-    "Enter the YCLIENTS company ID.": "Введите ID компании YCLIENTS.",
-    "Company ID must be 32 digits or fewer.":
-      "ID компании должен содержать не более 32 цифр.",
-    "Company ID must contain digits only.":
-      "ID компании должен содержать только цифры.",
-    "The YCLIENTS connection could not be created. Check organization access and try again.":
-      "Не удалось создать подключение YCLIENTS. Проверьте доступ к организации и повторите попытку.",
-    "The YCLIENTS connection could not be updated. Access may have been denied.":
-      "Не удалось обновить подключение YCLIENTS. Возможно, доступ запрещён.",
-    "Application ID and Company ID are stored as non-secret connection settings. The User Token is stored separately in encrypted form.":
-      "ID приложения и ID компании хранятся как несекретные настройки подключения. Токен пользователя хранится отдельно в зашифрованном виде.",
-    "YCLIENTS credentials": "Учётные данные YCLIENTS",
-    "Credentials saved": "Учётные данные сохранены",
-    "Credentials saved.": "Учётные данные сохранены.",
-    "Credentials required": "Нужны учётные данные",
-    "The User Token is encrypted before storage and is never shown again. Saving a new value replaces the previous token.":
-      "Токен пользователя шифруется перед сохранением и больше не отображается. Новое значение заменяет предыдущий токен.",
-    "User token": "Токен пользователя",
-    "Enter the complete token.": "Введите токен полностью.",
-    "The token is too long.": "Токен слишком длинный.",
-    "Save credentials": "Сохранить учётные данные",
-    "Replace credentials": "Заменить учётные данные",
-    "Credential encryption is not configured. Contact the administrator.":
-      "Шифрование учётных данных не настроено. Обратитесь к администратору.",
-    "Credentials could not be saved. Check organization access and try again.":
-      "Не удалось сохранить учётные данные. Проверьте доступ к организации и повторите попытку.",
-    "Test connection": "Проверить подключение",
-    "Testing…": "Проверяем…",
-    "Save YCLIENTS credentials before testing.":
-      "Перед проверкой сохраните учётные данные YCLIENTS.",
-    "Official YCLIENTS API access is required to test this connection.":
-      "Для проверки подключения требуется официальный доступ к API YCLIENTS.",
-    "The connection could not be tested. Access may have been denied.":
-      "Не удалось проверить подключение. Возможно, доступ запрещён.",
-    "Disconnect": "Отключить",
-    "Disconnecting…": "Отключаем…",
-    "The connection could not be disconnected. Access may have been denied.":
-      "Не удалось отключить подключение. Возможно, доступ запрещён.",
-    "Credentials deleted and connection disconnected.":
-      "Учётные данные удалены, подключение отключено.",
-    "Deleting this connection also permanently deletes its encrypted credentials.":
-      "Удаление подключения также безвозвратно удалит зашифрованные учётные данные.",
+    "Connect YCLIENTS": "Подключить YCLIENTS",
+    "Redirecting to YCLIENTS…": "Переходим в YCLIENTS…",
+    "Connect through the official YCLIENTS marketplace. API activation follows in a later step.":
+      "Подключитесь через официальный маркетплейс YCLIENTS. Активация API будет выполнена на следующем этапе.",
+    "You will be redirected to the official YCLIENTS marketplace. No API token is requested on this page.":
+      "Вы перейдёте в официальный маркетплейс YCLIENTS. На этой странице не запрашиваются API-токены.",
+    "The YCLIENTS connection request is invalid.":
+      "Запрос на подключение YCLIENTS недействителен.",
+    "The YCLIENTS connection could not be started. Check organization access and try again.":
+      "Не удалось начать подключение YCLIENTS. Проверьте доступ к организации и повторите попытку.",
+    "Activation required": "Требуется активация",
+    "YCLIENTS callback received": "Ответ YCLIENTS получен",
+    "The salon was confirmed by the marketplace redirect. Nexora has not activated API access yet.":
+      "Салон подтверждён переходом из маркетплейса. Nexora ещё не активировала доступ к API.",
+    "Salon ID": "ID салона",
+    "Waiting for confirmation": "Ожидает подтверждения",
+    "Connection is waiting for confirmation":
+      "Подключение ожидает подтверждения",
+    "Complete the marketplace step in YCLIENTS. This request expires after 10 minutes.":
+      "Завершите подключение в маркетплейсе YCLIENTS. Запрос истечёт через 10 минут.",
+    "The YCLIENTS callback could not be completed. The request may be missing, expired, reused, or invalid.":
+      "Не удалось завершить подключение YCLIENTS. Запрос отсутствует, истёк, уже использован или недействителен.",
+    "The YCLIENTS callback could not be completed. Open your organization and try again.":
+      "Не удалось завершить подключение YCLIENTS. Откройте организацию и повторите попытку.",
+    "The YCLIENTS marketplace identifies the salon. API activation is a separate future step.":
+      "Маркетплейс YCLIENTS определяет салон. Активация API будет отдельным следующим этапом.",
     "Language": "Язык",
     "Русский": "Русский",
     "Қазақша": "Қазақша",
@@ -643,66 +609,32 @@ const translations: Record<Locale, Record<string, string>> = {
     "The CRM connection could not be deleted. Access may have been denied.":
       "CRM қосылымын жою мүмкін болмады. Кіруге тыйым салынуы мүмкін.",
     "Connect": "Қосу",
-    "Securely prepare a YCLIENTS connection. Official API access is required for verification.":
-      "YCLIENTS қосылымын қауіпсіз дайындаңыз. Тексеру үшін ресми API рұқсаты қажет.",
-    "Set up YCLIENTS": "YCLIENTS баптау",
-    "Enter the non-secret Application ID and Company ID from the developer dashboard. After creating the connection, save the User Token securely.":
-      "Әзірлеуші кабинетіндегі құпия емес қолданба ID-і мен компания ID-ін енгізіңіз. Қосылымды жасағаннан кейін пайдаланушы токенін қауіпсіз сақтаңыз.",
-    "YCLIENTS Application ID": "YCLIENTS қолданба ID-і",
-    "This is the non-secret Application ID from the YCLIENTS developer dashboard.":
-      "Бұл YCLIENTS әзірлеуші кабинетіндегі құпия емес қолданба ID-і.",
-    "Enter the YCLIENTS Application ID.":
-      "YCLIENTS қолданба ID-ін енгізіңіз.",
-    "Application ID must be 100 characters or fewer.":
-      "Қолданба ID-і 100 таңбадан аспауы керек.",
-    "Application ID contains unsupported characters.":
-      "Қолданба ID-інде қолдау көрсетілмейтін таңбалар бар.",
-    "YCLIENTS company ID": "YCLIENTS компания ID-і",
-    "This is the non-secret branch identifier from your YCLIENTS account.":
-      "Бұл YCLIENTS аккаунтындағы құпия емес филиал идентификаторы.",
-    "Create YCLIENTS connection": "YCLIENTS қосылымын жасау",
-    "Enter the YCLIENTS company ID.": "YCLIENTS компания ID-ін енгізіңіз.",
-    "Company ID must be 32 digits or fewer.":
-      "Компания ID-і 32 цифрдан аспауы керек.",
-    "Company ID must contain digits only.":
-      "Компания ID-інде тек цифрлар болуы керек.",
-    "The YCLIENTS connection could not be created. Check organization access and try again.":
-      "YCLIENTS қосылымын жасау мүмкін болмады. Ұйымға кіру құқығын тексеріп, қайталап көріңіз.",
-    "The YCLIENTS connection could not be updated. Access may have been denied.":
-      "YCLIENTS қосылымын жаңарту мүмкін болмады. Кіруге тыйым салынуы мүмкін.",
-    "Application ID and Company ID are stored as non-secret connection settings. The User Token is stored separately in encrypted form.":
-      "Қолданба ID-і мен компания ID-і құпия емес қосылым баптаулары ретінде сақталады. Пайдаланушы токені бөлек шифрланған түрде сақталады.",
-    "YCLIENTS credentials": "YCLIENTS тіркелгі деректері",
-    "Credentials saved": "Тіркелгі деректері сақталды",
-    "Credentials saved.": "Тіркелгі деректері сақталды.",
-    "Credentials required": "Тіркелгі деректері қажет",
-    "The User Token is encrypted before storage and is never shown again. Saving a new value replaces the previous token.":
-      "Пайдаланушы токені сақтау алдында шифрланады және қайта көрсетілмейді. Жаңа мән алдыңғы токенді ауыстырады.",
-    "User token": "Пайдаланушы токені",
-    "Enter the complete token.": "Токенді толығымен енгізіңіз.",
-    "The token is too long.": "Токен тым ұзын.",
-    "Save credentials": "Тіркелгі деректерін сақтау",
-    "Replace credentials": "Тіркелгі деректерін ауыстыру",
-    "Credential encryption is not configured. Contact the administrator.":
-      "Тіркелгі деректерін шифрлау бапталмаған. Әкімшіге хабарласыңыз.",
-    "Credentials could not be saved. Check organization access and try again.":
-      "Тіркелгі деректерін сақтау мүмкін болмады. Ұйымға кіру құқығын тексеріп, қайталап көріңіз.",
-    "Test connection": "Қосылымды тексеру",
-    "Testing…": "Тексерілуде…",
-    "Save YCLIENTS credentials before testing.":
-      "Тексеру алдында YCLIENTS тіркелгі деректерін сақтаңыз.",
-    "Official YCLIENTS API access is required to test this connection.":
-      "Қосылымды тексеру үшін YCLIENTS ресми API рұқсаты қажет.",
-    "The connection could not be tested. Access may have been denied.":
-      "Қосылымды тексеру мүмкін болмады. Кіруге тыйым салынуы мүмкін.",
-    "Disconnect": "Ажырату",
-    "Disconnecting…": "Ажыратылуда…",
-    "The connection could not be disconnected. Access may have been denied.":
-      "Қосылымды ажырату мүмкін болмады. Кіруге тыйым салынуы мүмкін.",
-    "Credentials deleted and connection disconnected.":
-      "Тіркелгі деректері жойылып, қосылым ажыратылды.",
-    "Deleting this connection also permanently deletes its encrypted credentials.":
-      "Бұл қосылымды жою оның шифрланған тіркелгі деректерін де біржола жояды.",
+    "Connect YCLIENTS": "YCLIENTS-ті қосу",
+    "Redirecting to YCLIENTS…": "YCLIENTS-ке өтуде…",
+    "Connect through the official YCLIENTS marketplace. API activation follows in a later step.":
+      "Ресми YCLIENTS маркетплейсі арқылы қосылыңыз. API белсендіру келесі кезеңде орындалады.",
+    "You will be redirected to the official YCLIENTS marketplace. No API token is requested on this page.":
+      "Сіз ресми YCLIENTS маркетплейсіне өтесіз. Бұл бетте API токендері сұралмайды.",
+    "The YCLIENTS connection request is invalid.":
+      "YCLIENTS қосылым сұрауы жарамсыз.",
+    "The YCLIENTS connection could not be started. Check organization access and try again.":
+      "YCLIENTS қосылымын бастау мүмкін болмады. Ұйымға кіру құқығын тексеріп, қайталап көріңіз.",
+    "Activation required": "Белсендіру қажет",
+    "YCLIENTS callback received": "YCLIENTS жауабы алынды",
+    "The salon was confirmed by the marketplace redirect. Nexora has not activated API access yet.":
+      "Салон маркетплейстен қайта бағыттау арқылы расталды. Nexora API рұқсатын әлі белсендірген жоқ.",
+    "Salon ID": "Салон ID-і",
+    "Waiting for confirmation": "Растауды күтуде",
+    "Connection is waiting for confirmation":
+      "Қосылым растауды күтуде",
+    "Complete the marketplace step in YCLIENTS. This request expires after 10 minutes.":
+      "YCLIENTS маркетплейсіндегі қадамды аяқтаңыз. Сұрау 10 минуттан кейін аяқталады.",
+    "The YCLIENTS callback could not be completed. The request may be missing, expired, reused, or invalid.":
+      "YCLIENTS қосылымын аяқтау мүмкін болмады. Сұрау жоқ, мерзімі өткен, қайта қолданылған немесе жарамсыз болуы мүмкін.",
+    "The YCLIENTS callback could not be completed. Open your organization and try again.":
+      "YCLIENTS қосылымын аяқтау мүмкін болмады. Ұйымыңызды ашып, қайталап көріңіз.",
+    "The YCLIENTS marketplace identifies the salon. API activation is a separate future step.":
+      "YCLIENTS маркетплейсі салонды анықтайды. API белсендіру кейінгі бөлек кезең болады.",
     "Language": "Тіл",
     "Русский": "Орысша",
     "Қазақша": "Қазақша",

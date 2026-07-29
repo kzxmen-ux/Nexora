@@ -7,5 +7,10 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/app/:path*", "/auth/:path*", "/invitations/:path*"],
+  matcher: [
+    "/app/:path*",
+    "/auth/:path*",
+    "/integrations/yclients/callback",
+    "/invitations/:path*",
+  ],
 };

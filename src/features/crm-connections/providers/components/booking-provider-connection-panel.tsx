@@ -1,51 +1,33 @@
 import { CrmConnectionControls } from "../../components/crm-connection-controls";
 import { CrmConnectionForm } from "../../components/crm-connection-form";
-import { YclientsConnectionForm } from "../../components/yclients-connection-form";
-import { YclientsCredentialsControls } from "../../components/yclients-credentials-controls";
+import { YclientsMarketplaceConnectionPanel } from "../../components/yclients-marketplace-connection-panel";
 import type { CrmConnection } from "../../types";
 import type { BookingProviderConnectionMetadata } from "../booking-provider";
 import { getTranslator } from "@/lib/i18n/server";
 
 type BookingProviderConnectionPanelProps = {
+  callbackFailed?: boolean;
   connection: CrmConnection;
   metadata: BookingProviderConnectionMetadata;
   organizationId: string;
 };
 
 export async function BookingProviderConnectionPanel({
+  callbackFailed = false,
   connection,
   metadata,
   organizationId,
 }: BookingProviderConnectionPanelProps) {
   const t = await getTranslator();
-  const settingsForm =
-    metadata.configurationMode === "encrypted_credentials" ? (
-      <YclientsConnectionForm
+  if (metadata.configurationMode === "encrypted_credentials") {
+    return (
+      <YclientsMarketplaceConnectionPanel
+        callbackFailed={callbackFailed}
         connection={connection}
-        mode="update"
-        organizationId={organizationId}
-      />
-    ) : (
-      <CrmConnectionForm
-        connection={connection}
-        mode="update"
         organizationId={organizationId}
       />
     );
-  const controls =
-    metadata.configurationMode === "encrypted_credentials" ? (
-      <YclientsCredentialsControls
-        connectionId={connection.id}
-        credentialsSaved={metadata.credentialsSaved}
-        organizationId={organizationId}
-      />
-    ) : (
-      <CrmConnectionControls
-        connectionId={connection.id}
-        organizationId={organizationId}
-        status={connection.status}
-      />
-    );
+  }
 
   return (
     <>
@@ -56,9 +38,17 @@ export async function BookingProviderConnectionPanel({
         <p className="mt-3 text-sm leading-6 text-slate-600">
           {t(metadata.settingsDescription)}
         </p>
-        {settingsForm}
+        <CrmConnectionForm
+          connection={connection}
+          mode="update"
+          organizationId={organizationId}
+        />
       </section>
-      {controls}
+      <CrmConnectionControls
+        connectionId={connection.id}
+        organizationId={organizationId}
+        status={connection.status}
+      />
     </>
   );
 }

@@ -13,6 +13,7 @@ type ApplicationPageProps = {
   searchParams: Promise<{
     password?: string | string[];
     signout?: string | string[];
+    yclients?: string | string[];
   }>;
 };
 
@@ -33,6 +34,7 @@ export default async function ApplicationPage({
   const params = await searchParams;
   const passwordUpdated = params.password === "updated";
   const signOutFailed = params.signout === "failed";
+  const yclientsFailed = params.yclients === "failed";
   const organizations = await listOrganizationsForCurrentUser();
 
   return (
@@ -77,6 +79,17 @@ export default async function ApplicationPage({
               role="alert"
             >
               {t("Sign out could not be completed. Try again.")}
+            </p>
+          ) : null}
+
+          {yclientsFailed ? (
+            <p
+              className="mb-6 rounded-xl bg-rose-50 px-4 py-3 text-sm text-rose-700"
+              role="alert"
+            >
+              {t(
+                "The YCLIENTS callback could not be completed. Open your organization and try again.",
+              )}
             </p>
           ) : null}
 
