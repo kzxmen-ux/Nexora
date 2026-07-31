@@ -24,7 +24,7 @@ const crmConnectionRowSchema = z.object({
   id: z.uuid(),
   last_sync_at: z.string().nullable(),
   organization_id: z.uuid(),
-  provider: z.enum(["custom", "yclients"]),
+  provider: z.enum(["altegio", "custom", "yclients"]),
   status: z.enum(["draft", "connected", "disconnected", "error"]),
   updated_at: z.string(),
 });

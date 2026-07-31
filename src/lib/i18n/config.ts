@@ -322,6 +322,24 @@ const translations: Record<Locale, Record<string, string>> = {
       "Не удалось завершить подключение YCLIENTS. Откройте организацию и повторите попытку.",
     "The YCLIENTS marketplace identifies the salon. API activation is a separate future step.":
       "Маркетплейс YCLIENTS определяет салон. Активация API будет отдельным следующим этапом.",
+    "Authentication required": "Требуется вход",
+    "Sign in to continue connecting Altegio.":
+      "Войдите, чтобы продолжить подключение Altegio.",
+    "Altegio callback is invalid": "Некорректный ответ Altegio",
+    "The location identifiers are missing or invalid. Return to Altegio and try again.":
+      "Идентификаторы филиалов отсутствуют или недействительны. Вернитесь в Altegio и повторите попытку.",
+    "Organization access required": "Требуется доступ к организации",
+    "You need owner or administrator access to an organization before connecting Altegio.":
+      "Для подключения Altegio нужен доступ владельца или администратора хотя бы к одной организации.",
+    "Open organizations": "Открыть организации",
+    "Altegio locations received": "Филиалы Altegio получены",
+    "The marketplace returned these location identifiers. Nexora has not activated the integration or connected to the Altegio API.":
+      "Маркетплейс передал эти идентификаторы филиалов. Nexora ещё не активировала интеграцию и не подключалась к API Altegio.",
+    "Activation and data synchronization are not enabled yet.":
+      "Активация и синхронизация данных пока не включены.",
+    "Open integrations": "Открыть интеграции",
+    "Altegio activation and API access are not implemented yet.":
+      "Активация Altegio и доступ к API пока не реализованы.",
     "Language": "Язык",
     "Русский": "Русский",
     "Қазақша": "Қазақша",
@@ -635,6 +653,24 @@ const translations: Record<Locale, Record<string, string>> = {
       "YCLIENTS қосылымын аяқтау мүмкін болмады. Ұйымыңызды ашып, қайталап көріңіз.",
     "The YCLIENTS marketplace identifies the salon. API activation is a separate future step.":
       "YCLIENTS маркетплейсі салонды анықтайды. API белсендіру кейінгі бөлек кезең болады.",
+    "Authentication required": "Кіру қажет",
+    "Sign in to continue connecting Altegio.":
+      "Altegio қосылымын жалғастыру үшін жүйеге кіріңіз.",
+    "Altegio callback is invalid": "Altegio жауабы жарамсыз",
+    "The location identifiers are missing or invalid. Return to Altegio and try again.":
+      "Филиал идентификаторлары жоқ немесе жарамсыз. Altegio-ға оралып, қайталап көріңіз.",
+    "Organization access required": "Ұйымға кіру қажет",
+    "You need owner or administrator access to an organization before connecting Altegio.":
+      "Altegio-ны қосу үшін кемінде бір ұйымға иесі немесе әкімшісі ретінде кіру қажет.",
+    "Open organizations": "Ұйымдарды ашу",
+    "Altegio locations received": "Altegio филиалдары алынды",
+    "The marketplace returned these location identifiers. Nexora has not activated the integration or connected to the Altegio API.":
+      "Маркетплейс осы филиал идентификаторларын жіберді. Nexora интеграцияны әлі белсендірмеді және Altegio API-іне қосылмады.",
+    "Activation and data synchronization are not enabled yet.":
+      "Белсендіру және деректерді синхрондау әлі қосылмаған.",
+    "Open integrations": "Интеграцияларды ашу",
+    "Altegio activation and API access are not implemented yet.":
+      "Altegio белсендіруі және API қолжетімділігі әлі іске асырылмаған.",
     "Language": "Тіл",
     "Русский": "Орысша",
     "Қазақша": "Қазақша",

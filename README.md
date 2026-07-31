@@ -115,8 +115,41 @@ authenticated clients.
 
 Organization workspaces include an Integrations area for owner and admin
 members. The CRM section supports provider-neutral development connections and
-the first YCLIENTS marketplace redirect step. It does not activate API access,
-contact a CRM API, or copy CRM-owned operational data into Nexora.
+server-only marketplace entrypoints. It does not activate API access, contact a
+CRM API, or copy CRM-owned operational data into Nexora.
+
+### Altegio entrypoints
+
+Set Altegio's **Registration Redirect URL** to:
+
+```text
+https://nexora-blush-nine.vercel.app/integrations/altegio/callback
+```
+
+The callback requires Supabase authentication and owner or admin access to at
+least one organization. It accepts one positive integer `salon_id` or up to 100
+positive integer `salon_ids[]` values and only confirms the received location
+IDs. It does not choose an organization, create or activate a connection, or
+call the Altegio API.
+
+Configure Altegio JSON webhooks at:
+
+```text
+https://nexora-blush-nine.vercel.app/api/webhooks/altegio
+```
+
+The endpoint accepts at most 256 KiB, validates the documented
+`company_id`, `resource`, `resource_id`, `status`, and `data` envelope, and
+stores accepted events as `pending` in an append-only private inbox. Unknown or
+disconnected Altegio location IDs are rejected. Browser roles have no table or
+RPC access, and no synchronization or business logic runs from this endpoint.
+
+The current official Altegio webhook documentation does not describe a request
+signature or verification header. Nexora therefore does not claim
+cryptographic sender authentication. Connection matching and payload
+validation reduce exposure but do not prove the sender's identity.
+
+### Legacy YCLIENTS foundation
 
 For YCLIENTS, set the developer dashboard's **Registration Redirect URL** to:
 

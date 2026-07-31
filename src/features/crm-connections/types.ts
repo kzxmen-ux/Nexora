@@ -1,4 +1,4 @@
-export type CrmProvider = "custom" | "yclients";
+export type CrmProvider = "altegio" | "custom" | "yclients";
 
 export type CrmConnectionStatus =
   | "connected"
