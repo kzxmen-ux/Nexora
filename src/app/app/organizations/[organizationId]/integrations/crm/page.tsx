@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { AltegioMarketplaceConnectButton } from "@/features/crm-connections/components/altegio-marketplace-connect-button";
 import { CrmProviderCard } from "@/features/crm-connections/components/crm-provider-card";
 import { getBookingProvider } from "@/features/crm-connections/providers/booking-provider-registry";
 import { listCrmConnections } from "@/features/crm-connections/queries/crm-connections";
@@ -166,7 +167,7 @@ export default async function CrmConnectionsPage({
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">
                   {t(
-                    "Choose the development connection below to prepare the integration boundary.",
+                    "Choose an available provider below to start a connection.",
                   )}
                 </p>
               </div>
@@ -186,20 +187,15 @@ export default async function CrmConnectionsPage({
 
           <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             <CrmProviderCard
-              actionLabel={t("Connect")}
+              action={
+                <AltegioMarketplaceConnectButton
+                  organizationId={organization.id}
+                />
+              }
+              actionLabel={t("Connect Altegio")}
               badge={t("Official integration")}
               description={t(
-                "Connect through the official YCLIENTS marketplace. API activation follows in a later step.",
-              )}
-              href={`/app/organizations/${organization.id}/integrations/crm/yclients/new`}
-              monogram="YC"
-              name="YCLIENTS"
-            />
-            <CrmProviderCard
-              actionLabel={t("Coming soon")}
-              badge={t("Coming soon")}
-              description={t(
-                "Altegio integration is planned and cannot be connected yet.",
+                "You will be redirected to Altegio to choose one or more locations and confirm access. After confirmation, Altegio will return you to Orqelio.",
               )}
               monogram="A"
               name="Altegio"

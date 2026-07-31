@@ -1,10 +1,16 @@
 import Link from "next/link";
+import { cookies } from "next/headers";
 
 import {
   getCanonicalAltegioCallbackPath,
   validateAltegioCallbackIds,
 } from "@/features/crm-connections/providers/altegio/callback-validation";
-import { listOrganizationsForCurrentUser } from "@/features/organizations/queries/organizations";
+import { ALTEGIO_MARKETPLACE_ORGANIZATION_COOKIE } from "@/features/crm-connections/marketplace/altegio";
+import {
+  getOrganizationForCurrentUser,
+  listOrganizationsForCurrentUser,
+} from "@/features/organizations/queries/organizations";
+import { organizationIdSchema } from "@/features/organizations/validation/organization";
 import { getTranslator } from "@/lib/i18n/server";
 import { createClient } from "@/lib/supabase/server";
 
@@ -73,7 +79,18 @@ export default async function AltegioCallbackPage({
     );
   }
 
-  const organizations = await listOrganizationsForCurrentUser();
+  const cookieStore = await cookies();
+  const selectedOrganizationId = organizationIdSchema.safeParse(
+    cookieStore.get(ALTEGIO_MARKETPLACE_ORGANIZATION_COOKIE)?.value,
+  );
+  const selectedOrganization = selectedOrganizationId.success
+    ? await getOrganizationForCurrentUser(selectedOrganizationId.data)
+    : null;
+  const organizations = selectedOrganizationId.success
+    ? selectedOrganization
+      ? [selectedOrganization]
+      : []
+    : await listOrganizationsForCurrentUser();
 
   if (organizations.length === 0) {
     return (
@@ -106,7 +123,7 @@ export default async function AltegioCallbackPage({
       </h1>
       <p className="mt-4 leading-7 text-slate-600">
         {t(
-          "The marketplace returned these location identifiers. Nexora has not activated the integration or connected to the Altegio API.",
+          "Altegio returned the selected locations to Orqelio. Final activation is not completed yet, and Orqelio has not connected to the Altegio API.",
         )}
       </p>
       <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -144,9 +161,9 @@ function CallbackShell({ children }: { children: React.ReactNode }) {
             aria-hidden="true"
             className="grid size-9 place-items-center rounded-xl bg-indigo-600 text-sm text-white"
           >
-            N
+            O
           </span>
-          Nexora
+          Orqelio
         </Link>
         {children}
       </section>

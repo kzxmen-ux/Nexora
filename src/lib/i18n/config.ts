@@ -139,6 +139,8 @@ const translations: Record<Locale, Record<string, string>> = {
     "No connections yet": "Подключений пока нет",
     "Choose the development connection below to prepare the integration boundary.":
       "Выберите подключение для разработки ниже, чтобы подготовить интеграционный слой.",
+    "Choose an available provider below to start a connection.":
+      "Выберите доступного провайдера ниже, чтобы начать подключение.",
     "Connect a new CRM": "Подключить новую CRM",
     "Choose a provider. Production integrations will become available after their adapters are implemented and verified.":
       "Выберите провайдера. Рабочие интеграции станут доступны после реализации и проверки их адаптеров.",
@@ -148,6 +150,14 @@ const translations: Record<Locale, Record<string, string>> = {
       "Интеграция YCLIENTS запланирована, но пока недоступна для подключения.",
     "Altegio integration is planned and cannot be connected yet.":
       "Интеграция Altegio запланирована, но пока недоступна для подключения.",
+    "Connect Altegio": "Подключить Altegio",
+    "Redirecting to Altegio…": "Переходим в Altegio…",
+    "You will be redirected to Altegio to choose one or more locations and confirm access. After confirmation, Altegio will return you to Orqelio.":
+      "Вы перейдёте в Altegio, выберете один или несколько филиалов и подтвердите доступ. После подтверждения Altegio вернёт вас в Orqelio.",
+    "The Altegio connection request is invalid.":
+      "Запрос на подключение Altegio недействителен.",
+    "The Altegio connection could not be started. Check organization access and try again.":
+      "Не удалось начать подключение Altegio. Проверьте доступ к организации и повторите попытку.",
     "Configure": "Настроить",
     "Development only": "Только для разработки",
     "Development connection": "Подключение для разработки",
@@ -335,6 +345,8 @@ const translations: Record<Locale, Record<string, string>> = {
     "Altegio locations received": "Филиалы Altegio получены",
     "The marketplace returned these location identifiers. Nexora has not activated the integration or connected to the Altegio API.":
       "Маркетплейс передал эти идентификаторы филиалов. Nexora ещё не активировала интеграцию и не подключалась к API Altegio.",
+    "Altegio returned the selected locations to Orqelio. Final activation is not completed yet, and Orqelio has not connected to the Altegio API.":
+      "Altegio вернул выбранные филиалы в Orqelio. Финальная активация ещё не завершена, и Orqelio не подключался к API Altegio.",
     "Activation and data synchronization are not enabled yet.":
       "Активация и синхронизация данных пока не включены.",
     "Open integrations": "Открыть интеграции",
@@ -470,6 +482,8 @@ const translations: Record<Locale, Record<string, string>> = {
     "No connections yet": "Қосылымдар әлі жоқ",
     "Choose the development connection below to prepare the integration boundary.":
       "Интеграция қабатын дайындау үшін төмендегі әзірлеу қосылымын таңдаңыз.",
+    "Choose an available provider below to start a connection.":
+      "Қосылымды бастау үшін төмендегі қолжетімді провайдерді таңдаңыз.",
     "Connect a new CRM": "Жаңа CRM қосу",
     "Choose a provider. Production integrations will become available after their adapters are implemented and verified.":
       "Провайдерді таңдаңыз. Жұмыс интеграциялары адаптерлері іске асырылып, тексерілгеннен кейін қолжетімді болады.",
@@ -479,6 +493,14 @@ const translations: Record<Locale, Record<string, string>> = {
       "YCLIENTS интеграциясы жоспарланған, бірақ әзірге қосу мүмкін емес.",
     "Altegio integration is planned and cannot be connected yet.":
       "Altegio интеграциясы жоспарланған, бірақ әзірге қосу мүмкін емес.",
+    "Connect Altegio": "Altegio-ны қосу",
+    "Redirecting to Altegio…": "Altegio-ға өтуде…",
+    "You will be redirected to Altegio to choose one or more locations and confirm access. After confirmation, Altegio will return you to Orqelio.":
+      "Сіз Altegio-ға өтіп, бір немесе бірнеше филиалды таңдап, қолжетімділікті растайсыз. Растаудан кейін Altegio сізді Orqelio-ға қайтарады.",
+    "The Altegio connection request is invalid.":
+      "Altegio қосылым сұрауы жарамсыз.",
+    "The Altegio connection could not be started. Check organization access and try again.":
+      "Altegio қосылымын бастау мүмкін болмады. Ұйымға кіру құқығын тексеріп, қайталап көріңіз.",
     "Configure": "Баптау",
     "Development only": "Тек әзірлеуге арналған",
     "Development connection": "Әзірлеу қосылымы",
@@ -666,6 +688,8 @@ const translations: Record<Locale, Record<string, string>> = {
     "Altegio locations received": "Altegio филиалдары алынды",
     "The marketplace returned these location identifiers. Nexora has not activated the integration or connected to the Altegio API.":
       "Маркетплейс осы филиал идентификаторларын жіберді. Nexora интеграцияны әлі белсендірмеді және Altegio API-іне қосылмады.",
+    "Altegio returned the selected locations to Orqelio. Final activation is not completed yet, and Orqelio has not connected to the Altegio API.":
+      "Altegio таңдалған филиалдарды Orqelio-ға қайтарды. Соңғы белсендіру әлі аяқталған жоқ және Orqelio Altegio API-іне қосылмады.",
     "Activation and data synchronization are not enabled yet.":
       "Белсендіру және деректерді синхрондау әлі қосылмаған.",
     "Open integrations": "Интеграцияларды ашу",

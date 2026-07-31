@@ -1,7 +1,9 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 type CrmProviderCardProps = {
   actionLabel: string;
+  action?: ReactNode;
   badge: string;
   description: string;
   href?: string;
@@ -11,6 +13,7 @@ type CrmProviderCardProps = {
 
 export function CrmProviderCard({
   actionLabel,
+  action,
   badge,
   description,
   href,
@@ -28,7 +31,7 @@ export function CrmProviderCard({
         </span>
         <span
           className={
-            href
+            href || action
               ? "rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-700"
               : "rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500"
           }
@@ -42,7 +45,7 @@ export function CrmProviderCard({
         <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
       </div>
 
-      {href ? (
+      {action ?? (href ? (
         <Link
           className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white hover:bg-indigo-700"
           href={href}
@@ -57,7 +60,7 @@ export function CrmProviderCard({
         >
           {actionLabel}
         </button>
-      )}
+      ))}
     </article>
   );
 }

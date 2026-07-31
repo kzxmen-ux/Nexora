@@ -120,6 +120,16 @@ CRM API, or copy CRM-owned operational data into Nexora.
 
 ### Altegio entrypoints
 
+The available Altegio catalog action authenticates the user, verifies owner or
+admin access to the selected organization, and redirects to the public Orqelio
+Marketplace page:
+
+```text
+https://app.alteg.io/e/mp_2167_orqelio_ai/
+```
+
+No CRM connection is created by this action.
+
 Set Altegio's **Registration Redirect URL** to:
 
 ```text
