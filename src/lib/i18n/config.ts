@@ -352,6 +352,74 @@ const translations: Record<Locale, Record<string, string>> = {
     "Open integrations": "Открыть интеграции",
     "Altegio activation and API access are not implemented yet.":
       "Активация Altegio и доступ к API пока не реализованы.",
+    "AI administrator": "AI-администратор",
+    "Public navigation": "Навигация по сайту",
+    "Start free": "Начать бесплатно",
+    "AI administrator for appointment businesses":
+      "AI-администратор для бизнеса по записи",
+    "An AI administrator that answers clients and books them 24/7":
+      "AI-администратор, который отвечает клиентам и записывает их 24/7",
+    "Orqelio talks to clients in messengers, advises on services, finds available time, and creates a booking in your system without replacing the CRM you already use.":
+      "Orqelio общается с клиентами в мессенджерах, консультирует по услугам, находит свободное время и создаёт запись в вашей системе — без замены привычной CRM.",
+    "See how it works": "Посмотреть, как это работает",
+    "For beauty salons, barbershops, clinics, SPA, and other appointment-based businesses.":
+      "Для салонов красоты, барбершопов, клиник, SPA и других бизнесов по записи.",
+    "Booking confirmed": "Запись подтверждена",
+    "Client": "Клиент",
+    "Hello, I would like to book a coloring appointment tomorrow.":
+      "Здравствуйте, хочу записаться на окрашивание завтра.",
+    "Illustration of the planned experience. Messaging and AI booking are not publicly launched yet.":
+      "Иллюстрация планируемого сценария. Мессенджеры и AI-запись ещё не запущены публично.",
+    "Planned experience": "Планируемый сценарий",
+    "Of course. Tomorrow there is availability at 14:00 and 17:30. Which time works for you?":
+      "Конечно. Завтра свободно в 14:00 и 17:30. Какое время вам подходит?",
+    "Coloring": "Окрашивание",
+    "Tomorrow at 17:30": "Завтра, 17:30",
+    "Benefits": "Преимущества",
+    "Less waiting in every client conversation":
+      "Меньше ожидания в каждом диалоге с клиентом",
+    "Clients do not wait for an administrator to reply.":
+      "Клиенты не ждут ответа администратора.",
+    "Responds instantly": "Отвечает мгновенно",
+    "Orqelio checks services, staff, and available slots in the connected system.":
+      "Orqelio проверяет услуги, сотрудников и свободные слоты в подключённой системе.",
+    "Books accurately": "Записывает без ошибок",
+    "New requests can be handled in the evening, at night, and on weekends.":
+      "Новые обращения могут обрабатываться вечером, ночью и в выходные.",
+    "Works around the clock": "Работает круглосуточно",
+    "Planned workflow": "Планируемый процесс",
+    "How Orqelio will work": "Как будет работать Orqelio",
+    "These stages describe the planned process after the corresponding integrations are launched.":
+      "Эти этапы описывают планируемый процесс после запуска соответствующих интеграций.",
+    "Connect your booking system": "Подключаете систему записи",
+    "Configure your business information":
+      "Настраиваете информацию о бизнесе",
+    "Connect a messaging channel": "Подключаете мессенджер",
+    "Orqelio starts answering and booking clients":
+      "Orqelio начинает отвечать и записывать клиентов",
+    "Foundation available": "Основа доступна",
+    "Planned": "Запланировано",
+    "For service businesses": "Для сервисного бизнеса",
+    "Built for teams that work by appointment":
+      "Для команд, которые работают по записи",
+    "Beauty salons": "Салоны красоты",
+    "Barbershops": "Барбершопы",
+    "Nail studios": "Ногтевые студии",
+    "Cosmetology and clinics": "Косметологии и клиники",
+    "SPA and massage": "SPA и массаж",
+    "Grooming and wellness": "Груминг и wellness",
+    "Works with your existing system": "Работает с вашей системой",
+    "Does not replace your system — makes it smarter":
+      "Не заменяет вашу систему — делает её умнее",
+    "Services, staff, schedules, and bookings stay in your booking platform. Orqelio works on top of it and takes care of client communication.":
+      "Услуги, сотрудники, расписание и записи остаются в вашей booking-платформе. Orqelio работает поверх неё и берёт на себя общение с клиентами.",
+    "Prepare your business for automatic client booking":
+      "Подготовьте бизнес к автоматической записи клиентов",
+    "Create an organization and connect your first booking system.":
+      "Создайте организацию и подключите первую систему записи.",
+    "Start setup": "Начать настройку",
+    "AI administrator for appointment-based businesses in Kazakhstan.":
+      "AI-администратор для бизнеса по записи в Казахстане.",
     "Home": "Главная",
     "Settings": "Настройки",
     "Owner": "Владелец",
@@ -754,6 +822,73 @@ const translations: Record<Locale, Record<string, string>> = {
     "Open integrations": "Интеграцияларды ашу",
     "Altegio activation and API access are not implemented yet.":
       "Altegio белсендіруі және API қолжетімділігі әлі іске асырылмаған.",
+    "AI administrator": "ЖИ-әкімші",
+    "Public navigation": "Сайт навигациясы",
+    "Start free": "Тегін бастау",
+    "AI administrator for appointment businesses":
+      "Жазылу арқылы жұмыс істейтін бизнеске арналған ЖИ-әкімші",
+    "An AI administrator that answers clients and books them 24/7":
+      "Клиенттерге жауап беріп, оларды тәулік бойы жазатын ЖИ-әкімші",
+    "Orqelio talks to clients in messengers, advises on services, finds available time, and creates a booking in your system without replacing the CRM you already use.":
+      "Orqelio клиенттермен мессенджерлерде сөйлеседі, қызметтер бойынша кеңес береді, бос уақытты табады және үйреншікті CRM-ді ауыстырмай, сіздің жүйеңізде жазба жасайды.",
+    "See how it works": "Қалай жұмыс істейтінін көру",
+    "For beauty salons, barbershops, clinics, SPA, and other appointment-based businesses.":
+      "Сұлулық салондарына, барбершоптарға, клиникаларға, SPA және басқа да жазылу арқылы жұмыс істейтін бизнеске арналған.",
+    "Booking confirmed": "Жазба расталды",
+    "Client": "Клиент",
+    "Hello, I would like to book a coloring appointment tomorrow.":
+      "Сәлеметсіз бе, ертең шаш бояуға жазылғым келеді.",
+    "Illustration of the planned experience. Messaging and AI booking are not publicly launched yet.":
+      "Жоспарланған сценарийдің үлгісі. Мессенджерлер мен ЖИ арқылы жазу әлі жалпыға қолжетімді емес.",
+    "Planned experience": "Жоспарланған сценарий",
+    "Of course. Tomorrow there is availability at 14:00 and 17:30. Which time works for you?":
+      "Әрине. Ертең сағат 14:00 және 17:30-да бос уақыт бар. Қай уақыт сізге ыңғайлы?",
+    "Coloring": "Шаш бояу",
+    "Tomorrow at 17:30": "Ертең, 17:30",
+    "Benefits": "Артықшылықтар",
+    "Less waiting in every client conversation":
+      "Клиентпен әр диалогта күтуді азайтады",
+    "Clients do not wait for an administrator to reply.":
+      "Клиенттер әкімшінің жауабын күтпейді.",
+    "Responds instantly": "Бірден жауап береді",
+    "Orqelio checks services, staff, and available slots in the connected system.":
+      "Orqelio қосылған жүйедегі қызметтерді, қызметкерлерді және бос уақыттарды тексереді.",
+    "Books accurately": "Қатесіз жазады",
+    "New requests can be handled in the evening, at night, and on weekends.":
+      "Жаңа өтініштер кешке, түнде және демалыс күндері өңделе алады.",
+    "Works around the clock": "Тәулік бойы жұмыс істейді",
+    "Planned workflow": "Жоспарланған процесс",
+    "How Orqelio will work": "Orqelio қалай жұмыс істейді",
+    "These stages describe the planned process after the corresponding integrations are launched.":
+      "Бұл кезеңдер тиісті интеграциялар іске қосылғаннан кейінгі жоспарланған процесті сипаттайды.",
+    "Connect your booking system": "Жазылу жүйесін қосасыз",
+    "Configure your business information": "Бизнес ақпаратын баптайсыз",
+    "Connect a messaging channel": "Мессенджерді қосасыз",
+    "Orqelio starts answering and booking clients":
+      "Orqelio клиенттерге жауап беріп, оларды жаза бастайды",
+    "Foundation available": "Негізі қолжетімді",
+    "Planned": "Жоспарланған",
+    "For service businesses": "Сервистік бизнеске арналған",
+    "Built for teams that work by appointment":
+      "Жазылу арқылы жұмыс істейтін командаларға арналған",
+    "Beauty salons": "Сұлулық салондары",
+    "Barbershops": "Барбершоптар",
+    "Nail studios": "Тырнақ студиялары",
+    "Cosmetology and clinics": "Косметология және клиникалар",
+    "SPA and massage": "SPA және массаж",
+    "Grooming and wellness": "Груминг және wellness",
+    "Works with your existing system": "Қолданыстағы жүйеңізбен жұмыс істейді",
+    "Does not replace your system — makes it smarter":
+      "Жүйеңізді ауыстырмайды — оны ақылдырақ етеді",
+    "Services, staff, schedules, and bookings stay in your booking platform. Orqelio works on top of it and takes care of client communication.":
+      "Қызметтер, қызметкерлер, кесте және жазбалар booking-платформаңызда қалады. Orqelio оның үстінде жұмыс істеп, клиенттермен байланысты өз мойнына алады.",
+    "Prepare your business for automatic client booking":
+      "Бизнесті клиенттерді автоматты жазуға дайындаңыз",
+    "Create an organization and connect your first booking system.":
+      "Ұйым құрып, алғашқы жазылу жүйесін қосыңыз.",
+    "Start setup": "Баптауды бастау",
+    "AI administrator for appointment-based businesses in Kazakhstan.":
+      "Қазақстандағы жазылу арқылы жұмыс істейтін бизнеске арналған ЖИ-әкімші.",
     "Home": "Басты бет",
     "Settings": "Баптаулар",
     "Owner": "Иесі",
