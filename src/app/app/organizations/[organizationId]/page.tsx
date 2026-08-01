@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation";
 
+import { OrganizationDashboard } from "@/features/organizations/components/organization-dashboard";
 import { OrganizationForm } from "@/features/organizations/components/organization-form";
 import { OrganizationWorkspaceNavigation } from "@/features/organizations/components/organization-workspace-navigation";
+import { getOrganizationDashboardData } from "@/features/organizations/queries/organization-dashboard";
 import { getOrganizationForCurrentUser } from "@/features/organizations/queries/organizations";
 import { organizationIdSchema } from "@/features/organizations/validation/organization";
-import { getTranslator } from "@/lib/i18n/server";
+import { getLocale, getTranslator } from "@/lib/i18n/server";
 
 export const dynamic = "force-dynamic";
 
@@ -31,28 +33,30 @@ export default async function OrganizationPage({
   if (!organization) {
     notFound();
   }
-  const t = await getTranslator();
+  const [dashboardData, locale, t] = await Promise.all([
+    getOrganizationDashboardData(organization.id),
+    getLocale(),
+    getTranslator(),
+  ]);
 
   return (
-    <main className="min-h-screen bg-slate-50 px-6 py-8 sm:px-10">
-      <div className="mx-auto w-full max-w-5xl">
+    <main className="min-h-screen bg-slate-50 px-4 py-5 sm:px-6 sm:py-8 lg:px-10">
+      <div className="mx-auto w-full max-w-7xl">
         <OrganizationWorkspaceNavigation
           activeSection="overview"
           organization={organization}
         />
 
-        <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
-            {t("Workspace overview")}
-          </h2>
-          <p className="mt-3 max-w-2xl leading-7 text-slate-600">
-            {t(
-              "This page is loaded only after Supabase RLS and a server-side membership query authorize access.",
-            )}
-          </p>
-        </section>
+        <OrganizationDashboard
+          data={dashboardData}
+          locale={locale}
+          organization={organization}
+        />
 
-        <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
+        <section
+          className="mt-8 scroll-mt-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+          id="organization-settings"
+        >
           <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
             {t("Organization settings")}
           </h2>

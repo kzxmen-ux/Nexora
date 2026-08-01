@@ -352,6 +352,65 @@ const translations: Record<Locale, Record<string, string>> = {
     "Open integrations": "Открыть интеграции",
     "Altegio activation and API access are not implemented yet.":
       "Активация Altegio и доступ к API пока не реализованы.",
+    "Home": "Главная",
+    "Settings": "Настройки",
+    "Owner": "Владелец",
+    "Admin": "Администратор",
+    "Operational dashboard": "Рабочая панель",
+    "Connect systems and prepare Orqelio to work with customers.":
+      "Подключите системы и подготовьте Orqelio к работе с клиентами.",
+    "Setup progress": "Прогресс настройки",
+    "steps completed": "этапов завершено",
+    "Organization created": "Организация создана",
+    "Altegio connected": "Altegio подключена",
+    "Services and staff imported": "Услуги и сотрудники импортированы",
+    "AI manager configured": "AI-менеджер настроен",
+    "Messaging channel connected": "Канал сообщений подключён",
+    "Orqelio launched": "Orqelio запущена",
+    "Soon": "Скоро",
+    "Next available action": "Следующее доступное действие",
+    "Review your integration": "Проверьте интеграцию",
+    "Altegio is connected. Future setup stages will become available as they are implemented.":
+      "Altegio подключена. Следующие этапы настройки станут доступны после их реализации.",
+    "Start with Altegio so Orqelio can use your existing business system when activation becomes available.":
+      "Начните с Altegio, чтобы Orqelio могла использовать вашу рабочую систему после появления активации.",
+    "Connected": "Подключено",
+    "Connection error": "Ошибка подключения",
+    "Connection incomplete": "Подключение не завершено",
+    "Not connected": "Не подключено",
+    "Paused": "Приостановлено",
+    "A connected Altegio CRM record exists for this organization.":
+      "Для этой организации существует подключённая CRM-запись Altegio.",
+    "The saved Altegio connection is marked with an error.":
+      "Сохранённое подключение Altegio отмечено ошибкой.",
+    "The Altegio connection still requires setup.":
+      "Подключение Altegio ещё требует настройки.",
+    "Altegio has not been added to this organization.":
+      "Altegio ещё не добавлена в эту организацию.",
+    "The saved Altegio connection is marked as disconnected.":
+      "Сохранённое подключение Altegio отмечено как отключённое.",
+    "Continue connection": "Продолжить подключение",
+    "Status reflects the saved CRM connection only and does not claim live API health.":
+      "Статус отражает только сохранённое состояние CRM-подключения и не подтверждает доступность API.",
+    "Organization summary": "Сводка организации",
+    "Organization": "Организация",
+    "Your role": "Ваша роль",
+    "Team members": "Участники организации",
+    "Altegio status": "Статус Altegio",
+    "Quick actions": "Быстрые действия",
+    "Open the organization areas available today.":
+      "Перейдите в доступные разделы организации.",
+    "Manage CRM connections and provider setup.":
+      "Управляйте CRM-подключениями и настройкой провайдеров.",
+    "Invite and manage organization administrators.":
+      "Приглашайте администраторов организации и управляйте ими.",
+    "Only the organization owner can manage administrators.":
+      "Управлять администраторами может только владелец организации.",
+    "Update the organization name and workspace address.":
+      "Измените название организации и адрес рабочего пространства.",
+    "AI manager": "AI-менеджер",
+    "Messages": "Сообщения",
+    "Analytics": "Аналитика",
     "Language": "Язык",
     "Русский": "Русский",
     "Қазақша": "Қазақша",
@@ -695,6 +754,65 @@ const translations: Record<Locale, Record<string, string>> = {
     "Open integrations": "Интеграцияларды ашу",
     "Altegio activation and API access are not implemented yet.":
       "Altegio белсендіруі және API қолжетімділігі әлі іске асырылмаған.",
+    "Home": "Басты бет",
+    "Settings": "Баптаулар",
+    "Owner": "Иесі",
+    "Admin": "Әкімші",
+    "Operational dashboard": "Жұмыс тақтасы",
+    "Connect systems and prepare Orqelio to work with customers.":
+      "Жүйелерді қосып, Orqelio-ны клиенттермен жұмыс істеуге дайындаңыз.",
+    "Setup progress": "Баптау барысы",
+    "steps completed": "кезең аяқталды",
+    "Organization created": "Ұйым құрылды",
+    "Altegio connected": "Altegio қосылды",
+    "Services and staff imported": "Қызметтер мен қызметкерлер импортталды",
+    "AI manager configured": "ЖИ-менеджер бапталды",
+    "Messaging channel connected": "Хабар алмасу арнасы қосылды",
+    "Orqelio launched": "Orqelio іске қосылды",
+    "Soon": "Жақында",
+    "Next available action": "Келесі қолжетімді әрекет",
+    "Review your integration": "Интеграцияны тексеріңіз",
+    "Altegio is connected. Future setup stages will become available as they are implemented.":
+      "Altegio қосылды. Келесі баптау кезеңдері іске асырылғаннан кейін қолжетімді болады.",
+    "Start with Altegio so Orqelio can use your existing business system when activation becomes available.":
+      "Белсендіру қолжетімді болғанда Orqelio қолданыстағы бизнес жүйеңізді пайдалана алуы үшін Altegio-дан бастаңыз.",
+    "Connected": "Қосылған",
+    "Connection error": "Қосылым қатесі",
+    "Connection incomplete": "Қосылым аяқталмаған",
+    "Not connected": "Қосылмаған",
+    "Paused": "Тоқтатылған",
+    "A connected Altegio CRM record exists for this organization.":
+      "Бұл ұйымда қосылған Altegio CRM жазбасы бар.",
+    "The saved Altegio connection is marked with an error.":
+      "Сақталған Altegio қосылымы қате күйінде белгіленген.",
+    "The Altegio connection still requires setup.":
+      "Altegio қосылымын әлі баптау қажет.",
+    "Altegio has not been added to this organization.":
+      "Altegio бұл ұйымға әлі қосылмаған.",
+    "The saved Altegio connection is marked as disconnected.":
+      "Сақталған Altegio қосылымы ажыратылған деп белгіленген.",
+    "Continue connection": "Қосылымды жалғастыру",
+    "Status reflects the saved CRM connection only and does not claim live API health.":
+      "Күй тек сақталған CRM қосылымын көрсетеді және API қолжетімділігін растамайды.",
+    "Organization summary": "Ұйым туралы мәлімет",
+    "Organization": "Ұйым",
+    "Your role": "Сіздің рөліңіз",
+    "Team members": "Ұйым қатысушылары",
+    "Altegio status": "Altegio күйі",
+    "Quick actions": "Жылдам әрекеттер",
+    "Open the organization areas available today.":
+      "Қазір қолжетімді ұйым бөлімдеріне өтіңіз.",
+    "Manage CRM connections and provider setup.":
+      "CRM қосылымдары мен провайдер баптауларын басқарыңыз.",
+    "Invite and manage organization administrators.":
+      "Ұйым әкімшілерін шақырыңыз және басқарыңыз.",
+    "Only the organization owner can manage administrators.":
+      "Әкімшілерді тек ұйым иесі басқара алады.",
+    "Update the organization name and workspace address.":
+      "Ұйым атауы мен жұмыс кеңістігінің мекенжайын өзгертіңіз.",
+    "AI manager": "ЖИ-менеджер",
+    "Messages": "Хабарламалар",
+    "Analytics": "Аналитика",
     "Language": "Тіл",
     "Русский": "Орысша",
     "Қазақша": "Қазақша",
