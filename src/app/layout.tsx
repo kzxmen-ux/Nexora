@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 
 import { LanguageSwitcher } from "@/components/i18n/language-switcher";
 import { LocaleProvider } from "@/components/i18n/locale-provider";
+import { getPublicEnvironment } from "@/lib/env/public";
 import { getLocale } from "@/lib/i18n/server";
 
 import "./globals.css";
@@ -14,18 +15,34 @@ const geistSans = Geist({
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
+  const { appUrl } = getPublicEnvironment();
+  const title =
+    locale === "kk" ? "Orqelio — ЖИ-менеджер" : "Orqelio — ИИ-менеджер";
+  const description =
+    locale === "kk"
+      ? "Orqelio — бизнестің қолданыстағы CRM жүйесімен және хабар алмасу платформаларымен жұмыс істейтін ЖИ-менеджер."
+      : "Orqelio — ИИ-менеджер, который работает с существующей CRM бизнеса и платформами обмена сообщениями.";
 
-  return locale === "kk"
-    ? {
-        title: "Orqelio — ЖИ-менеджер",
-        description:
-          "Orqelio — бизнестің қолданыстағы CRM жүйесімен және хабар алмасу платформаларымен жұмыс істейтін ЖИ-менеджер.",
-      }
-    : {
-        title: "Orqelio — ИИ-менеджер",
-        description:
-          "Orqelio — ИИ-менеджер, который работает с существующей CRM бизнеса и платформами обмена сообщениями.",
-      };
+  return {
+    metadataBase: new URL(appUrl),
+    applicationName: "Orqelio",
+    title,
+    description,
+    manifest: "/manifest.webmanifest",
+    openGraph: {
+      type: "website",
+      siteName: "Orqelio",
+      title,
+      description,
+      locale: locale === "kk" ? "kk_KZ" : "ru_RU",
+      url: "/",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
 }
 
 export default async function RootLayout({
