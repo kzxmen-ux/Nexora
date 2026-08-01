@@ -29,6 +29,9 @@ export async function generateMetadata(): Promise<Metadata> {
     title,
     description,
     manifest: "/manifest.webmanifest",
+    alternates: {
+      canonical: "/",
+    },
     openGraph: {
       type: "website",
       siteName: "Orqelio",
