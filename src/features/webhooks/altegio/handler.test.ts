@@ -22,7 +22,7 @@ function requestWithBody(
   body: string,
   headers: Record<string, string> = {},
 ): Request {
-  return new Request("https://nexora.example/api/webhooks/altegio", {
+  return new Request("https://orqelio.example/api/webhooks/altegio", {
     body,
     headers: { "content-type": "application/json", ...headers },
     method: "POST",

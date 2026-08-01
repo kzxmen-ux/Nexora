@@ -46,11 +46,11 @@ export default async function ApplicationPage({
               aria-hidden="true"
               className="grid size-10 place-items-center rounded-xl bg-indigo-600 text-sm font-semibold text-white"
             >
-              N
+              O
             </span>
             <div>
               <p className="font-semibold tracking-tight text-slate-950">
-                Nexora
+                Orqelio
               </p>
               <p className="text-sm text-slate-500">
                 {t("Protected application")}

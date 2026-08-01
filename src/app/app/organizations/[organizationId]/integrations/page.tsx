@@ -47,7 +47,7 @@ export default async function IntegrationsPage({
           </h2>
           <p className="mt-3 max-w-2xl leading-7 text-slate-600">
             {t(
-              "Connect Nexora to external systems without copying their operational data into this workspace.",
+              "Connect Orqelio to external systems without copying their operational data into this workspace.",
             )}
           </p>
 

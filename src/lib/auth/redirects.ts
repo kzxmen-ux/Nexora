@@ -8,7 +8,7 @@ const ALLOWED_AUTH_REDIRECTS = new Set([
 
 const INVITATION_ACCEPTANCE_PATH = "/invitations/accept";
 const INVITATION_TOKEN_PATTERN = /^[A-Za-z0-9_-]{43}$/;
-const REDIRECT_VALIDATION_ORIGIN = "https://nexora.local";
+const REDIRECT_VALIDATION_ORIGIN = "https://orqelio.local";
 
 function getSafeInvitationRedirect(value: string): string | null {
   try {

@@ -1,6 +1,6 @@
-# Nexora
+# Orqelio
 
-Nexora is a SaaS AI manager designed to work with a business's existing CRM
+Orqelio is a SaaS AI manager designed to work with a business's existing CRM
 and messaging platforms. It is **not a CRM**: operational business data remains
 owned by the connected external system.
 
@@ -116,7 +116,7 @@ authenticated clients.
 Organization workspaces include an Integrations area for owner and admin
 members. The CRM section supports provider-neutral development connections and
 server-only marketplace entrypoints. It does not activate API access, contact a
-CRM API, or copy CRM-owned operational data into Nexora.
+CRM API, or copy CRM-owned operational data into Orqelio.
 
 ### Altegio entrypoints
 
@@ -155,7 +155,7 @@ disconnected Altegio location IDs are rejected. Browser roles have no table or
 RPC access, and no synchronization or business logic runs from this endpoint.
 
 The current official Altegio webhook documentation does not describe a request
-signature or verification header. Nexora therefore does not claim
+signature or verification header. Orqelio therefore does not claim
 cryptographic sender authentication. Connection matching and payload
 validation reduce exposure but do not prove the sender's identity.
 
@@ -206,7 +206,7 @@ that bypass RLS, so this key must be treated as production infrastructure
 secret and rotated immediately if exposed.
 
 The current official YCLIENTS webhook documentation describes the JSON payload
-but does not document a request signature or verification header. Nexora
+but does not document a request signature or verification header. Orqelio
 therefore does not claim sender authentication at this stage. Unknown and
 disconnected salon IDs are rejected, but company ID matching is not a
 cryptographic authenticity check.

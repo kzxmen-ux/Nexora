@@ -20,23 +20,23 @@ const translations: Record<Locale, Record<string, string>> = {
     "Get started": "Начать",
     "Built around your existing systems": "Работает с вашими системами",
     "An AI manager, not another CRM.": "ИИ-менеджер, а не ещё одна CRM.",
-    "Nexora is designed to work on top of the CRM a business already trusts, connecting customer conversations with operational data without replacing the source of truth.":
-      "Nexora работает поверх CRM, которой бизнес уже доверяет: связывает диалоги с клиентами с операционными данными, не заменяя источник достоверной информации.",
+    "Orqelio is designed to work on top of the CRM a business already trusts, connecting customer conversations with operational data without replacing the source of truth.":
+      "Orqelio — ИИ-менеджер, который работает поверх CRM, которой бизнес уже доверяет: связывает диалоги с клиентами с операционными данными, не заменяя источник достоверной информации.",
     "Project foundation is ready": "Основа проекта готова",
     "Page not found": "Страница не найдена",
     "The requested page does not exist or you do not have access to it.":
       "Запрошенная страница не существует или у вас нет к ней доступа.",
     "Return to home": "Вернуться на главную",
-    "Use your email and password to continue to Nexora.":
-      "Введите электронную почту и пароль, чтобы продолжить работу в Nexora.",
-    "New to Nexora?": "Впервые в Nexora?",
+    "Use your email and password to continue to Orqelio.":
+      "Введите электронную почту и пароль, чтобы продолжить работу в Orqelio.",
+    "New to Orqelio?": "Впервые в Orqelio?",
     "Create an account": "Создать аккаунт",
     "Welcome back": "С возвращением",
     "The authentication link is invalid or expired. Try again.":
       "Ссылка для аутентификации недействительна или истекла. Попробуйте ещё раз.",
     "Forgot your password?": "Забыли пароль?",
-    "Create the account that will manage your Nexora access.":
-      "Создайте аккаунт для управления доступом к Nexora.",
+    "Create the account that will manage your Orqelio access.":
+      "Создайте аккаунт для управления доступом к Orqelio.",
     "Already have an account?": "Уже есть аккаунт?",
     "Create your account": "Создание аккаунта",
     "Enter your email and we will send password reset instructions if the account exists.":
@@ -92,8 +92,8 @@ const translations: Record<Locale, Record<string, string>> = {
     "Administrator settings could not be loaded. Try again later.":
       "Не удалось загрузить настройки администраторов. Попробуйте позже.",
     "Invite an administrator": "Пригласить администратора",
-    "The link expires after seven days. Nexora stores only its cryptographic hash, so copy it immediately.":
-      "Ссылка действует семь дней. Nexora хранит только её криптографический хеш, поэтому скопируйте её сразу.",
+    "The link expires after seven days. Orqelio stores only its cryptographic hash, so copy it immediately.":
+      "Ссылка действует семь дней. Orqelio хранит только её криптографический хеш, поэтому скопируйте её сразу.",
     "Active administrators": "Действующие администраторы",
     "Added": "Добавлен",
     "No active administrators.": "Действующих администраторов нет.",
@@ -118,7 +118,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "This invitation link is invalid. Ask the organization owner for a new link.":
       "Эта ссылка-приглашение недействительна. Попросите владельца организации создать новую.",
     "Administrator invitation": "Приглашение администратора",
-    "Join an organization in Nexora": "Присоединиться к организации в Nexora",
+    "Join an organization in Orqelio": "Присоединиться к организации в Orqelio",
     "Sign in or create an account with the exact email address that received this invitation.":
       "Войдите или создайте аккаунт с тем адресом электронной почты, на который пришло приглашение.",
     "Signed in as": "Вы вошли как",
@@ -126,8 +126,8 @@ const translations: Record<Locale, Record<string, string>> = {
       "Приглашение можно принять, только если адрес электронной почты совпадает.",
     "Accepting…": "Принимаем…",
     "Accept administrator invitation": "Принять приглашение администратора",
-    "Connect Nexora to external systems without copying their operational data into this workspace.":
-      "Подключайте Nexora к внешним системам без копирования их операционных данных в это рабочее пространство.",
+    "Connect Orqelio to external systems without copying their operational data into this workspace.":
+      "Подключайте Orqelio к внешним системам без копирования их операционных данных в это рабочее пространство.",
     "Create and manage provider-neutral CRM connection metadata. A real CRM adapter has not been selected or implemented.":
       "Создавайте и настраивайте независимые от провайдера подключения CRM. Реальный CRM-адаптер пока не выбран и не реализован.",
     "CRM connections": "Подключения CRM",
@@ -207,16 +207,16 @@ const translations: Record<Locale, Record<string, string>> = {
     "Create placeholder connection": "Создать подключение-заготовку",
     "Save connection settings": "Сохранить настройки подключения",
     "Connection lifecycle": "Состояние подключения",
-    "No real CRM adapter exists yet. Nexora will not mark this placeholder as connected without a verified provider response.":
-      "Реального CRM-адаптера пока нет. Nexora не отметит заготовку подключённой без подтверждённого ответа провайдера.",
+    "No real CRM adapter exists yet. Orqelio will not mark this placeholder as connected without a verified provider response.":
+      "Реального CRM-адаптера пока нет. Orqelio не отметит заготовку подключённой без подтверждённого ответа провайдера.",
     "Connect provider — not available yet":
       "Подключить провайдера — пока недоступно",
     "Updating…": "Обновляем…",
     "Return to draft": "Вернуть в черновик",
     "Mark as disconnected": "Отметить отключённым",
     "Delete connection": "Удалить подключение",
-    "This removes only this Nexora connection record. It does not modify any external CRM.":
-      "Будет удалена только запись подключения в Nexora. Внешняя CRM не изменится.",
+    "This removes only this Orqelio connection record. It does not modify any external CRM.":
+      "Будет удалена только запись подключения в Orqelio. Внешняя CRM не изменится.",
     "Deleting…": "Удаляем…",
     "Enter a valid email address.": "Введите корректный адрес электронной почты.",
     "Check the highlighted field.": "Проверьте выделенное поле.",
@@ -319,7 +319,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "Activation required": "Требуется активация",
     "YCLIENTS callback received": "Ответ YCLIENTS получен",
     "The salon was confirmed by the marketplace redirect. Nexora has not activated API access yet.":
-      "Салон подтверждён переходом из маркетплейса. Nexora ещё не активировала доступ к API.",
+      "Салон подтверждён переходом из маркетплейса. Orqelio ещё не активировал доступ к API.",
     "Salon ID": "ID салона",
     "Waiting for confirmation": "Ожидает подтверждения",
     "Connection is waiting for confirmation":
@@ -343,8 +343,8 @@ const translations: Record<Locale, Record<string, string>> = {
       "Для подключения Altegio нужен доступ владельца или администратора хотя бы к одной организации.",
     "Open organizations": "Открыть организации",
     "Altegio locations received": "Филиалы Altegio получены",
-    "The marketplace returned these location identifiers. Nexora has not activated the integration or connected to the Altegio API.":
-      "Маркетплейс передал эти идентификаторы филиалов. Nexora ещё не активировала интеграцию и не подключалась к API Altegio.",
+    "The marketplace returned these location identifiers. Orqelio has not activated the integration or connected to the Altegio API.":
+      "Маркетплейс передал эти идентификаторы филиалов. Orqelio ещё не активировал интеграцию и не подключался к API Altegio.",
     "Altegio returned the selected locations to Orqelio. Final activation is not completed yet, and Orqelio has not connected to the Altegio API.":
       "Altegio вернул выбранные филиалы в Orqelio. Финальная активация ещё не завершена, и Orqelio не подключался к API Altegio.",
     "Activation and data synchronization are not enabled yet.":
@@ -363,23 +363,23 @@ const translations: Record<Locale, Record<string, string>> = {
     "Get started": "Бастау",
     "Built around your existing systems": "Қолданыстағы жүйелеріңізбен жұмыс істейді",
     "An AI manager, not another CRM.": "Тағы бір CRM емес, ЖИ-менеджер.",
-    "Nexora is designed to work on top of the CRM a business already trusts, connecting customer conversations with operational data without replacing the source of truth.":
-      "Nexora бизнес сенетін CRM жүйесінің үстінде жұмыс істейді: негізгі дереккөзді алмастырмай, клиенттермен диалогтарды операциялық деректермен байланыстырады.",
+    "Orqelio is designed to work on top of the CRM a business already trusts, connecting customer conversations with operational data without replacing the source of truth.":
+      "Orqelio — бизнес сенетін CRM жүйесінің үстінде жұмыс істейтін ЖИ-менеджер: негізгі дереккөзді алмастырмай, клиенттермен диалогтарды операциялық деректермен байланыстырады.",
     "Project foundation is ready": "Жоба негізі дайын",
     "Page not found": "Бет табылмады",
     "The requested page does not exist or you do not have access to it.":
       "Сұралған бет жоқ немесе оған кіруге рұқсатыңыз жоқ.",
     "Return to home": "Басты бетке оралу",
-    "Use your email and password to continue to Nexora.":
-      "Nexora-да жұмысты жалғастыру үшін электрондық поштаңыз бен құпиясөзіңізді енгізіңіз.",
-    "New to Nexora?": "Nexora-ны алғаш рет қолданып тұрсыз ба?",
+    "Use your email and password to continue to Orqelio.":
+      "Orqelio-да жұмысты жалғастыру үшін электрондық поштаңыз бен құпиясөзіңізді енгізіңіз.",
+    "New to Orqelio?": "Orqelio-ны алғаш рет қолданып тұрсыз ба?",
     "Create an account": "Тіркелгі жасау",
     "Welcome back": "Қайта оралғаныңызға қуаныштымыз",
     "The authentication link is invalid or expired. Try again.":
       "Аутентификация сілтемесі жарамсыз немесе мерзімі өткен. Қайталап көріңіз.",
     "Forgot your password?": "Құпиясөзді ұмыттыңыз ба?",
-    "Create the account that will manage your Nexora access.":
-      "Nexora-ға кіруді басқаратын тіркелгі жасаңыз.",
+    "Create the account that will manage your Orqelio access.":
+      "Orqelio-ға кіруді басқаратын тіркелгі жасаңыз.",
     "Already have an account?": "Тіркелгіңіз бар ма?",
     "Create your account": "Тіркелгі жасау",
     "Enter your email and we will send password reset instructions if the account exists.":
@@ -435,8 +435,8 @@ const translations: Record<Locale, Record<string, string>> = {
     "Administrator settings could not be loaded. Try again later.":
       "Әкімші баптауларын жүктеу мүмкін болмады. Кейінірек қайталап көріңіз.",
     "Invite an administrator": "Әкімшіні шақыру",
-    "The link expires after seven days. Nexora stores only its cryptographic hash, so copy it immediately.":
-      "Сілтеме жеті күн жарамды. Nexora оның криптографиялық хешін ғана сақтайды, сондықтан бірден көшіріп алыңыз.",
+    "The link expires after seven days. Orqelio stores only its cryptographic hash, so copy it immediately.":
+      "Сілтеме жеті күн жарамды. Orqelio оның криптографиялық хешін ғана сақтайды, сондықтан бірден көшіріп алыңыз.",
     "Active administrators": "Белсенді әкімшілер",
     "Added": "Қосылды",
     "No active administrators.": "Белсенді әкімшілер жоқ.",
@@ -461,7 +461,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "This invitation link is invalid. Ask the organization owner for a new link.":
       "Бұл шақыру сілтемесі жарамсыз. Ұйым иесінен жаңа сілтеме сұраңыз.",
     "Administrator invitation": "Әкімші шақыруы",
-    "Join an organization in Nexora": "Nexora ұйымына қосылу",
+    "Join an organization in Orqelio": "Orqelio ұйымына қосылу",
     "Sign in or create an account with the exact email address that received this invitation.":
       "Шақыру жіберілген электрондық пошта мекенжайымен кіріңіз немесе тіркелгі жасаңыз.",
     "Signed in as": "Сіз мына пайдаланушы ретінде кірдіңіз:",
@@ -469,8 +469,8 @@ const translations: Record<Locale, Record<string, string>> = {
       "Шақыруды электрондық пошта мекенжайы сәйкес келгенде ғана қабылдауға болады.",
     "Accepting…": "Қабылдануда…",
     "Accept administrator invitation": "Әкімші шақыруын қабылдау",
-    "Connect Nexora to external systems without copying their operational data into this workspace.":
-      "Операциялық деректерді осы жұмыс кеңістігіне көшірмей, Nexora-ны сыртқы жүйелерге қосыңыз.",
+    "Connect Orqelio to external systems without copying their operational data into this workspace.":
+      "Операциялық деректерді осы жұмыс кеңістігіне көшірмей, Orqelio-ны сыртқы жүйелерге қосыңыз.",
     "Create and manage provider-neutral CRM connection metadata. A real CRM adapter has not been selected or implemented.":
       "Провайдерге тәуелсіз CRM қосылымдарын жасаңыз және басқарыңыз. Нақты CRM адаптері әлі таңдалмаған және іске асырылмаған.",
     "CRM connections": "CRM қосылымдары",
@@ -550,16 +550,16 @@ const translations: Record<Locale, Record<string, string>> = {
     "Create placeholder connection": "Үлгі қосылымын жасау",
     "Save connection settings": "Қосылым баптауларын сақтау",
     "Connection lifecycle": "Қосылым күйі",
-    "No real CRM adapter exists yet. Nexora will not mark this placeholder as connected without a verified provider response.":
-      "Нақты CRM адаптері әлі жоқ. Nexora провайдердің расталған жауабынсыз бұл үлгіні қосылған деп белгілемейді.",
+    "No real CRM adapter exists yet. Orqelio will not mark this placeholder as connected without a verified provider response.":
+      "Нақты CRM адаптері әлі жоқ. Orqelio провайдердің расталған жауабынсыз бұл үлгіні қосылған деп белгілемейді.",
     "Connect provider — not available yet":
       "Провайдерді қосу — әзірге қолжетімсіз",
     "Updating…": "Жаңартылуда…",
     "Return to draft": "Жоба күйіне қайтару",
     "Mark as disconnected": "Ажыратылған деп белгілеу",
     "Delete connection": "Қосылымды жою",
-    "This removes only this Nexora connection record. It does not modify any external CRM.":
-      "Тек Nexora-дағы осы қосылым жазбасы жойылады. Сыртқы CRM өзгермейді.",
+    "This removes only this Orqelio connection record. It does not modify any external CRM.":
+      "Тек Orqelio-дағы осы қосылым жазбасы жойылады. Сыртқы CRM өзгермейді.",
     "Deleting…": "Жойылуда…",
     "Enter a valid email address.": "Жарамды электрондық пошта мекенжайын енгізіңіз.",
     "Check the highlighted field.": "Белгіленген өрісті тексеріңіз.",
@@ -662,7 +662,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "Activation required": "Белсендіру қажет",
     "YCLIENTS callback received": "YCLIENTS жауабы алынды",
     "The salon was confirmed by the marketplace redirect. Nexora has not activated API access yet.":
-      "Салон маркетплейстен қайта бағыттау арқылы расталды. Nexora API рұқсатын әлі белсендірген жоқ.",
+      "Салон маркетплейстен қайта бағыттау арқылы расталды. Orqelio API рұқсатын әлі белсендірген жоқ.",
     "Salon ID": "Салон ID-і",
     "Waiting for confirmation": "Растауды күтуде",
     "Connection is waiting for confirmation":
@@ -686,8 +686,8 @@ const translations: Record<Locale, Record<string, string>> = {
       "Altegio-ны қосу үшін кемінде бір ұйымға иесі немесе әкімшісі ретінде кіру қажет.",
     "Open organizations": "Ұйымдарды ашу",
     "Altegio locations received": "Altegio филиалдары алынды",
-    "The marketplace returned these location identifiers. Nexora has not activated the integration or connected to the Altegio API.":
-      "Маркетплейс осы филиал идентификаторларын жіберді. Nexora интеграцияны әлі белсендірмеді және Altegio API-іне қосылмады.",
+    "The marketplace returned these location identifiers. Orqelio has not activated the integration or connected to the Altegio API.":
+      "Маркетплейс осы филиал идентификаторларын жіберді. Orqelio интеграцияны әлі белсендірмеді және Altegio API-іне қосылмады.",
     "Altegio returned the selected locations to Orqelio. Final activation is not completed yet, and Orqelio has not connected to the Altegio API.":
       "Altegio таңдалған филиалдарды Orqelio-ға қайтарды. Соңғы белсендіру әлі аяқталған жоқ және Orqelio Altegio API-іне қосылмады.",
     "Activation and data synchronization are not enabled yet.":

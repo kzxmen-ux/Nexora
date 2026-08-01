@@ -19,11 +19,11 @@ export default async function Home() {
               aria-hidden="true"
               className="grid size-10 place-items-center rounded-xl bg-indigo-600 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20"
             >
-              N
+              O
             </span>
             <div>
               <p className="font-semibold tracking-tight text-slate-950">
-                Nexora
+                Orqelio
               </p>
               <p className="text-sm text-slate-500">{t("AI Manager")}</p>
             </div>
@@ -54,7 +54,7 @@ export default async function Home() {
           </h1>
           <p className="mt-7 max-w-2xl text-pretty text-lg leading-8 text-slate-600 sm:text-xl">
             {t(
-              "Nexora is designed to work on top of the CRM a business already trusts, connecting customer conversations with operational data without replacing the source of truth.",
+              "Orqelio is designed to work on top of the CRM a business already trusts, connecting customer conversations with operational data without replacing the source of truth.",
             )}
           </p>
         </div>

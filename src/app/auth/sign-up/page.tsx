@@ -27,7 +27,7 @@ export default async function SignUpPage({
 
   return (
     <AuthCard
-      description={t("Create the account that will manage your Nexora access.")}
+      description={t("Create the account that will manage your Orqelio access.")}
       footer={
         <>
           {t("Already have an account?")}{" "}

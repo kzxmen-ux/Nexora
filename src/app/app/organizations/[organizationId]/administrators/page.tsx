@@ -83,7 +83,7 @@ export default async function AdministratorsPage({
               </h2>
               <p className="mt-3 text-sm leading-6 text-slate-600">
                 {t(
-                  "The link expires after seven days. Nexora stores only its cryptographic hash, so copy it immediately.",
+                  "The link expires after seven days. Orqelio stores only its cryptographic hash, so copy it immediately.",
                 )}
               </p>
               <InvitationForm organizationId={organization.id} />

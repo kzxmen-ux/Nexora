@@ -29,10 +29,10 @@ export default async function SignInPage({
 
   return (
     <AuthCard
-      description={t("Use your email and password to continue to Nexora.")}
+      description={t("Use your email and password to continue to Orqelio.")}
       footer={
         <>
-          {t("New to Nexora?")}{" "}
+          {t("New to Orqelio?")}{" "}
           <Link
             className="font-semibold text-indigo-600 hover:text-indigo-700"
             href={signUpHref}

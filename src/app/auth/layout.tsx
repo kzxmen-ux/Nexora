@@ -21,10 +21,10 @@ export default async function AuthLayout({ children }: { children: ReactNode }) 
           aria-hidden="true"
           className="grid size-10 place-items-center rounded-xl bg-indigo-600 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20"
         >
-          N
+          O
         </span>
         <div>
-          <p className="font-semibold tracking-tight text-slate-950">Nexora</p>
+          <p className="font-semibold tracking-tight text-slate-950">Orqelio</p>
           <p className="text-sm text-slate-500">{t("AI Manager")}</p>
         </div>
       </Link>

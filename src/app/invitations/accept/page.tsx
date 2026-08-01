@@ -51,7 +51,7 @@ export default async function InvitationAcceptancePage({
         {t("Administrator invitation")}
       </p>
       <h1 className="mt-3 text-3xl font-semibold text-slate-950">
-        {t("Join an organization in Nexora")}
+        {t("Join an organization in Orqelio")}
       </h1>
       {!user || error ? (
         <>
@@ -103,9 +103,9 @@ function InvitationShell({ children }: { children: React.ReactNode }) {
             aria-hidden="true"
             className="grid size-9 place-items-center rounded-xl bg-indigo-600 text-sm text-white"
           >
-            N
+            O
           </span>
-          Nexora
+          Orqelio
         </Link>
         {children}
       </section>

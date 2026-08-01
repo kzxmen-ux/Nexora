@@ -71,7 +71,7 @@ export function CrmConnectionControls({
         </h2>
         <p className="mt-3 text-sm leading-6 text-slate-600">
           {t(
-            "No real CRM adapter exists yet. Nexora will not mark this placeholder as connected without a verified provider response.",
+            "No real CRM adapter exists yet. Orqelio will not mark this placeholder as connected without a verified provider response.",
           )}
         </p>
 
@@ -118,7 +118,7 @@ export function CrmConnectionControls({
         </h2>
         <p className="mt-3 text-sm leading-6 text-rose-800">
           {t(
-            "This removes only this Nexora connection record. It does not modify any external CRM.",
+            "This removes only this Orqelio connection record. It does not modify any external CRM.",
           )}
         </p>
         <form action={deleteAction} className="mt-5">
