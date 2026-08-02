@@ -28,6 +28,7 @@ describe("Altegio callback validation", () => {
       { salonId: "1", salonIds: "2" },
       { salonIds: ["1", "invalid"] },
       { salonId: "9223372036854775808" },
+      { salonId: "9007199254740992" },
     ]) {
       assert.deepEqual(validateAltegioCallbackIds(input), {
         success: false,

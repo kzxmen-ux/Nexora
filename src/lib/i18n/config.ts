@@ -350,6 +350,37 @@ const translations: Record<Locale, Record<string, string>> = {
     "Activation and data synchronization are not enabled yet.":
       "Активация и синхронизация данных пока не включены.",
     "Open integrations": "Открыть интеграции",
+    "Altegio activation failed": "Не удалось активировать Altegio",
+    "Altegio returned a safe provider error. You can retry while the authorization window is open.":
+      "Altegio вернула ошибку. Пока окно авторизации открыто, можно безопасно повторить попытку.",
+    "Altegio authorization expired": "Срок авторизации Altegio истёк",
+    "Start the connection again from integrations to receive a new authorization window.":
+      "Запустите подключение заново в разделе интеграций, чтобы получить новое окно авторизации.",
+    "Altegio activation is in progress": "Активация Altegio выполняется",
+    "Orqelio is activating and verifying the selected locations.":
+      "Orqelio активирует и проверяет доступ к выбранным филиалам.",
+    "Altegio callback does not match": "Ответ Altegio не соответствует попытке",
+    "This callback does not match the selected organization or connection attempt.":
+      "Этот ответ не соответствует выбранной организации или попытке подключения.",
+    "Altegio activation is partially complete": "Altegio активирована частично",
+    "Some locations were verified and some require a safe retry.":
+      "Часть филиалов проверена, для остальных требуется безопасная повторная попытка.",
+    "Altegio callback was already used": "Ответ Altegio уже использован",
+    "This one-time callback has already been processed. Open integrations to view the current state.":
+      "Этот одноразовый ответ уже обработан. Откройте интеграции, чтобы посмотреть текущее состояние.",
+    "Altegio activation completed": "Активация Altegio завершена",
+    "All selected locations were activated and access was verified.":
+      "Все выбранные филиалы активированы, доступ к ним проверен.",
+    "Altegio activation is unavailable": "Активация Altegio недоступна",
+    "The connection attempt could not be verified. Start again from integrations.":
+      "Не удалось проверить попытку подключения. Запустите её заново из раздела интеграций.",
+    "Verified locations": "Проверенные филиалы",
+    "Locations requiring attention": "Филиалы, требующие внимания",
+    "Retry activation": "Повторить активацию",
+    "Altegio locations were activated and API access was verified.":
+      "Филиалы Altegio активированы, доступ к API проверен.",
+    "Altegio activation is incomplete or requires attention.":
+      "Активация Altegio не завершена или требует внимания.",
     "Altegio activation and API access are not implemented yet.":
       "Активация Altegio и доступ к API пока не реализованы.",
     "AI administrator": "AI-администратор",
@@ -820,6 +851,37 @@ const translations: Record<Locale, Record<string, string>> = {
     "Activation and data synchronization are not enabled yet.":
       "Белсендіру және деректерді синхрондау әлі қосылмаған.",
     "Open integrations": "Интеграцияларды ашу",
+    "Altegio activation failed": "Altegio белсендірілмеді",
+    "Altegio returned a safe provider error. You can retry while the authorization window is open.":
+      "Altegio қатені қайтарды. Авторизация терезесі ашық кезде қауіпсіз қайталап көруге болады.",
+    "Altegio authorization expired": "Altegio авторизациясының мерзімі аяқталды",
+    "Start the connection again from integrations to receive a new authorization window.":
+      "Жаңа авторизация терезесін алу үшін интеграциялар бөлімінен қосылуды қайта бастаңыз.",
+    "Altegio activation is in progress": "Altegio белсендіріліп жатыр",
+    "Orqelio is activating and verifying the selected locations.":
+      "Orqelio таңдалған филиалдарды белсендіріп, қолжетімділікті тексеріп жатыр.",
+    "Altegio callback does not match": "Altegio жауабы әрекетке сәйкес емес",
+    "This callback does not match the selected organization or connection attempt.":
+      "Бұл жауап таңдалған ұйымға немесе қосылу әрекетіне сәйкес емес.",
+    "Altegio activation is partially complete": "Altegio ішінара белсендірілді",
+    "Some locations were verified and some require a safe retry.":
+      "Кейбір филиалдар тексерілді, қалғандары үшін қауіпсіз қайталау қажет.",
+    "Altegio callback was already used": "Altegio жауабы бұрын қолданылған",
+    "This one-time callback has already been processed. Open integrations to view the current state.":
+      "Бұл бір реттік жауап өңделген. Ағымдағы күйді көру үшін интеграцияларды ашыңыз.",
+    "Altegio activation completed": "Altegio белсендіру аяқталды",
+    "All selected locations were activated and access was verified.":
+      "Барлық таңдалған филиалдар белсендіріліп, қолжетімділік тексерілді.",
+    "Altegio activation is unavailable": "Altegio белсендіру қолжетімсіз",
+    "The connection attempt could not be verified. Start again from integrations.":
+      "Қосылу әрекетін тексеру мүмкін болмады. Интеграциялар бөлімінен қайта бастаңыз.",
+    "Verified locations": "Тексерілген филиалдар",
+    "Locations requiring attention": "Назар аударуды қажет ететін филиалдар",
+    "Retry activation": "Белсендіруді қайталау",
+    "Altegio locations were activated and API access was verified.":
+      "Altegio филиалдары белсендіріліп, API қолжетімділігі тексерілді.",
+    "Altegio activation is incomplete or requires attention.":
+      "Altegio белсендіру аяқталмаған немесе назар аударуды қажет етеді.",
     "Altegio activation and API access are not implemented yet.":
       "Altegio белсендіруі және API қолжетімділігі әлі іске асырылмаған.",
     "AI administrator": "ЖИ-әкімші",

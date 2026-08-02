@@ -9,9 +9,15 @@ export type CrmConnectionStatus =
 export type CrmConfigurationRegion = "apac" | "eu" | "global" | "us";
 
 export type CrmConnectionConfiguration = {
+  activatedLocationIds?: string[];
+  activationCompletedAt?: string;
+  applicationId?: string;
+  locationIds?: string[];
+  providerActivationStatus?: "error" | "partial" | "verified";
   region?: CrmConfigurationRegion;
   salonId?: string;
   workspaceReference?: string;
+  verifiedLocationIds?: string[];
 };
 
 export type CrmConnection = {

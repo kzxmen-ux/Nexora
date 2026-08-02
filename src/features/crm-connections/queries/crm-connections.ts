@@ -11,9 +11,15 @@ import type {
 
 const databaseConfigurationSchema = z
   .object({
+    activated_location_ids: z.array(z.string()).optional(),
+    activation_completed_at: z.string().optional(),
+    application_id: z.literal("2167").optional(),
+    location_ids: z.array(z.string()).optional(),
+    provider_activation_status: z.enum(["error", "partial", "verified"]).optional(),
     region: z.enum(["global", "eu", "us", "apac"]).optional(),
     salon_id: z.string().regex(/^[1-9][0-9]{0,18}$/).optional(),
     workspace_reference: z.string().optional(),
+    verified_location_ids: z.array(z.string()).optional(),
   })
   .strict();
 
@@ -52,10 +58,28 @@ function mapConfiguration(
   configuration: z.infer<typeof databaseConfigurationSchema>,
 ): CrmConnectionConfiguration {
   return {
+    ...(configuration.activated_location_ids
+      ? { activatedLocationIds: configuration.activated_location_ids }
+      : {}),
+    ...(configuration.activation_completed_at
+      ? { activationCompletedAt: configuration.activation_completed_at }
+      : {}),
+    ...(configuration.application_id
+      ? { applicationId: configuration.application_id }
+      : {}),
+    ...(configuration.location_ids
+      ? { locationIds: configuration.location_ids }
+      : {}),
+    ...(configuration.provider_activation_status
+      ? { providerActivationStatus: configuration.provider_activation_status }
+      : {}),
     ...(configuration.region ? { region: configuration.region } : {}),
     ...(configuration.salon_id ? { salonId: configuration.salon_id } : {}),
     ...(configuration.workspace_reference
       ? { workspaceReference: configuration.workspace_reference }
+      : {}),
+    ...(configuration.verified_location_ids
+      ? { verifiedLocationIds: configuration.verified_location_ids }
       : {}),
   };
 }

@@ -1,4 +1,4 @@
-const MAXIMUM_POSTGRES_BIGINT = BigInt("9223372036854775807");
+const MAXIMUM_SAFE_INTEGER = BigInt(Number.MAX_SAFE_INTEGER);
 const MAXIMUM_LOCATION_COUNT = 100;
 const POSITIVE_INTEGER_PATTERN = /^[1-9][0-9]{0,18}$/;
 
@@ -40,7 +40,7 @@ export function validateAltegioCallbackIds(
     locationIds.some(
       (value) =>
         !POSITIVE_INTEGER_PATTERN.test(value) ||
-        BigInt(value) > MAXIMUM_POSTGRES_BIGINT,
+        BigInt(value) > MAXIMUM_SAFE_INTEGER,
     )
   ) {
     return { success: false };

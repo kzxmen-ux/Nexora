@@ -11,16 +11,19 @@ export class AltegioProvider implements BookingProvider {
     return { status: "disconnected" };
   }
 
-  async getConnectionMetadata(): Promise<BookingProviderConnectionMetadata> {
+  async getConnectionMetadata(connection: import("../../types").CrmConnection): Promise<BookingProviderConnectionMetadata> {
+    const verifiedLocations = connection.configuration.verifiedLocationIds ?? [];
     return {
-      companyId: null,
+      companyId: verifiedLocations[0] ?? null,
       configurationMode: "non_secret",
       credentialsSaved: false,
       credentialsUpdatedAt: null,
       provider: "altegio",
       providerLabel: "Altegio",
       settingsDescription:
-        "Altegio activation and API access are not implemented yet.",
+        connection.configuration.providerActivationStatus === "verified"
+          ? "Altegio locations were activated and API access was verified."
+          : "Altegio activation is incomplete or requires attention.",
     };
   }
 

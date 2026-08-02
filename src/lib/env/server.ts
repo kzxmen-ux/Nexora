@@ -30,3 +30,29 @@ export function getYclientsCredentialsEncryptionKey(): Buffer {
 
   return key;
 }
+
+export type AltegioServerEnvironment = {
+  applicationId: number;
+  partnerToken: string;
+  userToken: string;
+};
+
+export function getAltegioServerEnvironment(): AltegioServerEnvironment {
+  const partnerToken = process.env.ALTEGIO_PARTNER_TOKEN?.trim();
+  const userToken = process.env.ALTEGIO_USER_TOKEN?.trim();
+  const applicationId = Number.parseInt(
+    process.env.ALTEGIO_APPLICATION_ID?.trim() ?? "",
+    10,
+  );
+
+  if (
+    !partnerToken ||
+    !userToken ||
+    applicationId !== 2167 ||
+    process.env.ALTEGIO_APPLICATION_ID?.trim() !== "2167"
+  ) {
+    throw new Error("Altegio Marketplace access is not configured.");
+  }
+
+  return { applicationId, partnerToken, userToken };
+}
